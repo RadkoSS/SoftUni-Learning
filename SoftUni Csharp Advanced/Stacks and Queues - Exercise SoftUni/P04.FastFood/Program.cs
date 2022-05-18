@@ -14,10 +14,15 @@ namespace P04.FastFood
 
             Queue<int> ordersQueue = new Queue<int>(orders);
 
-            int biggestOrder = ordersQueue.Max();
+            int biggestOrder = 0;
 
             while (ordersQueue.Count > 0)
             {
+                if (ordersQueue.Peek() >= biggestOrder)
+                {
+                    biggestOrder = ordersQueue.Peek();
+                }
+
                 if (ordersQueue.Peek() <= foodQuantity)
                 {
                     foodQuantity -= ordersQueue.Dequeue();
