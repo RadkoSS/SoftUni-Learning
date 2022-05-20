@@ -10,26 +10,32 @@ namespace P01.DiagonalDifference
             int matrixSize = int.Parse(Console.ReadLine());
             int[,] matrix = new int[matrixSize, matrixSize];
 
-            for (int row = 0; row < matrixSize; row++)
+            for (int row = 0; row < matrix.GetLength(0); row++)
             {
                 int[] numbers = Console.ReadLine().Split().Select(int.Parse).ToArray();
-                for (int column = 0; column < matrixSize; column++)
+
+                if (numbers.Length == matrixSize)
                 {
-                    matrix[row, column] = numbers[column];
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        matrix[row, i] = numbers[i];
+                    }
                 }
             }
 
             int primaryDiagSum = 0;
-            int secondaryDiagSum = 0;
-
-            for (int rows = 0; rows < matrixSize; rows++)
+            for (int row = 0, col = 0; row < matrix.GetLength(0); row++, col++)
             {
-                for (int cols = 0; cols < matrixSize; cols++)
-                {
-                    primaryDiagSum += matrix[rows, cols];
-                }
+                primaryDiagSum += matrix[row, col];
             }
-            Console.WriteLine(primaryDiagSum);
+
+            int secondaryDiagSum = 0;
+            for (int row = 0, col = matrix.GetLength(1) - 1; row < matrix.GetLength(0); row++, col--)
+            {
+                secondaryDiagSum += matrix[row, col];
+            }
+
+            Console.WriteLine(Math.Abs(primaryDiagSum - secondaryDiagSum));
         }
     }
 }
