@@ -16,6 +16,7 @@ namespace P03.MaximalSum
 
             PrintSumAndSquare(matrix, matrixDimensions[0], matrixDimensions[1]);
         }
+
         static void InitializeMatrix(int[,] matrix, int rowsCount)
         {
             for (int row = 0; row < rowsCount; row++)
