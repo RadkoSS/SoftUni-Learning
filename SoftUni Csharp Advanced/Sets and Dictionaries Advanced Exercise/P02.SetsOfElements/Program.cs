@@ -23,17 +23,9 @@ namespace P02.SetsOfElements
                 secondSet.Add(int.Parse(Console.ReadLine()));
             }
 
-            HashSet<int> resultSet = new HashSet<int>();
+            firstSet.IntersectWith(secondSet);
 
-            foreach (int number in firstSet)
-            {
-                if (firstSet.Contains(number) && secondSet.Contains(number))
-                {
-                    resultSet.Add(number);
-                }
-            }
-
-            Console.WriteLine(string.Join(' ', resultSet));
+            Console.WriteLine(string.Join(' ', firstSet));
         }
     }
 }
