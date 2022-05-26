@@ -21,7 +21,7 @@ namespace P04.EvenTimes
                 }
                 else
                 {
-                    numbers.Add(currentNumber, -1);
+                    numbers.Add(currentNumber, 1);
                 }
             }
 
