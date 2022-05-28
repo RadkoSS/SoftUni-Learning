@@ -52,6 +52,7 @@ namespace P09.SoftUniExamResults
                     results.Remove(username);
             }
         }
+
         static void PrintSortedDictionaries(Dictionary<string, int> results, Dictionary<string, int> submissions)
         {
             Console.WriteLine("Results:");
@@ -66,5 +67,6 @@ namespace P09.SoftUniExamResults
                 Console.WriteLine($"{submission.Key} - {submission.Value}");
             }
         }
+
     }
 }
