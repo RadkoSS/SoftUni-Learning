@@ -14,13 +14,13 @@
 
         public static void ProcessLines(string inputFilePath, string outputFilePath)
         {
-            
-            using (StreamReader read = new StreamReader(inputFilePath))
+            using (StreamReader reader = new StreamReader(inputFilePath))
+            using (StreamWriter writer = new StreamWriter(outputFilePath))
             {
                 string line = string.Empty;
                 int lineNumber = 1;
 
-                while ((line = read.ReadLine()) != null)
+                while ((line = reader.ReadLine()) != null)
                 {
                     int countOfLetters = 0;
                     int countOfPunctMarks = 0;
@@ -36,15 +36,19 @@
                             countOfPunctMarks++;
                         }
                     }
-                    using (StreamWriter write = new StreamWriter(outputFilePath))
-                    {
-                        write.WriteLine($"Line {lineNumber}: {line} ({countOfLetters})({countOfPunctMarks})");
-                    }
+
+                    writer.WriteLine($"Line {lineNumber}: {line} ({countOfLetters})({countOfPunctMarks})");
 
                     lineNumber++;
                 }
+
+                reader.Close();
+
+                writer.Close();
             }
+
         }
 
     }
+
 }
