@@ -19,12 +19,12 @@
 
         public static string TraverseDirectory(string inputFolderPath)
         {
-
+            
         }
 
         public static void WriteReportToDesktop(string textContent, string reportFileName)
         {
-
+            
         }
 
     }
