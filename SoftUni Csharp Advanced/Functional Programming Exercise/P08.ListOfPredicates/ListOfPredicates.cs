@@ -19,7 +19,9 @@ namespace P08.ListOfPredicates
 
             List<int> dividers = Console.ReadLine().Split().Select(int.Parse).ToList();
 
-            //Func<int, List<int>, bool> isDivisible = (List<int> list) => dividers.FindAll(number => number % );
+            Predicate<int> isNotDivisible = number => dividers.Any(divider => number % divider != 0);
+
+            Console.WriteLine(string.Join(' ', numbers.FindAll(number => !isNotDivisible(number))));
         }
     }
 }
