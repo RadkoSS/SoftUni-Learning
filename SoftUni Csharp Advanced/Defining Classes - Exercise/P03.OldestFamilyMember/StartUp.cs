@@ -15,6 +15,7 @@ namespace DefiningClasses
 
         static void InitializeFamily(Family family)
         {
+
             int countOfmembers = int.Parse(Console.ReadLine());
 
             for (int member = 1; member <= countOfmembers; member++)
@@ -25,6 +26,7 @@ namespace DefiningClasses
 
                 family.AddMember(person);
             }
+
         }
     }
 }
