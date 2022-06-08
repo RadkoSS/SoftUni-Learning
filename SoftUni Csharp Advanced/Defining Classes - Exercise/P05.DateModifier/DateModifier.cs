@@ -10,8 +10,15 @@ namespace DefiningClasses
 
         private string month;
 
-        private int year;
+        private string year;
 
+        public DateModifier(string day, string month, string year)
+        {
+            this.Day = day;
+            this.Month = month;
+            this.Year = year;
+        }
+    
         public string Day 
         {
             get { return day; }
@@ -24,11 +31,15 @@ namespace DefiningClasses
             set { month = value; }
         }
 
-        public int Year 
+        public string Year 
         {
             get { return year; }
             set { year = value; }
         }
 
+        public int CalculateDifference(DateModifier firstDate, DateModifier secondDate)
+        {
+            
+        }
     }
 }
