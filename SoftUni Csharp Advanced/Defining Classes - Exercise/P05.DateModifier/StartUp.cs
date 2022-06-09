@@ -11,11 +11,7 @@ namespace DefiningClasses
 
             string[] secondDate = Console.ReadLine().Split();
 
-            DateModifier first = new DateModifier(firstDate[0], firstDate[1], firstDate[2]);
-
-            DateModifier seacond = new DateModifier(secondDate[0], secondDate[1], secondDate[2]);
-
-
+            //ToDo: Find a way to calculate the difference between two strings representing dates.....
         }
     }
 }

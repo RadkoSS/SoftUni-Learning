@@ -37,6 +37,7 @@ namespace DefiningClasses
             set { year = value; }
         }
 
+        // ToDo: New method that calculates difference between two dates as strings......
         public int CalculateDifference(DateModifier firstDate, DateModifier secondDate)
         {
             

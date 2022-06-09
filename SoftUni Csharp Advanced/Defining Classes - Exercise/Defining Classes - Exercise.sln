@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P02.CreatingConstructors", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P03.OldestFamilyMember", "P03.OldestFamilyMember\P03.OldestFamilyMember.csproj", "{D4C4CFC4-FF58-4C74-941A-40BA56B433B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P04.OpinionPoll", "P04.OpinionPoll\P04.OpinionPoll.csproj", "{19B66BB2-06FC-4776-81D1-C7B8485E80FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P04.OpinionPoll", "P04.OpinionPoll\P04.OpinionPoll.csproj", "{19B66BB2-06FC-4776-81D1-C7B8485E80FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P05.DateModifier", "P05.DateModifier\P05.DateModifier.csproj", "{45BC3D0F-0B5B-4921-B486-E34C45BC2973}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P05.DateModifier", "P05.DateModifier\P05.DateModifier.csproj", "{45BC3D0F-0B5B-4921-B486-E34C45BC2973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P06.SpeedRacing", "P06.SpeedRacing\P06.SpeedRacing.csproj", "{1EE5C9A6-A37B-458E-912F-C90B1B7D1AB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P10.SoftUniParking", "P10.SoftUniParking\P10.SoftUniParking.csproj", "{B88DD083-EF36-459A-B8D4-5AFA47878043}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{45BC3D0F-0B5B-4921-B486-E34C45BC2973}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45BC3D0F-0B5B-4921-B486-E34C45BC2973}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45BC3D0F-0B5B-4921-B486-E34C45BC2973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EE5C9A6-A37B-458E-912F-C90B1B7D1AB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE5C9A6-A37B-458E-912F-C90B1B7D1AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE5C9A6-A37B-458E-912F-C90B1B7D1AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE5C9A6-A37B-458E-912F-C90B1B7D1AB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B88DD083-EF36-459A-B8D4-5AFA47878043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B88DD083-EF36-459A-B8D4-5AFA47878043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B88DD083-EF36-459A-B8D4-5AFA47878043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B88DD083-EF36-459A-B8D4-5AFA47878043}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
