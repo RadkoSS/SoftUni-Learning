@@ -6,12 +6,12 @@ namespace P03.GenericSwapMethodString
 {
     public class Box<T>
     {
-        public Box(List<T> value)
+        public Box(List<T> values)
         {
-            this.Value = value;
+            this.Values = values;
         }
 
-        public List<T> Value { get; }
+        public List<T> Values { get; }
 
         public void Swap(List<T> list, int firstIndex, int secondIndex)
         {
@@ -34,7 +34,7 @@ namespace P03.GenericSwapMethodString
         {
             var programOutput = new StringBuilder();
 
-            this.Value.ForEach(inputLine => programOutput.AppendLine($"{inputLine.GetType()}: {inputLine}"));
+            this.Values.ForEach(inputLine => programOutput.AppendLine($"{inputLine.GetType()}: {inputLine}"));
 
             return programOutput.ToString().TrimEnd();
         }

@@ -1,17 +1,27 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using System.Collections.Generic;
 
-namespace P04.GenericSwapMethodInteger
+namespace P05.GenericCountMethodStrings
 {
-    public class Box<T>
+    public class Box<T> : IComparable<T> where T : IComparable<T>
     {
+        public Box(T value)
+        {
+            this.Value = value;
+        }
+
         public Box(List<T> values)
         {
             this.Values = values;
         }
 
+        public T Value { get; }
+
+
         public List<T> Values { get; }
+
 
         public void Swap(List<T> list, int firstIndex, int secondIndex)
         {
@@ -30,6 +40,12 @@ namespace P04.GenericSwapMethodInteger
             return firstIndex >= 0 && firstIndex < list.Count && secondIndex >= 0 && secondIndex < list.Count;
         }
 
+        public int CompareTo(T other) => Value.CompareTo(other);
+
+
+        public int CountOfLargerElements<T>(List<T> list, T elementToCompare) where T : IComparable => list.Count(element => element.CompareTo(elementToCompare) > 0);
+
+
         public override string ToString()
         {
             var programOutput = new StringBuilder();
@@ -38,5 +54,6 @@ namespace P04.GenericSwapMethodInteger
 
             return programOutput.ToString().TrimEnd();
         }
+
     }
 }
