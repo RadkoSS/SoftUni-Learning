@@ -5,19 +5,21 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P01.GenericBoxOfString", "P01.GenericBoxOfString\P01.GenericBoxOfString.csproj", "{B56BEA9F-9253-48BC-A91E-4B96390A7E80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02.GenericBoxOfInteger", "P02.GenericBoxOfInteger\P02.GenericBoxOfInteger.csproj", "{381F64CB-FED2-42C0-BE19-53CBE783781C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P02.GenericBoxOfInteger", "P02.GenericBoxOfInteger\P02.GenericBoxOfInteger.csproj", "{381F64CB-FED2-42C0-BE19-53CBE783781C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03.GenericSwapMethodString", "P03.GenericSwapMethodString\P03.GenericSwapMethodString.csproj", "{AAFFE4DE-F2F2-4F34-8B1E-47ECDA2F63A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P03.GenericSwapMethodString", "P03.GenericSwapMethodString\P03.GenericSwapMethodString.csproj", "{AAFFE4DE-F2F2-4F34-8B1E-47ECDA2F63A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P04.GenericSwapMethodInteger", "P04.GenericSwapMethodInteger\P04.GenericSwapMethodInteger.csproj", "{F34BB0FA-FA06-41A5-80A6-8F946593AE1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P04.GenericSwapMethodInteger", "P04.GenericSwapMethodInteger\P04.GenericSwapMethodInteger.csproj", "{F34BB0FA-FA06-41A5-80A6-8F946593AE1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P05.GenericCountMethodStrings", "P05.GenericCountMethodStrings\P05.GenericCountMethodStrings.csproj", "{52FADD43-4C3D-4E43-B555-DC9427BD21DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P05.GenericCountMethodStrings", "P05.GenericCountMethodStrings\P05.GenericCountMethodStrings.csproj", "{52FADD43-4C3D-4E43-B555-DC9427BD21DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P06.GenericCountMethodDouble", "P06.GenericCountMethodDouble\P06.GenericCountMethodDouble.csproj", "{291CD471-45CB-4ACB-8C3E-306F82EC6DAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P06.GenericCountMethodDouble", "P06.GenericCountMethodDouble\P06.GenericCountMethodDouble.csproj", "{291CD471-45CB-4ACB-8C3E-306F82EC6DAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P07.Tuple", "P07.Tuple\P07.Tuple.csproj", "{5E11FE04-D964-4D7E-B872-9D25E3C8F0A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P07.Tuple", "P07.Tuple\P07.Tuple.csproj", "{5E11FE04-D964-4D7E-B872-9D25E3C8F0A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P08.Threeuple", "P08.Threeuple\P08.Threeuple.csproj", "{C90F4268-385A-4CD7-8774-3F5605A8C5C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P08.Threeuple", "P08.Threeuple\P08.Threeuple.csproj", "{C90F4268-385A-4CD7-8774-3F5605A8C5C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P09.LinkedListCustomlmplementation", "P09.LinkedListCustomlmplementation\P09.LinkedListCustomlmplementation.csproj", "{58B1F5DA-6265-419E-833A-0D071FBE0F97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{C90F4268-385A-4CD7-8774-3F5605A8C5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C90F4268-385A-4CD7-8774-3F5605A8C5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C90F4268-385A-4CD7-8774-3F5605A8C5C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58B1F5DA-6265-419E-833A-0D071FBE0F97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58B1F5DA-6265-419E-833A-0D071FBE0F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58B1F5DA-6265-419E-833A-0D071FBE0F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58B1F5DA-6265-419E-833A-0D071FBE0F97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
