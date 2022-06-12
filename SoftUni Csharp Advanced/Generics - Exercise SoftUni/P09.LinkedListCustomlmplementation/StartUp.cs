@@ -9,10 +9,15 @@ namespace CustomDoublyLinkedList
         {
             DoublyLinkedList<string> linkedList = new DoublyLinkedList<string>();
 
-            linkedList.AddFirst("Radko");
-            linkedList.AddLast("Petko2");
             linkedList.AddFirst("Petko1");
+            linkedList.AddLast("Petko2");
+            linkedList.AddFirst("Radko");
+            linkedList.AddLast("Last item");
+            linkedList.AddLast("I must be removed");
 
+            linkedList.RemoveLast();
+
+            Console.WriteLine("Using ForEach to print:");
             linkedList.ForEach(name => Console.WriteLine(name));
 
             var array = linkedList.ToArray();
@@ -21,6 +26,7 @@ namespace CustomDoublyLinkedList
             var list = linkedList.ToList();
             Console.WriteLine($"Printing the list: {string.Join(" -> ", list)}");
 
+            
             Console.WriteLine($"List count is {linkedList.Count()}.");
 
             Console.WriteLine("Search for:");
