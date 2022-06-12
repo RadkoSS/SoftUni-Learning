@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P04.GenericSwapMethodIntege
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P05.GenericCountMethodStrings", "P05.GenericCountMethodStrings\P05.GenericCountMethodStrings.csproj", "{52FADD43-4C3D-4E43-B555-DC9427BD21DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P06.GenericCountMethodDouble", "P06.GenericCountMethodDouble\P06.GenericCountMethodDouble.csproj", "{291CD471-45CB-4ACB-8C3E-306F82EC6DAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P07.Tuple", "P07.Tuple\P07.Tuple.csproj", "{5E11FE04-D964-4D7E-B872-9D25E3C8F0A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P08.Threeuple", "P08.Threeuple\P08.Threeuple.csproj", "{C90F4268-385A-4CD7-8774-3F5605A8C5C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +45,18 @@ Global
 		{52FADD43-4C3D-4E43-B555-DC9427BD21DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52FADD43-4C3D-4E43-B555-DC9427BD21DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52FADD43-4C3D-4E43-B555-DC9427BD21DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{291CD471-45CB-4ACB-8C3E-306F82EC6DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{291CD471-45CB-4ACB-8C3E-306F82EC6DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{291CD471-45CB-4ACB-8C3E-306F82EC6DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{291CD471-45CB-4ACB-8C3E-306F82EC6DAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E11FE04-D964-4D7E-B872-9D25E3C8F0A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E11FE04-D964-4D7E-B872-9D25E3C8F0A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E11FE04-D964-4D7E-B872-9D25E3C8F0A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E11FE04-D964-4D7E-B872-9D25E3C8F0A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C90F4268-385A-4CD7-8774-3F5605A8C5C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C90F4268-385A-4CD7-8774-3F5605A8C5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C90F4268-385A-4CD7-8774-3F5605A8C5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C90F4268-385A-4CD7-8774-3F5605A8C5C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
