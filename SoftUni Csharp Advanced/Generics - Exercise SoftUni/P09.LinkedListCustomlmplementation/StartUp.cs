@@ -41,7 +41,7 @@ namespace CustomDoublyLinkedList
             Console.WriteLine($"Does the list contain {toLookFor}: {linkedList.Contains(toLookFor)}");
 
             Console.WriteLine("Clearing list...");
-
+            linkedList.Clear();
             Console.WriteLine($"List count is {linkedList.Count()}.");
         }
     }
