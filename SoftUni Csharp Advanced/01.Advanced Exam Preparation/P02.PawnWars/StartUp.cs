@@ -43,7 +43,7 @@ namespace P02.PawnWars
 
                 for (int column = 0; column < board.GetLength(1); column++)
                 {
-                    board[row, column] += line[column];
+                    board[row, column] = line[column];
                 }
 
             }
