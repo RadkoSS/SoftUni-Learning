@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace P01.FoodFinder
 {
-    public class FoodFinder
+    public class StartUp
     {
         static void Main()
         {

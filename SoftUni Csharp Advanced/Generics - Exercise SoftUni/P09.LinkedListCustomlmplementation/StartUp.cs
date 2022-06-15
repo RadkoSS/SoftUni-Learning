@@ -17,20 +17,23 @@ namespace CustomDoublyLinkedList
 
             linkedList.RemoveLast();
 
-            Console.WriteLine("Using ForEach to print:");
+            Console.WriteLine("-----------------------------------------");
+
+            Console.WriteLine("Using ForEach method to print the items in the collection:");
             linkedList.ForEach(name => Console.WriteLine(name));
 
-            linkedList.RemoveFirst();
-            linkedList.RemoveLast();
+            Console.WriteLine("-----------------------------------------");
 
-            Console.WriteLine("Using ForEach to print:");
-            linkedList.ForEach(name => Console.WriteLine(name));
+            //linkedList.RemoveFirst();
+            //linkedList.RemoveLast();
 
             var array = linkedList.ToArray();
             Console.WriteLine($"Printing the array: {string.Join(", ", array)}");
+            Console.WriteLine();
 
             var list = linkedList.ToList();
             Console.WriteLine($"Printing the list: {string.Join(" -> ", list)}");
+            Console.WriteLine();
 
 
             Console.WriteLine($"List count is {linkedList.Count()}.");
@@ -39,6 +42,21 @@ namespace CustomDoublyLinkedList
             string toLookFor = Console.ReadLine();
 
             Console.WriteLine($"Does the list contain {toLookFor}: {linkedList.Contains(toLookFor)}");
+
+
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("Printing the collection using a foreach loop (this way we are utilizing the IEnumerable (yield return method)implementation)");
+
+            foreach (var item in linkedList)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine();
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("-----------------------------------------");
+
 
             Console.WriteLine("Clearing list...");
             linkedList.Clear();

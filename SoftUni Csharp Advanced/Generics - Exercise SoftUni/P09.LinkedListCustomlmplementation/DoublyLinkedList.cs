@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace CustomDoublyLinkedList
 {
-    public class DoublyLinkedList<T>
+    public class DoublyLinkedList<T> : IEnumerable<T>
     {
         private long elementsCount;
 
-        private ListNode head;
+        private ListNode<T> head;
 
-        private ListNode tail;
+        private ListNode<T> tail;
 
-        private class ListNode
+        private class ListNode<T>
         {
             public ListNode(T value)
             {
@@ -20,27 +21,27 @@ namespace CustomDoublyLinkedList
 
             public T Value { get; set; }
 
-            public ListNode PreviousNode { get; set; }
+            public ListNode<T> PreviousNode { get; set; }
 
-            public ListNode NextNode { get; set; }
+            public ListNode<T> NextNode { get; set; }
         }
 
-        private ListNode Head 
+        private ListNode<T> Head 
         {
             get { return head; }
             set { head = value; }
         }
 
-        private ListNode Tail 
+        private ListNode<T> Tail 
         {
             get { return tail; }
             set { tail = value; }
         }
 
-        private long ElementsCount
-        {
-            get { return elementsCount;}
-            set { elementsCount = value;}
+        private long ElementsCount 
+        { 
+            get { return elementsCount; }
+            set { elementsCount = value; }
         }
 
         private void ThrowExceptionIfListIsEmpty()
@@ -55,15 +56,30 @@ namespace CustomDoublyLinkedList
 
         public long Count() => this.ElementsCount;
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            T[] array = this.ToArray();
+            for (int i = 0; i < array.Length; i++)
+            {
+                yield return array[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+
+
         public void AddFirst(T elementToAdd)
         {
             if (ListIsEmpty)
 
-                this.Head = this.Tail = new ListNode(elementToAdd);
+                this.Head = this.Tail = new ListNode<T>(elementToAdd);
 
             else
             {
-                var newHead = new ListNode(elementToAdd);
+                var newHead = new ListNode<T>(elementToAdd);
 
                 newHead.NextNode = this.Head;
 
@@ -77,11 +93,11 @@ namespace CustomDoublyLinkedList
         {
             if (ListIsEmpty)
 
-                this.Head = this.Tail = new ListNode(elementToAdd);
+                this.Head = this.Tail = new ListNode<T>(elementToAdd);
 
             else
             {
-                var newTail = new ListNode(elementToAdd);
+                var newTail = new ListNode<T>(elementToAdd);
 
                 newTail.PreviousNode = this.Tail;
 
@@ -187,5 +203,6 @@ namespace CustomDoublyLinkedList
 
             return false;
         }
+
     }
 }
