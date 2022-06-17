@@ -6,45 +6,15 @@ namespace StockMarket
 {
     public class Investor
     {
-        private List<Stock> portfolio;
+        private List<Stock> Portfolio { get; set; }
 
-        private string fullName;
+        public string FullName { get; set; }
 
-        private string emailAddress;
+        public string EmailAddress { get; set; }
 
-        private decimal moneyToInvest;
+        public decimal MoneyToInvest { get; set; }
 
-        private string brokerName;
-
-        private List<Stock> Portfolio
-        {
-            get { return portfolio; }
-            set { portfolio = value; }
-        }
-
-        public string FullName
-        {
-            get { return fullName; }
-            set { fullName = value; }
-        }
-
-        public string EmailAddress
-        {
-            get { return emailAddress; }
-            set { emailAddress = value; }
-        }
-
-        public decimal MoneyToInvest
-        {
-            get { return moneyToInvest; }
-            set { moneyToInvest = value; }
-        }
-
-        public string BrokerName
-        {
-            get { return brokerName; }
-            set { brokerName = value; }
-        }
+        public string BrokerName { get; set; }
 
         public Investor(string name, string emailAddress, decimal moneyToInvest, string brokerName)
         {
@@ -97,9 +67,10 @@ namespace StockMarket
             {
                 return null;
             }
+
             decimal maxMarketCapitalization = this.Portfolio.Max(stock => stock.MarketCapitalization);
 
-            return this.Portfolio.First(company => company.MarketCapitalization == maxMarketCapitalization);
+            return this.Portfolio.FirstOrDefault(company => company.MarketCapitalization == maxMarketCapitalization);
         }
 
         public string InvestorInformation()
@@ -108,9 +79,9 @@ namespace StockMarket
 
             output.AppendLine($"The investor {this.FullName} with a broker {this.BrokerName} has stocks:");
 
-            for (int i = 0; i < this.Portfolio.Count; i++)
+            foreach (var stock in this.Portfolio)
             {
-                output.AppendLine(this.Portfolio[i].ToString());
+                output.AppendLine(stock.ToString());
             }
 
             return output.ToString().TrimEnd();

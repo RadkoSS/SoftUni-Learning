@@ -1,51 +1,19 @@
 ﻿using System;
+using System.Text;
 
 namespace StockMarket
 {
     public class Stock
     {
-        private string companyName;
+        public string CompanyName { get; set; }
 
-        private string director;
+        public string Director { get; set; }
 
-        private decimal pricePerShare;
+        public decimal PricePerShare { get; set; }
 
-        private int totalNumberOfShares;
+        public int TotalNumberOfShares { get; set; }
 
-        private decimal marketCapitalization;
-
-        public string CompanyName 
-        { 
-            get { return companyName; }
-            set { companyName = value; }
-        }
-
-        public string Director
-        {
-            get { return director; }
-            set { director = value; }
-        }
-
-        public decimal PricePerShare
-        {
-            get { return pricePerShare; }
-            set { pricePerShare = value; }
-        }
-
-        public int TotalNumberOfShares
-        {
-            get { return totalNumberOfShares; }
-            set { totalNumberOfShares = value; }
-        }
-
-        public decimal MarketCapitalization
-        {
-            get { return marketCapitalization; }
-            private set 
-            {
-                marketCapitalization = value;
-            }
-        }
+        public decimal MarketCapitalization { get; set; }
 
         public Stock(string companyName, string director, decimal pricePerShare, int totalNumberOfShares)
         {
@@ -62,7 +30,14 @@ namespace StockMarket
 
         public override string ToString()
         {
-            return $"Company: {this.CompanyName}{Environment.NewLine}Director: {this.Director}{Environment.NewLine}PricePerShare:${this.PricePerShare:f2}{Environment.NewLine}MarketCapitalization: ${this.MarketCapitalization:f2}";
+            StringBuilder output = new StringBuilder();
+
+            output.AppendLine($"Company: {this.CompanyName}");
+            output.AppendLine($"Director: {this.Director}");
+            output.AppendLine($"Price per share: ${this.PricePerShare}");
+            output.AppendLine($"Market capitalization: ${this.MarketCapitalization}");
+
+            return output.ToString().TrimEnd();
         }
     }
 }
