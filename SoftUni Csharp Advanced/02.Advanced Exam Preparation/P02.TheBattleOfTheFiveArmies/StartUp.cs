@@ -104,8 +104,17 @@ namespace P02.TheBattleOfTheFiveArmies
 
                         else
                         {
-                            battleField[armyRow - 1][armyColumn] = 'A';
-                            battleField[armyRow][armyColumn] = '-';
+                            if (armor <= 0)
+                            {
+                                battleField[armyRow - 1][armyColumn] = 'X';
+                                battleField[armyRow][armyColumn] = '-';
+                                isOver = true;
+                            }
+                            else
+                            {
+                                battleField[armyRow - 1][armyColumn] = 'A';
+                                battleField[armyRow][armyColumn] = '-';
+                            }
                         }
 
                         armyRow--;
@@ -148,8 +157,17 @@ namespace P02.TheBattleOfTheFiveArmies
 
                         else
                         {
-                            battleField[armyRow + 1][armyColumn] = 'A';
-                            battleField[armyRow][armyColumn] = '-';
+                            if (armor <= 0)
+                            {
+                                battleField[armyRow + 1][armyColumn] = 'X';
+                                battleField[armyRow][armyColumn] = '-';
+                                isOver = true;
+                            }
+                            else
+                            {
+                                battleField[armyRow + 1][armyColumn] = 'A';
+                                battleField[armyRow][armyColumn] = '-';
+                            }
                         }
 
                         armyRow++;
@@ -192,8 +210,17 @@ namespace P02.TheBattleOfTheFiveArmies
 
                         else
                         {
-                            battleField[armyRow][armyColumn - 1] = 'A';
-                            battleField[armyRow][armyColumn] = '-';
+                            if (armor <= 0)
+                            {
+                                battleField[armyRow][armyColumn - 1] = 'X';
+                                battleField[armyRow][armyColumn] = '-';
+                                isOver = true;
+                            }
+                            else
+                            {
+                                battleField[armyRow][armyColumn - 1] = 'A';
+                                battleField[armyRow][armyColumn] = '-';
+                            }
                         }
 
                         armyColumn--;
@@ -235,8 +262,17 @@ namespace P02.TheBattleOfTheFiveArmies
 
                         else
                         {
-                            battleField[armyRow][armyColumn + 1] = 'A';
-                            battleField[armyRow][armyColumn] = '-';
+                            if (armor <= 0)
+                            {
+                                battleField[armyRow][armyColumn + 1] = 'X';
+                                battleField[armyRow][armyColumn] = 'X';
+                                isOver = true;
+                            }
+                            else
+                            {
+                                battleField[armyRow][armyColumn + 1] = 'A';
+                                battleField[armyRow][armyColumn] = '-';
+                            }
                         }
 
                         armyColumn++;
