@@ -15,7 +15,7 @@ namespace P02.TheBattleOfTheFiveArmies
             int armyRow = -1;
             int armyColumn = -1;
 
-            InitializeField(rowsCount, ref battleField, ref armyRow, ref armyColumn);
+            InitializeBatllefield(rowsCount, ref battleField, ref armyRow, ref armyColumn);
 
             bool isOver = false;
             bool warWasWon = false;
@@ -39,7 +39,7 @@ namespace P02.TheBattleOfTheFiveArmies
 
         }
 
-        static void InitializeField(int rowsCount, ref char[][] battleField, ref int armyRow, ref int armyColumn)
+        static void InitializeBatllefield(int rowsCount, ref char[][] battleField, ref int armyRow, ref int armyColumn)
         {
             for (int row = 0; row < rowsCount; row++)
             {
@@ -246,8 +246,10 @@ namespace P02.TheBattleOfTheFiveArmies
                 }
             }
         }
+
         static bool IsRowValid(char[][] jaggedArray, int row) => row >= 0 && row < jaggedArray.GetLength(0);
 
         static bool IsColumnValid(char[][] jaggedArray, int row, int column) => column >= 0 && column < jaggedArray[row].Length;
+
     }
 }
