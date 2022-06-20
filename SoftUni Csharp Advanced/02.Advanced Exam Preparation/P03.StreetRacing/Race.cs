@@ -51,8 +51,7 @@ namespace StreetRacing
 
             if (searchedCar != null)
             {
-                this.Participants.Remove(searchedCar);
-                return true;
+                return this.Participants.Remove(searchedCar); 
             }
 
             return false;

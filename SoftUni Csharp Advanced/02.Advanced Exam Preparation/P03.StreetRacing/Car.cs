@@ -35,8 +35,8 @@ namespace StreetRacing
 
             outputText.AppendLine($"Make: {this.Make}");
             outputText.AppendLine($"Model: {this.Model}");
-            outputText.AppendLine($"LicensePlate: {this.LicensePlate}");
-            outputText.AppendLine($"HorsePower: {this.HorsePower}");
+            outputText.AppendLine($"License Plate: {this.LicensePlate}");
+            outputText.AppendLine($"Horse Power: {this.HorsePower}");
             outputText.AppendLine($"Weight: {this.Weight}");
 
             return outputText.ToString().TrimEnd();
