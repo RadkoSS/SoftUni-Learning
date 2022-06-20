@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01.BirthdayCelebration", "P01.BirthdayCelebration\P01.BirthdayCelebration.csproj", "{E493785E-D026-4F67-805E-912B25919E77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P01.BirthdayCelebration", "P01.BirthdayCelebration\P01.BirthdayCelebration.csproj", "{E493785E-D026-4F67-805E-912B25919E77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02.TheBattleOfTheFiveArmies", "P02.TheBattleOfTheFiveArmies\P02.TheBattleOfTheFiveArmies.csproj", "{C7F86C60-31A8-4AD2-87FF-881D5292CF69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P02.TheBattleOfTheFiveArmies", "P02.TheBattleOfTheFiveArmies\P02.TheBattleOfTheFiveArmies.csproj", "{C7F86C60-31A8-4AD2-87FF-881D5292CF69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03.StreetRacing", "P03.StreetRacing\P03.StreetRacing.csproj", "{232CC428-CBE4-49B7-A13F-2437FF5D181F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C7F86C60-31A8-4AD2-87FF-881D5292CF69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7F86C60-31A8-4AD2-87FF-881D5292CF69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7F86C60-31A8-4AD2-87FF-881D5292CF69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{232CC428-CBE4-49B7-A13F-2437FF5D181F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{232CC428-CBE4-49B7-A13F-2437FF5D181F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{232CC428-CBE4-49B7-A13F-2437FF5D181F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{232CC428-CBE4-49B7-A13F-2437FF5D181F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
