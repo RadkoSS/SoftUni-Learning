@@ -19,7 +19,7 @@ namespace P02.BeaverAtWork
 
             InitializePond(ref pond, ref beaverRow, ref beaverColumn, ref branchesTotalCount);
 
-            ExecuteCommands(ref pond, ref beaverRow, ref beaverColumn, branchesTotalCount);
+            ExecuteCommandsAndPrint(ref pond, ref beaverRow, ref beaverColumn, branchesTotalCount);
         }
 
         static void InitializePond(ref char[,] pond, ref int beaverRow, ref int beaverColumn, ref int branchesTotalCount)
@@ -52,7 +52,7 @@ namespace P02.BeaverAtWork
         static bool CheckIfCharIsLower(char ch) => char.IsLower(ch);
 
 
-        private static void ExecuteCommands(ref char[,] pond, ref int beaverRow, ref int beaverColumn, int branchesTotalCount)
+        private static void ExecuteCommandsAndPrint(ref char[,] pond, ref int beaverRow, ref int beaverColumn, int branchesTotalCount)
         {
             var collectedBranches = new Queue<char>();
             int collectedCount = 0;
@@ -158,6 +158,7 @@ namespace P02.BeaverAtWork
                     collectedBranches.Enqueue(nextPosition);
                     collectedCount++;
                 }
+
                 pond[beaverRow, beaverColumn] = 'B';
             }
 
