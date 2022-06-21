@@ -7,7 +7,9 @@ namespace FishingNet
 {
     public class Net
     {
-        public List<Fish> Fish { get; private set; }
+        private List<Fish> FishList { get; set; }
+
+        public IReadOnlyCollection<Fish> Fish => FishList;
 
         public string Material { get; set; }
 
@@ -15,7 +17,7 @@ namespace FishingNet
 
         public Net()
         {
-            Fish = new List<Fish>();
+            FishList = new List<Fish>();
         }
 
         public Net(string material, int capacity) : this()
@@ -24,17 +26,17 @@ namespace FishingNet
             Capacity = capacity;
         }
 
-        public int Count => Fish.Count;
+        public int Count => FishList.Count;
 
         public string AddFish(Fish fish)
         {
             var fishTypeIsIncorrect = string.IsNullOrEmpty(fish.FishType);
 
-            var isLenghtInvalid = fish.Lenght <= 0 ? true : false;
+            var isLenghtInvalid = fish.Length <= 0 ? true : false;
 
             var isWeightInvalid = fish.Weight <= 0 ? true : false;
 
-            if (Fish.Count == Capacity)
+            if (FishList.Count == Capacity)
             {
                 return "Fishing net is full.";
             }
@@ -44,38 +46,38 @@ namespace FishingNet
                 return "Invalid fish.";
             }
 
-            Fish.Add(fish);
+            FishList.Add(fish);
 
             return $"Successfully added {fish.FishType} to the fishing net.";
         }
 
         public bool ReleaseFish(double weight)
         {
-            var searchedFish = Fish.FirstOrDefault(fish => fish.Weight == weight);
+            var searchedFish = FishList.FirstOrDefault(fish => fish.Weight == weight);
 
             if (searchedFish != null)
             {
-                return Fish.Remove(searchedFish);
+                return FishList.Remove(searchedFish);
             }
             return false;
         }
 
-        public Fish GetFish(string fishType) => Fish.FirstOrDefault(fish => fish.FishType == fishType);
+        public Fish GetFish(string fishType) => FishList.FirstOrDefault(fish => fish.FishType == fishType);
 
         public Fish GetBiggestFish()
         {
-            if (Fish.Count == 0)
+            if (FishList.Count == 0)
             {
                 return null;
             }
-            else if (Fish.Count == 1)
+            else if (FishList.Count == 1)
             {
-                return Fish.First();
+                return FishList.First();
             }
 
-            var longestFish = Fish.First();
+            var longestFish = FishList.First();
 
-            foreach (var fish in Fish)
+            foreach (var fish in FishList)
             {
                 if (longestFish.CompareTo(fish) < 0)
                 {
@@ -91,7 +93,7 @@ namespace FishingNet
             var reportText = new StringBuilder();
 
             reportText.AppendLine($"Into the {Material}:");
-            reportText.Append(string.Join(Environment.NewLine, Fish));
+            reportText.Append(string.Join(Environment.NewLine, FishList));
 
             return reportText.ToString().TrimEnd();
         }
