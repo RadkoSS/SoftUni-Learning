@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01.WarmWinter", "P01.WarmWinter\P01.WarmWinter.csproj", "{0643629C-3CD5-43C2-B968-CEB578317980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02.SuperMario", "P02.SuperMario\P02.SuperMario.csproj", "{6AF540E8-FD9C-4AF9-B0B0-008E7EB92E9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0643629C-3CD5-43C2-B968-CEB578317980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0643629C-3CD5-43C2-B968-CEB578317980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0643629C-3CD5-43C2-B968-CEB578317980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0643629C-3CD5-43C2-B968-CEB578317980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AF540E8-FD9C-4AF9-B0B0-008E7EB92E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AF540E8-FD9C-4AF9-B0B0-008E7EB92E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AF540E8-FD9C-4AF9-B0B0-008E7EB92E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AF540E8-FD9C-4AF9-B0B0-008E7EB92E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B280A819-DAC2-4A1E-B028-B4F24DB4ADAF}
+	EndGlobalSection
+EndGlobal
