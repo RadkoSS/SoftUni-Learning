@@ -6,15 +6,15 @@ namespace P02.SuperMario
     {
         static void Main()
         {
-            int lives = int.Parse(Console.ReadLine());
+            var lives = int.Parse(Console.ReadLine());
 
-            int rowsOfCastle = int.Parse(Console.ReadLine());
+            var rowsOfCastle = int.Parse(Console.ReadLine());
 
-            char[][] castleMatrix = new char[rowsOfCastle][];
+            var castleMatrix = new char[rowsOfCastle][];
 
-            int superMarioRow = -1;
+            var superMarioRow = -1;
 
-            int superMarioColumn = -1;
+            var superMarioColumn = -1;
 
             InitializeCaste(ref castleMatrix, ref superMarioRow, ref superMarioColumn);
 
@@ -47,13 +47,13 @@ namespace P02.SuperMario
         {
             while (!isOver)
             {
-                string[] command = Console.ReadLine().Split();
+                var command = Console.ReadLine().Split();
 
-                char move = char.Parse(command[0]);
+                var move = char.Parse(command[0]);
 
-                int spawnRow = int.Parse(command[1]);
+                var spawnRow = int.Parse(command[1]);
 
-                int spawnColumn = int.Parse(command[2]);
+                var spawnColumn = int.Parse(command[2]);
 
                 castleMatrix[spawnRow][spawnColumn] = 'B';
 
