@@ -53,9 +53,9 @@ namespace P02.SuperMario
 
                 int spawnRow = int.Parse(command[1]);
 
-                int spawnCol = int.Parse(command[2]);
+                int spawnColumn = int.Parse(command[2]);
 
-                castleMatrix[spawnRow][spawnCol] = 'B';
+                castleMatrix[spawnRow][spawnColumn] = 'B';
 
                 if (move == 'W' && superMarioRow - 1 >= 0)
                 {
@@ -83,14 +83,22 @@ namespace P02.SuperMario
 
                 lives--;
 
-                if (lives <= 0)
+                if (castleMatrix[superMarioRow][superMarioColumn] == 'P')
+                {
+                    castleMatrix[superMarioRow][superMarioColumn] = '-';
+                    princesSaved = true;
+
+                    isOver = true;
+                }
+
+                else if (lives <= 0)
                 {
                     castleMatrix[superMarioRow][superMarioColumn] = 'X';
 
                     isOver = true;
                 }
 
-                if (castleMatrix[superMarioRow][superMarioColumn] == 'B')
+                else if (castleMatrix[superMarioRow][superMarioColumn] == 'B')
                 {
                     lives -= 2;
                     if (lives <= 0)
@@ -99,14 +107,6 @@ namespace P02.SuperMario
 
                         isOver = true;
                     }
-                }
-
-                else if (castleMatrix[superMarioRow][superMarioColumn] == 'P')
-                {
-                    castleMatrix[superMarioRow][superMarioColumn] = '-';
-                    princesSaved = true;
-
-                    isOver = true;
                 }
 
             }
