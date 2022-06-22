@@ -4,7 +4,7 @@ namespace P02.SuperMario
 {
     public class StartUp
     {
-        static void Main(string[] args)
+        static void Main()
         {
             int lives = int.Parse(Console.ReadLine());
 
