@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01.WarmWinter", "P01.WarmW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02.SuperMario", "P02.SuperMario\P02.SuperMario.csproj", "{6AF540E8-FD9C-4AF9-B0B0-008E7EB92E9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03.CocktailParty", "P03.CocktailParty\P03.CocktailParty.csproj", "{C20C0FD0-6BE5-4B5A-BC69-04E05B1F7935}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6AF540E8-FD9C-4AF9-B0B0-008E7EB92E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AF540E8-FD9C-4AF9-B0B0-008E7EB92E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AF540E8-FD9C-4AF9-B0B0-008E7EB92E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C20C0FD0-6BE5-4B5A-BC69-04E05B1F7935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C20C0FD0-6BE5-4B5A-BC69-04E05B1F7935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C20C0FD0-6BE5-4B5A-BC69-04E05B1F7935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C20C0FD0-6BE5-4B5A-BC69-04E05B1F7935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
