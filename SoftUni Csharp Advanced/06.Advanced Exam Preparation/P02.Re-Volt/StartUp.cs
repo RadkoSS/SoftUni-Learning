@@ -66,6 +66,7 @@ namespace P02.ReVolt
                         field[playerRow, playerColumn] = 'f';
 
                         finishReached = true;
+                        break;
                     }
 
                     else if (field[playerRow, playerColumn] == 'B')
@@ -78,6 +79,11 @@ namespace P02.ReVolt
                         if (!isInMatrix)
                         {
                             ChangeSides(direction, ref playerRow, ref playerColumn, field);
+                        }
+
+                        if (field[playerRow, playerColumn] == 'F')
+                        {
+                            finishReached = true;
                         }
 
                         field[playerRow, playerColumn] = 'f';
@@ -112,8 +118,12 @@ namespace P02.ReVolt
                             ChangeSides(direction, ref playerRow, ref playerColumn, field);
                         }
 
-                        field[playerRow, playerColumn] = 'f';
+                        if (field[playerRow, playerColumn] == 'F')
+                        {
+                            finishReached = true;
+                        }
 
+                        field[playerRow, playerColumn] = 'f';
                     }
 
                     else
@@ -128,6 +138,11 @@ namespace P02.ReVolt
                     field[unchangedRow, unchangedColumn] = '-';
 
                     ChangeSides(direction, ref playerRow, ref playerColumn, field);
+
+                    if (field[playerRow, playerColumn] == 'F')
+                    {
+                        finishReached = true;
+                    }
 
                     field[playerRow, playerColumn] = 'f';
                 }
