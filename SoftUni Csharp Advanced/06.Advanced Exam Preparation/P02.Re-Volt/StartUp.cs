@@ -72,7 +72,6 @@ namespace P02.ReVolt
                     else if (field[playerRow, playerColumn] == 'B')
                     {
                         field[unchangedRow, unchangedColumn] = '-';
-                        //field[playerRow, playerColumn] = '-';
 
                         var isInMatrix = MoveInMatrix(direction, ref playerRow, ref playerColumn, field);
 
@@ -92,7 +91,6 @@ namespace P02.ReVolt
                     else if (field[playerRow, playerColumn] == 'T')
                     {
                         field[unchangedRow, unchangedColumn] = '-';
-                        //field[playerRow, playerColumn] = '-';
 
                         if (direction == "up")
                         {
@@ -229,7 +227,6 @@ namespace P02.ReVolt
                 {
                     Console.Write(field[row, column]);
                 }
-
                 Console.WriteLine();
             }
         }
