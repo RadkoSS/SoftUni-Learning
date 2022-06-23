@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02.ReVolt", "P02.Re-Volt\P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01.Masterchef", "P01.Masterchef\P01.Masterchef.csproj", "{01E2A114-44C0-47A7-9AA8-3A880D6C23A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03.Zoo", "P03.Zoo\P03.Zoo.csproj", "{1DB3769F-C7B1-4B46-8BC5-AE38020B68D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{01E2A114-44C0-47A7-9AA8-3A880D6C23A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01E2A114-44C0-47A7-9AA8-3A880D6C23A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01E2A114-44C0-47A7-9AA8-3A880D6C23A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB3769F-C7B1-4B46-8BC5-AE38020B68D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB3769F-C7B1-4B46-8BC5-AE38020B68D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB3769F-C7B1-4B46-8BC5-AE38020B68D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB3769F-C7B1-4B46-8BC5-AE38020B68D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
