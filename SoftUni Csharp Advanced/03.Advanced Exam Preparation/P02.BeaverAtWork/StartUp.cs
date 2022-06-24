@@ -54,7 +54,7 @@ namespace P02.BeaverAtWork
 
         private static void ExecuteCommandsAndPrint(ref char[,] pond, ref int beaverRow, ref int beaverColumn, int branchesTotalCount)
         {
-            var collectedBranches = new Queue<char>();
+            var collectedBranches = new List<char>();
             int collectedCount = 0;
 
             var command = string.Empty;
@@ -90,7 +90,7 @@ namespace P02.BeaverAtWork
                 {
                     if (collectedBranches.Count > 0)
                     {
-                        collectedBranches.Dequeue();
+                        collectedBranches.RemoveAt(collectedBranches.Count - 1);
                         continue;
                     }
                 }
@@ -104,21 +104,25 @@ namespace P02.BeaverAtWork
                         pond[beaverRow, beaverColumn] = '-';
                         beaverRow = pond.GetLength(0) - 1;
                     }
+
                     else if (beaverRow == pond.GetLength(0) - 1)
                     {
                         pond[beaverRow, beaverColumn] = '-';
                         beaverRow = 0;
                     }
+
                     else if (beaverColumn == 0)
                     {
                         pond[beaverRow, beaverColumn] = '-';
                         beaverColumn = pond.GetLength(0) - 1;
                     }
+
                     else if (beaverColumn == pond.GetLength(1) - 1)
                     {
                         pond[beaverRow, beaverColumn] = '-';
                         beaverColumn = 0;
                     }
+
                     else
                     {
                         if (command == "left")
@@ -126,16 +130,19 @@ namespace P02.BeaverAtWork
                             pond[beaverRow, beaverColumn] = '-';
                             beaverColumn = 0;
                         }
+
                         else if (command == "right")
                         {
                             pond[beaverRow, beaverColumn] = '-';
                             beaverColumn = pond.GetLength(1) - 1;
                         }
+
                         else if (command == "up")
                         {
                             pond[beaverRow, beaverColumn] = '-';
                             beaverRow = 0;
                         }
+
                         else if (command == "down")
                         {
                             pond[beaverRow, beaverColumn] = '-';
@@ -147,7 +154,7 @@ namespace P02.BeaverAtWork
 
                     if (CheckIfCharIsLower(positionAfterSwimming))
                     {
-                        collectedBranches.Enqueue(positionAfterSwimming);
+                        collectedBranches.Add(positionAfterSwimming);
                         collectedCount++;
                     }
                     
@@ -155,7 +162,7 @@ namespace P02.BeaverAtWork
 
                 else if (CheckIfCharIsLower(nextPosition))
                 {
-                    collectedBranches.Enqueue(nextPosition);
+                    collectedBranches.Add(nextPosition);
                     collectedCount++;
                 }
 
@@ -165,7 +172,7 @@ namespace P02.BeaverAtWork
             PrintPond(pond, collectedBranches, branchesTotalCount, collectedCount);
         }
 
-        static void PrintPond(char[,] pond, Queue<char> collectedBranches, int totalBranchesCount, int collectedCount)
+        static void PrintPond(char[,] pond, List<char> collectedBranches, int totalBranchesCount, int collectedCount)
         {
             if (collectedCount < totalBranchesCount)
             {
