@@ -157,7 +157,6 @@ namespace P02.BeaverAtWork
                         collectedBranches.Add(positionAfterSwimming);
                         collectedCount++;
                     }
-                    
                 }
 
                 else if (CheckIfCharIsLower(nextPosition))
@@ -174,30 +173,26 @@ namespace P02.BeaverAtWork
 
         static void PrintPond(char[,] pond, List<char> collectedBranches, int totalBranchesCount, int collectedCount)
         {
+
             if (collectedCount < totalBranchesCount)
-            {
                 Console.WriteLine($"The Beaver failed to collect every wood branch. There are {totalBranchesCount - collectedCount} branches left.");
-            }
+
             else
-            {
                 Console.WriteLine($"The Beaver successfully collect {collectedBranches.Count} wood branches: {string.Join(", ", collectedBranches)}.");
-            }
 
             for (int row = 0; row < pond.GetLength(0); row++)
             {
                 for (int column = 0; column < pond.GetLength(1); column++)
                 {
                     if (column == pond.GetLength(1) - 1)
-                    {
                         Console.Write(pond[row, column]);
-                    }
+
                     else
-                    {
                         Console.Write($"{pond[row, column]} ");
-                    }
                 }
                 Console.WriteLine();
             }
+
         }
     }
 }
