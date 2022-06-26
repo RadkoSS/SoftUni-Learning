@@ -54,7 +54,7 @@ namespace CustomDoublyLinkedList
 
         private bool ListIsEmpty => this.ElementsCount == 0;
 
-        public long Count() => this.ElementsCount;
+        public long Count => this.ElementsCount;
 
         public IEnumerator<T> GetEnumerator()
         {
