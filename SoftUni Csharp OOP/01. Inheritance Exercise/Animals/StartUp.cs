@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace P01.ClassBoxData
+﻿namespace Animals
 {
     public class StartUp
     {
-        static void Main()
+        public static void Main(string[] args)
         {
             
         }
