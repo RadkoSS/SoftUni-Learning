@@ -2,11 +2,11 @@
 
 namespace P01.ClassBoxData
 {
-    internal class Program
+    public class StartUp
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
