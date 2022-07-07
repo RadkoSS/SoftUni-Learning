@@ -10,11 +10,15 @@
 
         private List<Person> reserveTeam;
 
-        public Team(string name)
+        public Team()
         {
-            this.Name = name;
             this.firstTeam = new List<Person>();
             this.reserveTeam = new List<Person>();
+        }
+
+        public Team(string name) : this()
+        {
+            this.Name = name;
         }
 
         public string Name

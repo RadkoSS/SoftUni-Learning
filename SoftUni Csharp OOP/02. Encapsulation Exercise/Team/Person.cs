@@ -10,14 +10,13 @@
 
         private int age;
 
-        private decimal? salary;
+        private decimal salary;
 
         public Person(string firstName, string lastName, int age)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Age = age;
-            this.Salary = null;
         }
 
         public Person(string firstName, string lastName, int age, decimal salary)
@@ -59,7 +58,7 @@
             }
         }
 
-        public decimal? Salary
+        public decimal Salary
         {
             get
             {

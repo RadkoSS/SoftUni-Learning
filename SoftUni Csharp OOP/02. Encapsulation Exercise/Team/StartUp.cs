@@ -28,7 +28,7 @@
                     newPlayer = new Person(firstName, lastName, age);
                 }
 
-                else
+                else if (playerInfo.Length == 5)
                 {
                     var salary = decimal.Parse(playerInfo[3]);
 
