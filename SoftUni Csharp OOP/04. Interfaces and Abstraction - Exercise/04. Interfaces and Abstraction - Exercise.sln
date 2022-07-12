@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01.DefineAnInterfaceIPerson", "P01.DefineAnInterfaceIPerson\P01.DefineAnInterfaceIPerson.csproj", "{B6F65B8B-E784-49E5-A1DA-40B285FA1291}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P01.DefineAnInterfaceIPerson", "P01.DefineAnInterfaceIPerson\P01.DefineAnInterfaceIPerson.csproj", "{B6F65B8B-E784-49E5-A1DA-40B285FA1291}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02.MultipleImplementation", "P02.MultipleImplementation\P02.MultipleImplementation.csproj", "{FA4E6FCA-BAA3-4CDA-8B77-A8A69FD78A12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P02.MultipleImplementation", "P02.MultipleImplementation\P02.MultipleImplementation.csproj", "{FA4E6FCA-BAA3-4CDA-8B77-A8A69FD78A12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03.Telephony", "P03.Telephony\P03.Telephony.csproj", "{F38C63C7-3786-4954-99A7-069EFB4C25A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P03.Telephony", "P03.Telephony\P03.Telephony.csproj", "{F38C63C7-3786-4954-99A7-069EFB4C25A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P05.CollectionHierarchy", "P05.CollectionHierarchy\P05.CollectionHierarchy.csproj", "{3CF3BF35-A1B6-479F-BA66-879A60D126C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{F38C63C7-3786-4954-99A7-069EFB4C25A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F38C63C7-3786-4954-99A7-069EFB4C25A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F38C63C7-3786-4954-99A7-069EFB4C25A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CF3BF35-A1B6-479F-BA66-879A60D126C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CF3BF35-A1B6-479F-BA66-879A60D126C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CF3BF35-A1B6-479F-BA66-879A60D126C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CF3BF35-A1B6-479F-BA66-879A60D126C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
