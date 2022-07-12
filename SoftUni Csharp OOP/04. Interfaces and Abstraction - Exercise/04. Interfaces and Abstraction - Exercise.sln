@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P02.MultipleImplementation"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P03.Telephony", "P03.Telephony\P03.Telephony.csproj", "{F38C63C7-3786-4954-99A7-069EFB4C25A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P05.CollectionHierarchy", "P05.CollectionHierarchy\P05.CollectionHierarchy.csproj", "{3CF3BF35-A1B6-479F-BA66-879A60D126C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P08.CollectionHierarchy", "P05.CollectionHierarchy\P08.CollectionHierarchy.csproj", "{3CF3BF35-A1B6-479F-BA66-879A60D126C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
