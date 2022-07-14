@@ -1,8 +1,6 @@
 ﻿namespace CollectionHierarchy.IO.Interfaces
 {
-    using System;
-
-    public interface IReader
+   public interface IReader
     {
         string ReadLine();
     }

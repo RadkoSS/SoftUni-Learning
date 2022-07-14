@@ -1,7 +1,5 @@
 ﻿namespace CollectionHierarchy.IO.Interfaces
 {
-    using System;
-
     public interface IWriter
     {
         void Write(string text);
