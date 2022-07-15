@@ -17,13 +17,13 @@
         { 
             get 
             { 
-                return quantity;
+                return this.quantity;
             }
             protected set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
-                    throw new InvalidOperationException(string.Format(new ExceptionMessage().NegativeNumberExceptionMessage, nameof(this.Quantity)));
+                    throw new InvalidOperationException(string.Format(ExceptionMessage.NumberMustNotBeLessThanZeroMsg, nameof(this.Quantity)));
                 }
 
                 this.quantity = value;

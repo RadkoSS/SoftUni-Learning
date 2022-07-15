@@ -1,9 +1,11 @@
 ﻿namespace WildFarm.Models.Animals
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
 
     using Models.Food;
+    using Exceptions;
     using Exceptions.ExceptionMessages;
 
     public abstract class Animal
@@ -12,13 +14,10 @@
 
         private double weight;
 
-        private int foodEaten;
-
-        public Animal(string name, double weight, int foodEaten)
+        protected Animal(string name, double weight)
         {
             this.Name = name;
             this.Weight = weight;
-            this.FoodEaten = foodEaten;
         }
 
         public string Name 
@@ -31,10 +30,10 @@
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException(string.Format(new ExceptionMessage().InvalidStringExceptionMessage, nameof(this.Name)));
+                    throw new InvalidOperationException(string.Format(ExceptionMessage.StringIsNullEmptyOrWhitespacesMsg, nameof(this.Name)));
                 }
 
-                this.Name = value;
+                this.name = value;
             }
         }
 
@@ -46,31 +45,16 @@
             }
             private set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
-                    throw new InvalidOperationException(string.Format(new ExceptionMessage().NegativeNumberExceptionMessage, nameof(this.Weight)));
+                    throw new InvalidOperationException(string.Format(ExceptionMessage.NumberMustNotBeLessThanZeroMsg, nameof(this.Weight)));
                 }
 
                 this.weight = value;
             }
         }
 
-        public int FoodEaten 
-        {
-            get
-            {
-                return this.foodEaten;
-            }
-            private set
-            {
-                if (value <= 0)
-                {
-                    throw new InvalidOperationException(string.Format(new ExceptionMessage().NegativeNumberExceptionMessage, nameof(this.FoodEaten)));
-                }
-
-                this.foodEaten = value;
-            }
-        }
+        public int FoodEaten { get; private set; }
 
         public abstract IReadOnlyCollection<Type> PrefferedFoods { get; }
 
@@ -78,11 +62,20 @@
 
         public abstract string AskForFood();
 
-        public abstract void Eat(Food food);
+        public void Eat(Food food)
+        {
+            if (!this.PrefferedFoods.Contains(food.GetType()))
+            {
+                throw new InvalidTypeOfFoodException(string.Format(ExceptionMessage.FoodNotPrefferedMsg, this.GetType().Name, food.GetType().Name));
+            }
+
+            this.FoodEaten += food.Quantity;
+            this.Weight += food.Quantity * this.WeightModifier;
+        }
 
         public override string ToString()
         {
-            return $"{this.GetType().Name} [{this.Name}, ";
+            return $"{this.GetType().Name} [{this.Name},";
         }
     }
 }

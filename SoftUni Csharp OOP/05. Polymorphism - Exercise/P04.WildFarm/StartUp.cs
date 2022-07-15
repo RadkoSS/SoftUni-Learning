@@ -1,7 +1,5 @@
 ﻿namespace WildFarm
 {
-    using System;
-
     using IO;
     using IO.Interfaces;
 
