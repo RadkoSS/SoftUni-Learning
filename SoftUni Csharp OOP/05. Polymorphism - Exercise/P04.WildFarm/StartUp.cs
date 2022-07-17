@@ -15,7 +15,7 @@
 
             IEngine engine = new AppEngine(writer, reader);
 
-            engine.RunAplication();
+            engine.RunApplication();
         }
     }
 }

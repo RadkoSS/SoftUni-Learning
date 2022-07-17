@@ -1,4 +1,4 @@
-﻿namespace WildFarm.Core.Interfaces
+﻿namespace Raiding.Core.Interfaces
 {
     public interface IEngine
     {

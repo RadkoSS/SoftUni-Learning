@@ -40,7 +40,7 @@
             this.reader = reader;
         }
 
-        public void RunAplication()
+        public void RunApplication()
         {
             var command = string.Empty;
 
