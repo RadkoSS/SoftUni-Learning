@@ -35,7 +35,6 @@
             this.writer = writer;
         }
 
-
         public void RunApplication()
         {
             int countOfHeroes = int.Parse(this.reader.ReadLine());
@@ -49,14 +48,7 @@
                 this.writer.WriteLine(hero.CastAbility());
             }
 
-            if (totalHeroesPower >= bossPower)
-            {
-                this.writer.WriteLine("Victory!");
-            }
-            else
-            {
-                this.writer.WriteLine("Defeat...");
-            }
+            this.writer.WriteLine(totalHeroesPower >= bossPower ? "Victory!" : "Defeat...");
         }
 
         private int CreateHeroesUsingFactory(int countOfHeroes)

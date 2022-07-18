@@ -54,9 +54,9 @@
 
         public abstract string CastAbility();
 
-        public override string ToString()
-        {
-            return $"{this.Name} - {this.Power}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"{this.Name} - {this.Power}";
+        //}
     }
 }
