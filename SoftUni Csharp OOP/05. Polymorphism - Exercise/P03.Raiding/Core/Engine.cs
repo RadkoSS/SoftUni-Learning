@@ -14,71 +14,72 @@
 
     public class Engine : IEngine
     {
-        private readonly IReader reader;
+        private readonly IReader _reader;
 
-        private readonly IWriter writer;
+        private readonly IWriter _writer;
 
-        private readonly IFactory factory;
+        private readonly IFactory _factory;
 
-        private readonly ICollection<BaseHero> raidGroup;
+        private readonly ICollection<BaseHero> _raidGroup;
 
         private Engine()
         {
-            this.raidGroup = new List<BaseHero>();
-            this.factory = new Factory();
+            this._raidGroup = new List<BaseHero>();
+            this._factory = new Factory();
         }
 
         public Engine(IReader reader, IWriter writer)
         : this()
         {
-            this.reader = reader;
-            this.writer = writer;
+            this._reader = reader;
+            this._writer = writer;
         }
 
         public void RunApplication()
         {
-            int countOfHeroes = int.Parse(this.reader.ReadLine());
+            int countOfHeroes = int.Parse(this._reader.ReadLine());
 
             int totalHeroesPower = CreateHeroesUsingFactory(countOfHeroes);
 
-            int bossPower = int.Parse(this.reader.ReadLine());
+            int bossPower = int.Parse(this._reader.ReadLine());
 
-            foreach (BaseHero hero in this.raidGroup)
+            foreach (BaseHero hero in this._raidGroup)
             {
-                this.writer.WriteLine(hero.CastAbility());
+                this._writer.WriteLine(hero.CastAbility());
             }
 
-            this.writer.WriteLine(totalHeroesPower >= bossPower ? "Victory!" : "Defeat...");
+            this._writer.WriteLine(totalHeroesPower >= bossPower ? "Victory!" : "Defeat...");
         }
 
         private int CreateHeroesUsingFactory(int countOfHeroes)
         {
             int totalPower = 0;
 
-            for (int i = 0; i < countOfHeroes; i++)
+            for (int index = 0; index < countOfHeroes; index++)
             {
                 try
                 {
-                    string heroName = this.reader.ReadLine();
-                    string heroType = this.reader.ReadLine();
+                    string heroName = this._reader.ReadLine();
+                    string heroType = this._reader.ReadLine();
 
-                    BaseHero hero = this.factory.CreateHero(heroName, heroType);
+                    BaseHero hero = this._factory.CreateHero(heroName, heroType);
 
                     totalPower += hero.Power;
 
-                    this.raidGroup.Add(hero);
+                    this._raidGroup.Add(hero);
                 }
                 catch (InvalidHeroException ihe)
                 {
-                    this.writer.WriteLine(ihe.Message);
+                    this._writer.WriteLine(ihe.Message);
+                    index--;
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    this.writer.WriteLine("Invalid input!");
+                    this._writer.WriteLine("Invalid input!");
                 }
                 catch (ArgumentException ae)
                 {
-                    this.writer.WriteLine(ae.Message);
+                    this._writer.WriteLine(ae.Message);
                 }
             }
 

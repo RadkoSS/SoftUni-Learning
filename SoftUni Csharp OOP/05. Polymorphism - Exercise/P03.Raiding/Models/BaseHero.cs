@@ -30,7 +30,7 @@
                         string.Format(ExceptionMessages.InvalidStringMessage, nameof(this.Name)));
                 }
 
-                _name = value;
+                this._name = value;
             }
         }
 
