@@ -1,10 +1,9 @@
-﻿using Vehicles.Exceptions;
-
-namespace Vehicles.Core
+﻿namespace Vehicles.Core
 {
     using System;
 
     using Interfaces;
+    using Exceptions;
 
     using IO.Interfaces;
     using Factories.Interfaces;
