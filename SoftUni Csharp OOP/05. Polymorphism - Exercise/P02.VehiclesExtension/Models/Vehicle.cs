@@ -27,7 +27,7 @@
         public double FuelQuantity
         {
             get => this._fuelQuantity;
-            protected set
+            private set
             {
                 if (value < 0)
                 {
