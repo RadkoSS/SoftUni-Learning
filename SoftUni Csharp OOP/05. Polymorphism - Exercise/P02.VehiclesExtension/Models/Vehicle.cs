@@ -1,8 +1,7 @@
-﻿using VehiclesExtension.Exceptions;
-
-namespace VehiclesExtension.Models
+﻿namespace VehiclesExtension.Models
 {
     using System;
+    using Exceptions;
     using Interfaces;
 
     public abstract class Vehicle : IVehicle
@@ -13,9 +12,14 @@ namespace VehiclesExtension.Models
 
         private double _tankCapacity;
 
-        protected Vehicle(double fuelQuantity, double fuelConsumption, double tankCapacity)
+        private Vehicle(double tankCapacity)
         {
             this.TankCapacity = tankCapacity;
+        }
+
+        protected Vehicle(double fuelQuantity, double fuelConsumption, double tankCapacity)
+        : this(tankCapacity)
+        {
             this.FuelQuantity = fuelQuantity;
             this.FuelConsumption = fuelConsumption;
         }
