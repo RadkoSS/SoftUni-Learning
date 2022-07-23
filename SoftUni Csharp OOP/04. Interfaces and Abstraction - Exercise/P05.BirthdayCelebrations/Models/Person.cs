@@ -1,6 +1,6 @@
-﻿namespace P05.BirthdayCelebrations.Models
+﻿namespace BorderControl.Models
 {
-    using Models.Contracts;
+    using Contracts;
 
     public class Person : Citizen, IPerson
     {

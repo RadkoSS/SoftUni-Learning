@@ -1,4 +1,4 @@
-﻿namespace P05.BirthdayCelebrations.Models.Contracts
+﻿namespace BorderControl.Models.Contracts
 { 
     public interface IPerson
     {

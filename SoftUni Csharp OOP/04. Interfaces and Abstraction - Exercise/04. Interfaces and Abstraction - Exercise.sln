@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P03.Telephony", "P03.Teleph
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P08.CollectionHierarchy", "P08.CollectionHierarchy\P08.CollectionHierarchy.csproj", "{E707F83C-78A2-4B54-9465-1222C0BD1672}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P05.BirthdayCelebrations", "P05.BirthdayCelebrations\P05.BirthdayCelebrations.csproj", "{17F7F7BC-C801-4E46-8515-EBAFFF44AD8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P04.BorderControl", "P05.BirthdayCelebrations\P04.BorderControl.csproj", "{17F7F7BC-C801-4E46-8515-EBAFFF44AD8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

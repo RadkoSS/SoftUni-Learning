@@ -1,4 +1,4 @@
-﻿namespace P05.BirthdayCelebrations.Models
+﻿namespace BorderControl.Models
 {
     using Contracts;
 
