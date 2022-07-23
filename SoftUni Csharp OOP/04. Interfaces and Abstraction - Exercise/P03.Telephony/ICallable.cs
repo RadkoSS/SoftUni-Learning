@@ -2,9 +2,6 @@
 {
     public interface ICallable
     {
-        string CallNumber(string number)
-        {
-            return $"";
-        }
+        string CallNumber(string number);
     }
 }

@@ -2,9 +2,6 @@
 {
     public interface IBrowsable : ICallable
     {
-        string BrowseWebsite(string webSite)
-        {
-            return $"";
-        }
+        string BrowseWebsite(string webSite);
     }
 }
