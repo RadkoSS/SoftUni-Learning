@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P08.CollectionHierarchy", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P04.BorderControl", "P05.BirthdayCelebrations\P04.BorderControl.csproj", "{17F7F7BC-C801-4E46-8515-EBAFFF44AD8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P05.BirthdayCelebration", "P05.BirthdayCelebration\P05.BirthdayCelebration.csproj", "{33BF2DB4-AE5C-44E8-BEF4-56285221621D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{17F7F7BC-C801-4E46-8515-EBAFFF44AD8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17F7F7BC-C801-4E46-8515-EBAFFF44AD8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17F7F7BC-C801-4E46-8515-EBAFFF44AD8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33BF2DB4-AE5C-44E8-BEF4-56285221621D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33BF2DB4-AE5C-44E8-BEF4-56285221621D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33BF2DB4-AE5C-44E8-BEF4-56285221621D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33BF2DB4-AE5C-44E8-BEF4-56285221621D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
