@@ -12,14 +12,13 @@
         {
             string[] people = Console.ReadLine().Split(';', '=');
 
-            string[] products = Console.ReadLine().Split(new char[] { ' ', ';', '='}, StringSplitOptions.RemoveEmptyEntries);
+            string[] products = Console.ReadLine().Split(new char[] { ';', '='}, StringSplitOptions.RemoveEmptyEntries);
 
             List<Person> peopleList = new List<Person>();
             List<Product> productsList = new List<Product>();
 
             try
             {
-
                 for (int i = 0; i < people.Length; i += 2)
                 {
                     string clientName = people[i];

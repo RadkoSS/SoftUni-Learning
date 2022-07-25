@@ -20,7 +20,7 @@
 
             private set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value) || string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException($"{nameof(this.Name)} cannot be empty");
                 }
