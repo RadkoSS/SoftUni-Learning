@@ -10,7 +10,7 @@
 
         private List<Person> reserveTeam;
 
-        public Team()
+        private Team()
         {
             this.firstTeam = new List<Person>();
             this.reserveTeam = new List<Person>();
