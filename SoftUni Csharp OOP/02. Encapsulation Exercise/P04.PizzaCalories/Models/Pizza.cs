@@ -27,7 +27,7 @@
         public string Name
         {
             get => this._name;
-            set
+            private set
             {
                 if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) || value.Length > 15 || value.Length < 1)
                 {
@@ -44,14 +44,14 @@
 
         public double TotalCalories => CountCalories();
 
-        public void AddTopping(Topping toping)
+        public void AddTopping(Topping topping)
         {
-            if (this.NumberOfToppings > MaxToppingsCount)
+            if (this.NumberOfToppings >= MaxToppingsCount)
             {
                 throw new ArgumentException(ExceptionMessages.ToppingsOutOfRangeMessage);
             }
 
-            this._toppings.Add(toping);
+            this._toppings.Add(topping);
         }
 
         private double CountCalories()
