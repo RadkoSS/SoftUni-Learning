@@ -2,19 +2,22 @@
 {
     using System;
 
+    using Models;
+    using Utilities;
+
     public class StartUp
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            //var person = new Person
-            // (
-            //     null,
-            //     -1
-            // );
+            var person = new Person
+             (
+                 null,
+                 -1
+             );
 
-            //bool isValidEntity = Validator.IsValid(person);
+            bool isValidEntity = Validator.IsValid(person);
 
-            //Console.WriteLine(isValidEntity);
+            Console.WriteLine(isValidEntity);
         }
     }
 }
