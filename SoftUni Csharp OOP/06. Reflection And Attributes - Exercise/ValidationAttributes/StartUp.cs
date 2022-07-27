@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace ValidationAttributes
+﻿namespace ValidationAttributes
 {
+    using System;
+
     public class StartUp
     {
         public static void Main(string[] args)
