@@ -26,7 +26,7 @@ namespace ExtendedDatabase
             {
                 throw new ArgumentException("Provided data length should be in range [0..16]!");
             }
-
+            
             for (int i = 0; i < data.Length; i++)
             {
                 this.Add(data[i]);
