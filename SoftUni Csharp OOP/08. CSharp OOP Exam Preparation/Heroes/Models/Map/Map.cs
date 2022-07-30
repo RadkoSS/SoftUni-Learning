@@ -21,6 +21,26 @@
 
         public string Fight(ICollection<IHero> players)
         {
+            SplitFightersToDifferentCollections(players);
+
+            BeginFighting();
+
+            bool knightsAreAlive = this._knights.Any(k => k.IsAlive);
+
+            int deadKnights = this._knights.Count(k => k.IsAlive == false);
+
+            int deadBarbarians = this._barbarians.Count(b => b.IsAlive == false);
+
+            if (knightsAreAlive)
+            {
+                return string.Format(OutputMessages.KnightWinBattle, deadKnights);
+            }
+
+            return string.Format(OutputMessages.BarbariansWinBattle, deadBarbarians);
+        }
+
+        private void SplitFightersToDifferentCollections(ICollection<IHero> players)
+        {
             foreach (var hero in players)
             {
                 Type heroType = hero.GetType();
@@ -46,24 +66,28 @@
                 //}
 
             }
+        }
 
-            while (this._barbarians.Any(barb => barb.IsAlive) || this._knights.Any(knight => knight.IsAlive))
+        private void BeginFighting()
+        {
+            while (this._barbarians.Any(barb => barb.IsAlive) && this._knights.Any(knight => knight.IsAlive))
             {
-                
+                foreach (var knight in this._knights)
+                {
+                    foreach (var barbarian in this._barbarians)
+                    {
+                        if (knight.IsAlive)
+                        {
+                            barbarian.TakeDamage(knight.Weapon.DoDamage());
+                        }
+
+                        if (barbarian.IsAlive)
+                        {
+                            knight.TakeDamage(barbarian.Weapon.DoDamage());
+                        }
+                    }
+                }
             }
-
-            bool knightsAreAlive = this._knights.Any(k => k.IsAlive);
-
-            int deadKnights = this._knights.Count(k => k.IsAlive == false);
-
-            int deadBarbarians = this._barbarians.Count(b => b.IsAlive == false);
-
-            if (knightsAreAlive)
-            {
-                return string.Format(OutputMessages.KnightWinBattle, deadKnights);
-            }
-
-            return string.Format(OutputMessages.BarbariansWinBattle, deadBarbarians);
         }
     }
 }

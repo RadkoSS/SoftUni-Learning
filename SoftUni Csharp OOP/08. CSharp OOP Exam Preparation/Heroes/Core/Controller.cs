@@ -115,6 +115,7 @@
             }
 
             searchedHero?.AddWeapon(searchedWeapon);
+            this.weapons.Remove(searchedWeapon);
 
             return string.Format(OutputMessages.HeroCanParticipateInBattleUsingThisWeapon, heroName, searchedWeapon?.GetType().Name.ToLower());
         }

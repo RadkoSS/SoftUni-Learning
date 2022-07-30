@@ -23,7 +23,7 @@
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    ThrowException(ExceptionMessages.HeroNameIsNull);
+                    ThrowException(ExceptionMessages.WeaponTypeIsNull);
                 }
 
                 this._name = value;

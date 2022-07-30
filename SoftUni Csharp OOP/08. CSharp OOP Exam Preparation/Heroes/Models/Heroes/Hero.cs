@@ -95,11 +95,13 @@
 
                 this.Armour = 0;
 
-                this.Health -= pointsToRemoveFromHealth;
-
-                if (this.Health <= 0)
+                if (this.Health - pointsToRemoveFromHealth < 0)
                 {
                     this.Health = 0;
+                }
+                else
+                {
+                    this.Health -= pointsToRemoveFromHealth;
                 }
             }
             else
@@ -123,7 +125,7 @@
 
             string weaponName = this.Weapon != null ? this.Weapon.Name : "Unarmed";
 
-            outputBuilder.AppendLine($"{this.GetType()}: {this.Name}");
+            outputBuilder.AppendLine($"{this.GetType().Name}: {this.Name}");
             outputBuilder.AppendLine($"--Health: {this.Health}");
             outputBuilder.AppendLine($"--Armour: {this.Armour}");
             outputBuilder.AppendLine($"--Weapon: {weaponName}");
