@@ -47,5 +47,10 @@
         private void ThrowException(string message) => throw new ArgumentException(message);
 
         public abstract int DoDamage();
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

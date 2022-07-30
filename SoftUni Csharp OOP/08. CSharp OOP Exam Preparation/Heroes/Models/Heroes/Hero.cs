@@ -123,7 +123,7 @@
         {
             StringBuilder outputBuilder = new StringBuilder();
 
-            string weaponName = this.Weapon != null ? this.Weapon.Name : "Unarmed";
+            string weaponName = this.Weapon != null ? this.Weapon.ToString() : "Unarmed";
 
             outputBuilder.AppendLine($"{this.GetType().Name}: {this.Name}");
             outputBuilder.AppendLine($"--Health: {this.Health}");
