@@ -1,9 +1,10 @@
 ﻿namespace Formula1.Core
 {
     using System;
-    using Formula1.IO;
+
+    using IO;
+    using Contracts;
     using Formula1.IO.Contracts;
-    using Formula1.Core.Contracts;
     public class Engine : IEngine
     {
         private IWriter writer;
