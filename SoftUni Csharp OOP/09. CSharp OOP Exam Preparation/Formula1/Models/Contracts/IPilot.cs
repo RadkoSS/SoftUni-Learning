@@ -4,9 +4,9 @@
     {
         public string FullName { get; }
 
-        public IFormulaOneCar Car { get; }
+        public IFormulaOneCar Car { get; set; }
 
-        public int NumberOfWins { get;}
+        public int NumberOfWins { get; }
 
         public bool CanRace { get; }
 

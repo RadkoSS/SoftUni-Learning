@@ -1,28 +1,16 @@
 ﻿namespace Formula1.Repositories
 {
-    using System;
-    using System.Collections.Generic;
+    using System.Linq;
     
-    using Contracts;
     using Models.Contracts;
 
-    public class PilotRepository : IRepository<IPilot>
+    public class PilotRepository : Repository<IPilot>
     {
-        public IReadOnlyCollection<IPilot> Models { get; private set; }
-
-        public void Add(IPilot model)
+        public override IPilot FindByName(string name)
         {
-            throw new NotImplementedException();
-        }
+            IPilot searchedPilot = this.Models.FirstOrDefault(pilot => pilot.FullName == name);
 
-        public bool Remove(IPilot model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IPilot FindByName(string name)
-        {
-            throw new NotImplementedException();
+            return searchedPilot;
         }
     }
 }

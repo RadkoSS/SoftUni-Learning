@@ -5,17 +5,18 @@
     using IO;
     using Contracts;
     using Formula1.IO.Contracts;
+
     public class Engine : IEngine
     {
-        private IWriter writer;
-        private IReader reader;
-        private IController controller;
+        private readonly IWriter writer;
+        private readonly IReader reader;
+        private readonly IController controller;
 
         public Engine()
         {
             this.writer = new Writer();
             this.reader = new Reader();
-            //this.controller = new Controller();
+            this.controller = new Controller();
         }
 
         public void Run()

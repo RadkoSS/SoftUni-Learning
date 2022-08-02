@@ -1,28 +1,16 @@
 ﻿namespace Formula1.Repositories
 {
-    using System;
-    using System.Collections.Generic;
+    using System.Linq;
     
-    using Contracts;
     using Models.Contracts;
 
-    public class FormulaOneCarRepository : IRepository<IFormulaOneCar>
+    public class FormulaOneCarRepository : Repository<IFormulaOneCar>
     {
-        public IReadOnlyCollection<IFormulaOneCar> Models { get; private set; }
-
-        public void Add(IFormulaOneCar model)
+        public override IFormulaOneCar FindByName(string name)
         {
-            throw new NotImplementedException();
-        }
+            IFormulaOneCar searchedCar = this.Models.FirstOrDefault(car => car.Model == name);
 
-        public bool Remove(IFormulaOneCar model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IFormulaOneCar FindByName(string name)
-        {
-            throw new NotImplementedException();
+            return searchedCar;
         }
     }
 }

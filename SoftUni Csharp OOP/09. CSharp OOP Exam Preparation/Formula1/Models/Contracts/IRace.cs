@@ -1,6 +1,7 @@
 ﻿namespace Formula1.Models.Contracts
 {
     using System.Collections.Generic;
+
     public interface IRace
     {
         public string RaceName { get; }
