@@ -6,11 +6,6 @@
 
     public class PilotRepository : Repository<IPilot>
     {
-        public override IPilot FindByName(string name)
-        {
-            IPilot searchedPilot = this.Models.FirstOrDefault(pilot => pilot.FullName == name);
-
-            return searchedPilot;
-        }
+        public override IPilot FindByName(string name) => this.Models.FirstOrDefault(pilot => pilot.FullName == name);
     }
 }

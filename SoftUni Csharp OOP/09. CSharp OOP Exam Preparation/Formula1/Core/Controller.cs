@@ -167,9 +167,9 @@
 
             StringBuilder output = new StringBuilder();
 
-            output.AppendLine($"Pilot {firstWinner.FullName} wins the {searchedRace.RaceName} race.");
-            output.AppendLine($"Pilot {secondWinner.FullName} is second in the {searchedRace.RaceName} race.");
-            output.AppendLine($"Pilot {thirdWinner.FullName} is third in the {searchedRace.RaceName} race.");
+            output.AppendLine(string.Format(OutputMessages.PilotFirstPlace, firstWinner.FullName, searchedRace.RaceName));
+            output.AppendLine(string.Format(OutputMessages.PilotSecondPlace, secondWinner.FullName, searchedRace.RaceName));
+            output.AppendLine(string.Format(OutputMessages.PilotThirdPlace, thirdWinner.FullName, searchedRace.RaceName));
 
             return output.ToString().TrimEnd();
         }

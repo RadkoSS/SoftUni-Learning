@@ -6,11 +6,6 @@
 
     public class RaceRepository : Repository<IRace>
     {
-        public override IRace FindByName(string name)
-        {
-            IRace searchedRace = this.Models.FirstOrDefault(race => race.RaceName == name);
-
-            return searchedRace;
-        }
+        public override IRace FindByName(string name) => this.Models.FirstOrDefault(race => race.RaceName == name);
     }
 }
