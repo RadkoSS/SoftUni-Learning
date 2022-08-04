@@ -1,28 +1,27 @@
 ﻿namespace Gym.Repositories
 {
-    using System;
+    using System.Linq;
     using System.Collections.Generic;
-    using System.Text;
+
     using Contracts;
     using Models.Equipment.Contracts;
 
     public class EquipmentRepository : IRepository<IEquipment>
     {
-        public IReadOnlyCollection<IEquipment> Models => throw new NotImplementedException();
+        private readonly ICollection<IEquipment> _equipment;
 
-        public void Add(IEquipment model)
+        public EquipmentRepository()
         {
-            throw new NotImplementedException();
+            this._equipment = new List<IEquipment>();
         }
 
-        public bool Remove(IEquipment model)
-        {
-            throw new NotImplementedException();
-        }
+        public IReadOnlyCollection<IEquipment> Models => this._equipment as IReadOnlyCollection<IEquipment>;
 
-        public IEquipment FindByType(string type)
-        {
-            throw new NotImplementedException();
-        }
+        public void Add(IEquipment model) => this._equipment.Add(model);
+
+        public bool Remove(IEquipment model) => this._equipment.Remove(model);
+
+        public IEquipment FindByType(string type) =>
+            this._equipment.FirstOrDefault(equipment => equipment.GetType().Name == type);
     }
 }

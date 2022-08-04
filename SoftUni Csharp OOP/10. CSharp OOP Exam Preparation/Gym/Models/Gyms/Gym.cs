@@ -1,52 +1,94 @@
 ﻿namespace Gym.Models.Gyms
 {
     using System;
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
-    using Athletes.Contracts;
+    using System.Collections.Generic;
+
     using Contracts;
+    using Utilities.Messages;
+    using Athletes.Contracts;
     using Equipment.Contracts;
 
     public abstract class Gym : IGym
     {
-        protected Gym(string name, int capacity)
+        private string _name;
+
+        private Gym()
         {
-            
+            this.Equipment = new List<IEquipment>();
+            this.Athletes = new List<IAthlete>();
         }
 
-        public string Name => throw new NotImplementedException();
+        protected Gym(string name, int capacity)
+        : this()
+        {
+            this.Name = name;
+            this.Capacity = capacity;
+        }
 
-        public int Capacity => throw new NotImplementedException();
+        public string Name
+        {
+            get => this._name;
+            private set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    ThrowArgumentException(ExceptionMessages.InvalidGymName);
+                }
 
-        public double EquipmentWeight => throw new NotImplementedException();
+                this._name = value;
+            }
+        }
 
-        public ICollection<IEquipment> Equipment => throw new NotImplementedException();
+        public int Capacity { get; }
 
-        public ICollection<IAthlete> Athletes => throw new NotImplementedException();
+        public double EquipmentWeight => this.Equipment.Sum(equipment => equipment.Weight);
+
+        public ICollection<IEquipment> Equipment { get; }
+
+        public ICollection<IAthlete> Athletes { get; }
+
+        private static void ThrowArgumentException(string message) => throw new ArgumentException(message);
+
+        private static void ThrowInvalidOperationException(string message) => throw new InvalidOperationException(message);
 
         public void AddAthlete(IAthlete athlete)
         {
-            throw new NotImplementedException();
+            if (this.Athletes.Count >= this.Capacity)
+            {
+                ThrowInvalidOperationException(ExceptionMessages.NotEnoughSize);
+            }
+
+            this.Athletes.Add(athlete);
         }
 
-        public bool RemoveAthlete(IAthlete athlete)
-        {
-            throw new NotImplementedException();
-        }
+        public bool RemoveAthlete(IAthlete athlete) => this.Athletes.Remove(athlete);
 
-        public void AddEquipment(IEquipment equipment)
-        {
-            throw new NotImplementedException();
-        }
+        public void AddEquipment(IEquipment equipment) => this.Equipment.Add(equipment);
 
         public void Exercise()
         {
-            throw new NotImplementedException();
+            foreach (var athlete in this.Athletes)
+            {
+                athlete.Exercise();
+            }
         }
 
         public string GymInfo()
         {
-            throw new NotImplementedException();
+            StringBuilder info = new StringBuilder();
+
+            List<string> athletesNamesList = this.Athletes.Select(athlete => athlete.FullName).ToList();
+
+            string athletesNames = athletesNamesList.Count > 0 ? string.Join(", ", athletesNamesList) : "No athletes";
+
+            info.AppendLine($"{this.Name} is a {this.GetType().Name}:");
+            info.AppendLine($"Athletes: {athletesNames}");
+            info.AppendLine($"Equipment total count: {this.Equipment.Count}");
+            info.AppendLine($"Equipment total weight: {this.EquipmentWeight:f2} grams");
+
+            return info.ToString().TrimEnd();
         }
     }
 }
