@@ -56,11 +56,11 @@
 
         public double ArmorThickness { get; set; }
 
-        public double MainWeaponCaliber { get; set; }
+        public double MainWeaponCaliber { get; protected set; }
 
-        public double Speed { get; set; }
+        public double Speed { get; protected set; }
 
-        public ICollection<string> Targets { get; set; }
+        public ICollection<string> Targets { get; }
 
         public void Attack(IVessel target)
         {
