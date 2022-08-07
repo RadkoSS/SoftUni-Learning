@@ -1,4 +1,4 @@
-﻿namespace NavalVessels.Models
+﻿namespace NavalVessels.Models.Ships
 {
     using System;
     using System.Text;
@@ -13,7 +13,7 @@
 
         private ICaptain _captain;
 
-        protected Vessel()
+        private Vessel()
         {
             this.Targets = new List<string>();
         }

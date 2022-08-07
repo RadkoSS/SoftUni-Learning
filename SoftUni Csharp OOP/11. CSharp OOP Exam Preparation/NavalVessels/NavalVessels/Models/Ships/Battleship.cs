@@ -1,4 +1,4 @@
-﻿namespace NavalVessels.Models
+﻿namespace NavalVessels.Models.Ships
 {
     using System.Text;
 
@@ -17,7 +17,7 @@
 
         public void ToggleSonarMode()
         {
-            if (!this.SonarMode)
+            if (!SonarMode)
             {
                 this.SonarMode = true;
                 this.MainWeaponCaliber += 40;
