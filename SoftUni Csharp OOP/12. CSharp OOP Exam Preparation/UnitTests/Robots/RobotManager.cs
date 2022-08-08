@@ -41,6 +41,7 @@
             {
                 throw new InvalidOperationException($"There is already a robot with name {robot.Name}!");
             }
+
             else if (this.robots.Count == this.capacity)
             {
                 throw new InvalidOperationException("Not enough capacity!");
@@ -69,6 +70,7 @@
             {
                 throw new InvalidOperationException($"Robot with the name {robotName} doesn't exist!");
             }
+
             else if (robot.Battery < batteryUsage)
             {
                 throw new InvalidOperationException($"{robot.Name} doesn't have enough battery!");
