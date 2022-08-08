@@ -5,10 +5,10 @@
 
     using Models;
     using Contracts;
+    using Models.Ships;
     using Models.Contracts;
     using Utilities.Messages;
     using Repositories.Contracts;
-    using NavalVessels.Models.Ships;
 
     public class Controller : IController
     {
