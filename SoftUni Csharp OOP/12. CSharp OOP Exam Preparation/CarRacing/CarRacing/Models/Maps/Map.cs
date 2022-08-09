@@ -1,8 +1,9 @@
 ﻿namespace CarRacing.Models.Maps
 {
     using System;
-    using System.Collections.Generic;
     using System.Text;
+    using System.Collections.Generic;
+
     using Contracts;
     using Racers.Contracts;
 

@@ -13,5 +13,14 @@
         {
 
         }
+
+        public override void Drive()
+        {
+            base.Drive();
+
+            int hpAfterEngineWear = (int) Math.Round(this.HorsePower * 0.97);
+
+            this.HorsePower = hpAfterEngineWear;
+        }
     }
 }
