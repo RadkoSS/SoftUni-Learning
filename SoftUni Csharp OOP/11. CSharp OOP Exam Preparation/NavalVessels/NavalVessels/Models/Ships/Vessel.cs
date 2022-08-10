@@ -81,19 +81,7 @@
             this.Targets.Add(target.Name);
         }
 
-        public void RepairVessel()
-        {
-            string vesselType = this.GetType().Name;
-
-            if (vesselType == "Submarine")
-            {
-                this.ArmorThickness = 200;
-            }
-            else if (vesselType == "Battleship")
-            {
-                this.ArmorThickness = 300;
-            }
-        }
+        public abstract void RepairVessel();
 
         public override string ToString()
         {

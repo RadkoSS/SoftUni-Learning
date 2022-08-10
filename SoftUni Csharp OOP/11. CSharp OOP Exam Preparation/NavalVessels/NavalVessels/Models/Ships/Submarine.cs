@@ -31,6 +31,8 @@
             }
         }
 
+        public override void RepairVessel() => this.ArmorThickness = InitialArmorThickness;
+
         public override string ToString()
         {
             StringBuilder output = new StringBuilder();
