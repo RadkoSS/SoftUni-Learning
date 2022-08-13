@@ -8,7 +8,8 @@
         private const string DefaultRacingBehavior = "strict";
         private const int DefaultDrivingXpIncrease = 10;
 
-        public ProfessionalRacer(string username, ICar car) : base(username, DefaultRacingBehavior, DefaultRacingXp, car)
+        public ProfessionalRacer(string username, ICar car) 
+            : base(username, DefaultRacingBehavior, DefaultRacingXp, car)
         {
 
         }

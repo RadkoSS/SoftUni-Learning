@@ -4,7 +4,7 @@
     {
         private const double DefaultStartingFuel = 80;
         private const double DefaultFuelConsumptionPerRace = 10;
-
+  
         public SuperCar(string make, string model, string VIN, int horsePower) : base(make, model, VIN, horsePower, DefaultStartingFuel, DefaultFuelConsumptionPerRace)
         {
 

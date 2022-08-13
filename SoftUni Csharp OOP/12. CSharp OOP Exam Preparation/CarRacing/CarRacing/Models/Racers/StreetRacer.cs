@@ -8,7 +8,8 @@
         private const string DefaultRacingBehavior = "aggressive";
         private const int DefaultDrivingXpIncrease = 5;
 
-        public StreetRacer(string username, ICar car) : base(username, DefaultRacingBehavior, DefaultRacingXp, car)
+        public StreetRacer(string username, ICar car) 
+            : base(username, DefaultRacingBehavior, DefaultRacingXp, car)
         {
 
         }

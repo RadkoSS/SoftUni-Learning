@@ -1,28 +1,10 @@
 ﻿namespace CarRacing.Repositories
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using Contracts;
+    using System.Linq;
     using Models.Racers.Contracts;
 
-    public class RacerRepository : IRepository<IRacer>
+    public class RacerRepository : Repository<IRacer>
     {
-        public IReadOnlyCollection<IRacer> Models => throw new NotImplementedException();
-
-        public void Add(IRacer model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Remove(IRacer model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IRacer FindBy(string property)
-        {
-            throw new NotImplementedException();
-        }
+        public override IRacer FindBy(string property) => this.Models.FirstOrDefault(model => model.Username == property);
     }
 }

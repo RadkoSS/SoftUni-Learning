@@ -1,13 +1,16 @@
 ﻿namespace CarRacing.Models.Racers
 {
     using System;
-    
+    using System.Text;
     using Contracts;
     using Cars.Contracts;
     using Utilities.Messages;
 
     public abstract class Racer : IRacer
     {
+        private const int MinimalDrivingXp = 0;
+        private const int MaximalDrivingXp = 100;
+
         private string _userName;
 
         private string _racingBehavior;
@@ -57,7 +60,7 @@
             get => this._drivingExperience;
             protected set
             {
-                if (value < 0 || value > 100)
+                if (value < MinimalDrivingXp || value > MaximalDrivingXp)
                 {
                     ThrowArgumentException(ExceptionMessages.InvalidRacerDrivingExperience);
                 }
@@ -80,12 +83,21 @@
             }
         }
 
-        public virtual void Race()
-        {
-            this.Car.Drive();
-        }
+        public virtual void Race() => this.Car.Drive();
 
         public bool IsAvailable() => this.Car.FuelAvailable >= this.Car.FuelConsumptionPerRace;
+
+        public override string ToString()
+        {
+            StringBuilder output = new StringBuilder();
+
+            output.AppendLine($"{this.GetType().Name}: {this.Username}");
+            output.AppendLine($"--Driving behavior: {this.RacingBehavior}");
+            output.AppendLine($"--Driving experience: {this.DrivingExperience}");
+            output.AppendLine($"--Car: {this.Car.Make} {this.Car.Model} ({this.Car.VIN})");
+
+            return output.ToString().TrimEnd();
+        }
 
         private static void ThrowArgumentException(string message) => throw new ArgumentException(message);
     }
