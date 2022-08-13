@@ -6,8 +6,8 @@
 
     public class Map : IMap
     {
-        private const double StrictBehaviourMultiplier = 1.2;
-        private const double AggressiveBehaviourMultiplier = 1.1;
+        private const double StrictBehaviorMultiplier = 1.2;
+        private const double AggressiveBehaviorMultiplier = 1.1;
 
         public string StartRace(IRacer racerOne, IRacer racerTwo)
         {
@@ -26,14 +26,14 @@
                 return string.Format(OutputMessages.OneRacerIsNotAvailable, racerOne.Username, racerTwo.Username);
             }
 
-            double firstRacerBehaviourMultiplier = racerOne.RacingBehavior == "strict" ? StrictBehaviourMultiplier : AggressiveBehaviourMultiplier;
+            double firstRacerBehaviorMultiplier = racerOne.RacingBehavior == "strict" ? StrictBehaviorMultiplier : AggressiveBehaviorMultiplier;
 
-            double secondRacerBehaviourMultiplier = racerTwo.RacingBehavior == "strict" ? StrictBehaviourMultiplier : AggressiveBehaviourMultiplier;
+            double secondRacerBehaviorMultiplier = racerTwo.RacingBehavior == "strict" ? StrictBehaviorMultiplier : AggressiveBehaviorMultiplier;
 
             double firstRacerChanceOfWinning =
-                racerOne.Car.HorsePower * racerOne.DrivingExperience * firstRacerBehaviourMultiplier;
+                racerOne.Car.HorsePower * racerOne.DrivingExperience * firstRacerBehaviorMultiplier;
 
-            double secondRacerChanceOfWinning = racerTwo.Car.HorsePower * racerTwo.DrivingExperience * secondRacerBehaviourMultiplier;
+            double secondRacerChanceOfWinning = racerTwo.Car.HorsePower * racerTwo.DrivingExperience * secondRacerBehaviorMultiplier;
 
             racerOne.Race();
             racerTwo.Race();
