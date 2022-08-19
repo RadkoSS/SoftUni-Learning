@@ -7,7 +7,7 @@
 
     class AppEntryPoint
     {
-        static void Main(string[] args)
+        static void Main()
         {
             IRepository repository = new UnitRepository();
             IUnitFactory unitFactory = new UnitFactory();
