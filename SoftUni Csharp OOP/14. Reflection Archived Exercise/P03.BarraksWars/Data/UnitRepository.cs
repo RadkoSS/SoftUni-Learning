@@ -2,8 +2,9 @@
 {
     using System;
     using Contracts;
-    using System.Collections.Generic;
     using System.Text;
+    using System.Collections.Generic;
+
     class UnitRepository : IRepository
     {
         private IDictionary<string, int> amountOfUnits;
@@ -18,14 +19,14 @@
             get
             {
                 StringBuilder statBuilder = new StringBuilder();
-                foreach (var entry in amountOfUnits)
+                foreach (var entry in this.amountOfUnits)
                 {
-                    string formatedEntry =
-                            string.Format("{0} -> {1}", entry.Key, entry.Value);
-                    statBuilder.AppendLine(formatedEntry);
+                    string formattedEntry = $"{entry.Key} -> {entry.Value}";
+
+                    statBuilder.AppendLine(formattedEntry);
                 }
 
-                return statBuilder.ToString().Trim();
+                return statBuilder.ToString().TrimEnd();
             }
         }
 
@@ -42,8 +43,12 @@
 
         public void RemoveUnit(string unitType)
         {
-            //TODO: implement for Problem 4
-            throw new NotImplementedException();
+            if (!this.amountOfUnits.ContainsKey(unitType) || this.amountOfUnits[unitType] == 0)
+            {
+                throw new ArgumentException("No such units in repository.");
+            }
+
+            this.amountOfUnits[unitType]--;
         }
     }
 }
