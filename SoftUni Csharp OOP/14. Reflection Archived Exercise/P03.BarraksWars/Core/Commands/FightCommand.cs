@@ -2,13 +2,12 @@
 {
     using System;
 
-    using _03BarracksFactory.Contracts;
-
     public class FightCommand : Command
     {
         private const int ExitCodeSuccessful = 0;
 
-        public FightCommand(string[] data, IRepository repository, IUnitFactory unitFactory) : base(data, repository, unitFactory)
+        public FightCommand(string[] data)
+            : base(data)
         {
         }
 

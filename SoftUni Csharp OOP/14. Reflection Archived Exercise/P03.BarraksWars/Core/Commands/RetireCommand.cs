@@ -1,18 +1,21 @@
 ﻿namespace P03_BarraksWars.Core.Commands
 {
-    using System;
-
+    using Utilities.Attributes;
     using _03BarracksFactory.Contracts;
 
     public class RetireCommand : Command
     {
-        public RetireCommand(string[] data, IRepository repository, IUnitFactory unitFactory) : base(data, repository, unitFactory)
+        [Inject]
+        private readonly IRepository repository;
+
+        public RetireCommand(string[] data) 
+            : base(data)
         {
         }
 
         public override string Execute()
         {
-            this.Repository.RemoveUnit(this.Data[1]);
+            this.repository.RemoveUnit(this.Data[1]);
             return $"{this.Data[1]} retired!";
         }
     }

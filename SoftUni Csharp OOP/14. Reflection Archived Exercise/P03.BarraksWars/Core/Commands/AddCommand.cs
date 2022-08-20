@@ -1,20 +1,27 @@
 ﻿namespace P03_BarraksWars.Core.Commands
 {
-
+    using Utilities.Attributes;
     using _03BarracksFactory.Contracts;
 
     public class AddCommand : Command
     {
-        public AddCommand(string[] data, IRepository repository, IUnitFactory unitFactory) : base(data, repository, unitFactory)
+        [Inject]
+        private readonly IRepository repository;
+
+        [Inject]
+        private readonly IUnitFactory unitFactory;
+
+        public AddCommand(string[] data) 
+            : base(data)
         {
         }
 
         public override string Execute()
         {
             string unitType = this.Data[1];
-            IUnit unitToAdd = this.UnitFactory.CreateUnit(unitType);
+            IUnit unitToAdd = this.unitFactory.CreateUnit(unitType);
 
-            this.Repository.AddUnit(unitToAdd);
+            this.repository.AddUnit(unitToAdd);
 
             return $"{unitType} added!";
         }
