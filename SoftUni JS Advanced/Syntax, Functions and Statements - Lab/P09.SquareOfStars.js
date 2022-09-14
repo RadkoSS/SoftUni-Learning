@@ -1,8 +1,4 @@
-function makeSquare(argument){
-
-    if(typeof argument === 'undefined'){
-        argument = 5
-    }
+function makeSquare(argument = 5){
 
     let square = new String()
 
