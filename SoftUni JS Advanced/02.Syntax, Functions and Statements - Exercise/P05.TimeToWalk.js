@@ -1,34 +1,39 @@
 function calculateTime(stepsCount, footprintLength, velocity){
 
-    let velocityInMs = velocity * 3.6
-    let distanceInMeters = stepsCount * footprintLength
+    let velocityInMs = velocity / 3.6;
+    let distanceInMeters = stepsCount * footprintLength;
+    let restsCount = Math.floor(distanceInMeters / 500);
 
-    // let timeNeededInSeconds = distanceInMeters / velocityInMs
+    let restTime = restsCount * 60;
 
-    // let hours = 0
-    // let minutes = 0
-    // let seconds = 0
+    let timeNeededInSeconds = distanceInMeters / velocityInMs + restTime;
 
-    // if(timeNeededInSeconds >= 60){
-    //     minutes = timeNeededInSeconds / 60
-
-    //     if(minutes >= 60){
-    //         hours = minutes / 60
-            
-    //         minutes = 0
-    //     }
-    // }
-    // else{
-    //     seconds = timeNeededInSeconds
-    // }
-
-    let hoursFormatted = `${hours < 10 ? `0${hours}` : `${hours}`}`
-
-    let minutesFormatted = `${minutes < 10 ? `0${minutes}` : `${minutes}`}`
-
-    let secondsFormatted = `${seconds < 10 ? `0${seconds}` : `${seconds}`}`
-
-    return `${hoursFormatted}:${minutesFormatted}:${secondsFormatted}`
+    let time = secondsToTime(timeNeededInSeconds);
+    
+    return time;
 }
 
-console.log(calculateTime(4000, 0.60, 5))
+function secondsToTime(secs)
+{
+    let date = new Date(secs * 1000);
+
+    let hours = date.getUTCHours();
+    let minutes = date.getUTCMinutes();
+    let seconds = date.getSeconds();
+    
+    if (hours < 10) {
+        hours = `0${hours}`;
+        }
+    if (minutes < 10) { 
+        minutes = `0${minutes}`; 
+        }
+    if (seconds < 10) { 
+        seconds = `0${seconds}`; 
+    }
+
+    let timeFormatted = `${hours}:${minutes}:${seconds}`;
+
+    return timeFormatted;
+}
+
+console.log(calculateTime(4000, 0.60, 5));
