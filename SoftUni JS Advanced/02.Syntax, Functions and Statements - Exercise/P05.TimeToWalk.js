@@ -6,7 +6,7 @@ function calculateTime(stepsCount, footprintLength, velocity){
 
     let restTime = restsCount * 60;
 
-    let timeNeededInSeconds = distanceInMeters / velocityInMs + restTime;
+    let timeNeededInSeconds = Math.round(distanceInMeters / velocityInMs + restTime);
 
     let time = secondsToTime(timeNeededInSeconds);
     
@@ -36,4 +36,4 @@ function secondsToTime(secs)
     return timeFormatted;
 }
 
-console.log(calculateTime(4000, 0.60, 5));
+console.log(calculateTime(2564, 0.70, 5.5));
