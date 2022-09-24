@@ -1,0 +1,58 @@
+body {
+    background-color: F0F1F5;
+    margin: 0;
+    font-family: "Helvetica", sans-serif;
+    padding: 2rem 20rem;
+}
+
+header > p {
+    float: left;
+}
+
+nav {
+    text-align: right;
+}
+
+nav ul li {
+   display: inline-block;
+   padding: 0 10px;
+}
+
+nav ul li a {
+    color: orange;
+    text-decoration: none;
+}
+
+nav ul {
+    float: right;
+}
+
+main section:nth-child(1){
+    margin-top: 3rem;
+    background-image: url("../First\ Page\ Ever/Images/picture.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 20rem 25rem;
+}
+
+main section:nth-child(1) h1{
+    color: white;
+}
+
+main section:nth-child(1) span{
+    color: orange;
+}
+
+main section button{
+    border: none;
+    background: orange;
+    color: white;
+    font-size: 22px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+main section:nth-child(2){
+    background-color: orange;
+}
+
