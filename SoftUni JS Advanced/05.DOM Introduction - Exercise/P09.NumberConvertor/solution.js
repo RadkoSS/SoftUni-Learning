@@ -3,19 +3,26 @@ function solve() {
 
     function result(){
         let number = Number(document.getElementById(`input`).value);
+        let menu = document.getElementById(`selectMenuTo`);
+        let output = document.getElementById(`result`);
 
-        let convertType = document.getElementById(`selectMenuTo`).value;
-        
-        let result = ``;
+        let optionBinary = document.createElement('option');
+        optionBinary.value = 'binary';
+        optionBinary.innerHTML = 'Binary';
 
-        if(convertType === `binary`){
-            result = (number >>> 0).toString(2);
-        } else if(convertType === `hexadecimal`){
-            result = number.toString(16).toUpperCase();
+        let optionHexadecimal = document.createElement('option');
+        optionHexadecimal.value = 'hexadecimal';
+        optionHexadecimal.innerHTML = 'Hexadecimal';
+
+        menu.appendChild(optionBinary);
+        menu.appendChild(optionHexadecimal);
+
+        if(menu.value === `binary`){
+            output.value = (number >>> 0).toString(2);
+        } else if(menu.value === `hexadecimal`){
+            output.value = number.toString(16).toUpperCase();
         } else {
-            result = `Please select correct type!`;
+            output.value = `Please select correct type!`;
         }
-
-        document.getElementById(`result`).value = result;
     }
 }
