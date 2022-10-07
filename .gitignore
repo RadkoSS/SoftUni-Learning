@@ -348,3 +348,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+SoftUni JS Advanced/07.UnitTesting - Exercise/package-lock.json
+SoftUni JS Advanced/07.UnitTesting - Exercise/package.json
