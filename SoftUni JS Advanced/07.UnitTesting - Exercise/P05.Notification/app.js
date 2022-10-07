@@ -1,4 +1,6 @@
 function notify(message) {
-  console.log('todo')
+  return `todo`;
   // TODO:
 }
+
+module.exports = { notify };

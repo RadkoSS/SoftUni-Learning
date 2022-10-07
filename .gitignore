@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 SoftUni JS Advanced/07.UnitTesting - Exercise/package-lock.json
 SoftUni JS Advanced/07.UnitTesting - Exercise/package.json
+SoftUni JS Advanced/07.UnitTesting - Exercise/.vscode/launch.json
