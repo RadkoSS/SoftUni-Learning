@@ -1,5 +1,5 @@
 function notify(message) {
-    let notificationDiv = document.getElementById(`notification`);
+    const notificationDiv = document.getElementById(`notification`);
 
     notificationDiv.textContent = message;
 
