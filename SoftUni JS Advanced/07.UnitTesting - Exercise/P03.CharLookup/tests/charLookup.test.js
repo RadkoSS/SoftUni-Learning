@@ -1,10 +1,10 @@
-const charLookup = require(`../charLookUp`);
+const lookupChar = require(`../charLookUp`);
 const { assert } = require(`chai`);
 
 describe(`Test charLookup function with incorrect data`, () => {
     it(`Returns undefined if first param is not string`, () => {
         //Arrange & Act
-        let result = charLookup(['String in array'], 2);
+        let result = lookupChar(['String in array'], 2);
 
         //Assert
         assert.equal(result, undefined);
@@ -12,7 +12,7 @@ describe(`Test charLookup function with incorrect data`, () => {
 
     it(`Returns undefined if second param is not integer`, () => {
         //Arrange & Act
-        let result = charLookup(`Correct string`, 2.0000001);
+        let result = lookupChar(`Correct string`, 2.0000001);
 
         //Assert
         assert.equal(result, undefined);
@@ -22,7 +22,7 @@ describe(`Test charLookup function with incorrect data`, () => {
         //Arrange 
         let expectedResult = `Incorrect index`;
         //Act
-        let result = charLookup(`CorrectString`, 13);
+        let result = lookupChar(`CorrectString`, 13);
 
         //Assert
         assert.equal(result, expectedResult);
@@ -32,7 +32,7 @@ describe(`Test charLookup function with incorrect data`, () => {
         //Arrange 
         let expectedResult = `Incorrect index`;
         //Act
-        let result = charLookup(`CorrectString`, -1);
+        let result = lookupChar(`CorrectString`, -1);
 
         //Assert
         assert.equal(result, expectedResult);
@@ -44,7 +44,7 @@ describe(`Test charLookup function with correct data`, () => {
         //Arrange 
         let expectedResult = `d`;
         //Act
-        let result = charLookup(`Radko`, 2);
+        let result = lookupChar(`Radko`, 2);
 
         //Assert
         assert.equal(result, expectedResult);

@@ -1,17 +1,17 @@
-const evenOrOdd = require(`../evenOrOdd`);
+const isOddOrEven = require(`../evenOrOdd`);
 const { assert } = require(`chai`);
 
 describe(`Test function with incorrect input`, () => {
     it(`Test with array, should return undefined`, () => {
         //Arrange & Act
-        let result = evenOrOdd([`Array with string`]);
+        let result = isOddOrEven([`Array with string`]);
         //Assert
         assert.equal(result, undefined);
     });
 
     it(`Test with object, should return undefined`, () => {
         //Arrange & Act
-        let result = evenOrOdd({
+        let result = isOddOrEven({
             name: `Radko`,
             position: `Boss`
         });
@@ -26,7 +26,7 @@ describe(`Test function with correct input`, () => {
         let expected = `even`;
 
         //Act
-        let result = evenOrOdd(`evenString`);
+        let result = isOddOrEven(`evenString`);
         //Assert
         assert.equal(result, expected);
     });
@@ -36,7 +36,7 @@ describe(`Test function with correct input`, () => {
         let expected = `odd`;
 
         //Act
-        let result = evenOrOdd(`oddString`);
+        let result = isOddOrEven(`oddString`);
         //Assert
         assert.equal(result, expected);
     });
