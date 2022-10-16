@@ -15,6 +15,7 @@ class List{
         throw new Error(`Incorrect index!`);
         }
         this.sortedList.splice(index, 1);
+        this.sortedList.sort((a, b) => a - b);
         this.size--;
     }
 

@@ -6,7 +6,7 @@ function solve(arrayOfCars){
         }
     
         addModel = (carModel, producedCars) => {
-            if(this.models[carModel] === undefined){
+            if(!this.models[carModel]){
                 this.models[carModel] = Number(producedCars);
             } else{
                 this.models[carModel] += Number(producedCars);
@@ -31,7 +31,7 @@ function solve(arrayOfCars){
         let carModel = splitted[1];
         let producedCars = splitted[2];
 
-        if(manufacturedCars[carBrand] === undefined){
+        if(!manufacturedCars[carBrand]){
             manufacturedCars[carBrand] = new Company(carBrand);
         } 
         manufacturedCars[carBrand].addModel(carModel, producedCars);
