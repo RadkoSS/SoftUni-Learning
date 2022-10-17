@@ -55,7 +55,7 @@ function createComputerHierarchy() {
         }
 
         set battery(batteryInstance){
-            if(!batteryInstance instanceof Battery){
+            if(!(batteryInstance instanceof Battery)){
                 throw new TypeError(`Battery must be an instance of class Battery!`);
             }
             this._battery = batteryInstance;
@@ -74,7 +74,7 @@ function createComputerHierarchy() {
         }
 
         set keyboard(keyboardInstance){
-            if(!keyboardInstance instanceof Keyboard){
+            if(!(keyboardInstance instanceof Keyboard)){
                 throw new TypeError(`Keyboard must be an instance of class Keyboard!`);
             }
             this._keyboard = keyboardInstance;
@@ -85,7 +85,7 @@ function createComputerHierarchy() {
         }
 
         set monitor(monitorInstance){
-            if(!monitorInstance instanceof Monitor){
+            if(!(monitorInstance instanceof Monitor)){
                 throw new TypeError(`Monitor must be an instance of class Monitor!`);
             }
             this._monitor = monitorInstance;
