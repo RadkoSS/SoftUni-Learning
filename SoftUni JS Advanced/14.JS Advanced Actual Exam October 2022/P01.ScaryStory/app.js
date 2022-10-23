@@ -2,7 +2,7 @@ window.addEventListener("load", solve);
 
 function solve() {
   const mainDiv = findElement(`main`);
-  const allMainDivContent = Array.from(findElement(`main`).children);
+  const allMainDivContent = Array.from(mainDiv.children);
 
   const firstName = findElement(`first-name`);
   const lastName = findElement(`last-name`);
