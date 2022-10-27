@@ -20,12 +20,6 @@ describe("Testing chooseYourCar object", () => {
                 chooseYourCar.choosingType("InvalidType", "Red", 2000);
             }, "This type of car is not what you are looking for.");
         });
-
-        it("Invalid type and year", () => {
-            assert.throws(() => {
-                chooseYourCar.choosingType("InvalidType", "Red", 2023);
-            }, "Invalid Year!");
-        });
      });
 
      describe("Testing choosingType func with valid data", () => {
