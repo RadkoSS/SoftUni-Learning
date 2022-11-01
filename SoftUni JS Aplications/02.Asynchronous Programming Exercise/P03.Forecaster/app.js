@@ -7,7 +7,6 @@ const weatherEnum = {
 }
 
 function attachEvents() {
-
     const weatherBtn = document.getElementById(`submit`);
     const location = document.getElementById(`location`);
 
@@ -34,9 +33,9 @@ function attachEvents() {
             resetHtml(currentDiv, upcomingDiv);
             currDivLabel.textContent = `Current conditions`;
 
-            appendDataForCurrentDay(currentDiv, currentWeather, weatherEnum);
+            appendDataForCurrentDay(currentDiv, currentWeather);
 
-            appendDataForUpcomingDays(upcomingDiv, upcomingWeather, weatherEnum);
+            appendDataForUpcomingDays(upcomingDiv, upcomingWeather);
         } catch (error) {
             currDivLabel.textContent = `Error`;
 
@@ -65,7 +64,7 @@ async function getUpcomingConditions(searchedCity) {
     return upcomingData;
 }
 
-function appendDataForCurrentDay(currentDiv, currentWeather, weatherEnum) {
+function appendDataForCurrentDay(currentDiv, currentWeather) {
     const currentForecastInfo = currentWeather.forecast;
     const condition = weatherEnum[currentForecastInfo.condition];
     const location = currentWeather.name;
@@ -82,7 +81,7 @@ function appendDataForCurrentDay(currentDiv, currentWeather, weatherEnum) {
     elementFactory(`span`, `forecast-data`, spanContainer, ``, `${currentForecastInfo.condition}`);
 }
 
-function appendDataForUpcomingDays(upcomingDiv, upcomingWeather, weatherEnum) {
+function appendDataForUpcomingDays(upcomingDiv, upcomingWeather) {
     const currentForecastInfo = upcomingWeather.forecast;
 
     elementFactory(`div`, `label`, upcomingDiv, ``, `Three-day forecast`);
