@@ -48,19 +48,19 @@ function attachEvents() {
 }
 
 async function getCurrentConditions(searchedCity) {
-    let url = `http://localhost:3030/jsonstore/forecaster/today/${searchedCity.code}`
+    const url = `http://localhost:3030/jsonstore/forecaster/today/${searchedCity.code}`
 
-    let request = await fetch(url);
-    let currentData = await request.json();
+    const request = await fetch(url);
+    const currentData = await request.json();
 
     return currentData;
 }
 
 async function getUpcomingConditions(searchedCity) {
-    let url = `http://localhost:3030/jsonstore/forecaster/upcoming/${searchedCity.code}`
+    const url = `http://localhost:3030/jsonstore/forecaster/upcoming/${searchedCity.code}`
 
-    let request = await fetch(url);
-    let upcomingData = await request.json();
+    const request = await fetch(url);
+    const upcomingData = await request.json();
 
     return upcomingData;
 }
@@ -71,11 +71,11 @@ function appendDataForCurrentDay(currentDiv, currentWeather, weatherEnum) {
     const location = currentWeather.name;
     const temperatures = `${currentForecastInfo.low}${weatherEnum[`Degrees`]}/${currentForecastInfo.high}${weatherEnum[`Degrees`]}`;
 
-    let forecastsDiv = elementFactory(`div`, `forecasts`, currentDiv);
+    const forecastsDiv = elementFactory(`div`, `forecasts`, currentDiv);
 
     elementFactory(`span`, `condition symbol`, forecastsDiv, condition);
 
-    let spanContainer = elementFactory(`span`, `condition`, forecastsDiv);
+    const spanContainer = elementFactory(`span`, `condition`, forecastsDiv);
 
     elementFactory(`span`, `forecast-data`, spanContainer, ``, `${location}`);
     elementFactory(`span`, `forecast-data`, spanContainer, `${temperatures}`);
@@ -87,10 +87,10 @@ function appendDataForUpcomingDays(upcomingDiv, upcomingWeather, weatherEnum) {
 
     elementFactory(`div`, `label`, upcomingDiv, ``, `Three-day forecast`);
 
-    let upcomingForecastDiv = elementFactory(`div`, `forecast-info`, upcomingDiv);
+    const upcomingForecastDiv = elementFactory(`div`, `forecast-info`, upcomingDiv);
     
     currentForecastInfo.forEach(({ condition, high, low }) => {
-        let spanContainer = elementFactory(`span`, `upcoming`, upcomingForecastDiv);
+        const spanContainer = elementFactory(`span`, `upcoming`, upcomingForecastDiv);
         
         const conditionAsEmoji = weatherEnum[condition];
 
