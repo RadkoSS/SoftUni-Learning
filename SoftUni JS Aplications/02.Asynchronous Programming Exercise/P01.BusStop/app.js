@@ -4,20 +4,18 @@ function getInfo() {
     const stopName = document.getElementById(`stopName`);
 
     fetch(`http://localhost:3030/jsonstore/bus/businfo/${busStopInput.value}`).then((response) => {
-        debugger
         if (!response.ok || response.status !== 200) {
-            throw new Error(`Error`);
+            throw new Error();
         }
         return response.json();
     }).then((data) => {
-        clearList();
         appendData(data);
-    }).catch((error) => {
-        clearList();
-        stopName.textContent = `${error.message}`;
-    })
+    }).catch(() => {
+        stopName.textContent = `Error`;
+    }).finally(clearData());
 
-    function clearList() {
+    function clearData() {
+        busStopInput.value = ``;
         Array.from(busesList.children).forEach(li => {
             li.remove();
         });
