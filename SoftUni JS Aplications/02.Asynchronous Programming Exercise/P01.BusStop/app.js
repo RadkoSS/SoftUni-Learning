@@ -14,19 +14,22 @@ function getInfo() {
         stopName.textContent = `Error`;
     }).finally(clearData());
 
-    function clearData() {
-        busStopInput.value = ``;
-        Array.from(busesList.children).forEach(li => {
-            li.remove();
+    function appendData(data) {
+        stopName.textContent = data.name;
+        
+        Object.entries(data.buses).forEach(([busNumber, busTimeForArrival]) => {
+            let busInfo = document.createElement(`li`);
+            busInfo.textContent = `Bus ${busNumber} arrives in ${busTimeForArrival} minutes`;
+            
+            busesList.appendChild(busInfo);
         });
     }
     
-    function appendData(data) {
-        stopName.textContent = data.name;
-        Object.entries(data.buses).forEach(bus => {
-            let busInfo = document.createElement(`li`);
-            busInfo.textContent = `Bus ${bus[0]} arrives in ${bus[1]} minutes`;
-            busesList.appendChild(busInfo);
+    function clearData() {
+        busStopInput.value = ``;
+
+        Array.from(busesList.children).forEach(li => {
+            li.remove();
         });
     }
 }
