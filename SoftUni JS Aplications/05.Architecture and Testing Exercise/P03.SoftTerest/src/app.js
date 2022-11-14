@@ -20,4 +20,5 @@ const views = {
 
 const router = initialize(views);
 
+router.updateNavigation();
 router.goTo('/');

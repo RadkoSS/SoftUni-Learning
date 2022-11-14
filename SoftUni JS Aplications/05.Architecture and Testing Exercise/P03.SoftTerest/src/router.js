@@ -1,9 +1,12 @@
+import { checkLoggedStatus } from "./api/user.js";
+
 export function initialize(links) {
     const mainSection = document.getElementById('main-view');
 
     document.getElementById('app-navigation').addEventListener('click', onNavigate);
 
     function showSection(section) {
+        updateNavigation();
         mainSection.replaceChildren(section);
     }
 
@@ -34,8 +37,20 @@ export function initialize(links) {
 
     const context = {
         showSection,
-        goTo
+        goTo,
+        updateNavigation
     }
 
     return context;
+}
+
+function updateNavigation(){
+    if(checkLoggedStatus()){
+        //TODO
+        document.querySelectorAll('.user').forEach(e => e.style.display = 'block');
+        document.querySelectorAll('.guest').forEach(e => e.style.display = 'none');
+    } else {
+        document.querySelectorAll('.user').forEach(e => e.style.display = 'none');
+        document.querySelectorAll('.guest').forEach(e => e.style.display = 'block');
+    }
 }

@@ -14,7 +14,7 @@ export function homeView(context) {
 
 function onClick(event) {
     event.preventDefault();
-    debugger
+    
     const path = new URL(event.target.href).pathname;
     if (checkLoggedStatus()) {
         ctx.goTo(path);
