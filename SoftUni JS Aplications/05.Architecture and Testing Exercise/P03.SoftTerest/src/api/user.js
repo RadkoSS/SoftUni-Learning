@@ -24,8 +24,16 @@ async function userLogout() {
     sessionStorage.removeItem('userData');
 }
 
+function checkLoggedStatus(){
+    if(sessionStorage.getItem('userData')){
+        return true;
+    }
+    return false;
+}
+
 export {
     userLogin,
     userRegister,
-    userLogout
+    userLogout,
+    checkLoggedStatus
 }
