@@ -1,4 +1,3 @@
-import * as userActions from './api/user.js';
 import { initialize } from './router.js'
 import { createView } from './views/create.js';
 import { dashboardView } from './views/dashboard.js';
