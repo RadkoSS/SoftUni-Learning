@@ -3,7 +3,9 @@ const domain = 'http://localhost:3030/';
 async function requester(method, endPoints, data) {
     const options = {
         method,
-        headers: {}
+        headers: {
+            'Content-Type': 'application/json'
+        }
     }
 
     const userData = JSON.parse(sessionStorage.getItem('userData'));
@@ -12,7 +14,6 @@ async function requester(method, endPoints, data) {
         options.headers['X-Authorization'] = userData.accessToken;
     }
     if (data) {
-        options.headers['Content-Type'] = 'application/json';
         options.body = JSON.stringify(data);
     }
 

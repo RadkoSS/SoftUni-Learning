@@ -19,6 +19,6 @@ function onClick(event) {
     if (checkLoggedStatus()) {
         ctx.goTo(path);
     } else{
-        ctx.goTo(`\/login`);
+        ctx.goTo(`/login`);
     }
 }

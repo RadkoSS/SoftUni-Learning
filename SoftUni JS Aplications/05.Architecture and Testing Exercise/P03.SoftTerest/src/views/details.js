@@ -21,6 +21,6 @@ async function onClick(event) {
     if (confirm('Are you sure you want to delete this post?')) {
         await deleteIdea(event.target.id);
 
-        ctx.goTo('/dashboard');
+        ctx.goTo(new URL(event.target.href).pathname);
     }
 }

@@ -20,6 +20,7 @@ function onSubmit(event) {
         alert('Invalid data! Try again.');
         return;
     }
+    debugger
     createIdea({
         title,
         description,
