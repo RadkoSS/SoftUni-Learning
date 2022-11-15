@@ -15,14 +15,15 @@ export function loginView(context) {
     context.showSection(login);
 }
 
-function onLoginSubmit(event) {
+async function onLoginSubmit(event) {
     event.preventDefault();
 
     const { email, password } = Object.fromEntries(new FormData(loginForm));
 
-    userLogin(email, password);
+    await userLogin(email, password);
 
     ctx.goTo(`/dashboard`);
+
     loginForm.reset();
 }
 

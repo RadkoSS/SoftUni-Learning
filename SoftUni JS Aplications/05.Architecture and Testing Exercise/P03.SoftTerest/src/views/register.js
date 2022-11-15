@@ -14,7 +14,7 @@ export function registerView(context) {
     context.showSection(register);
 }
 
-function onRegisterSubmit(event) {
+async function onRegisterSubmit(event) {
     event.preventDefault();
 
     const { email, password, repeatPassword } = Object.fromEntries(new FormData(registerForm));
@@ -28,7 +28,7 @@ function onRegisterSubmit(event) {
         return;
     }
 
-    userRegister(email, password);
+    await userRegister(email, password);
 
     ctx.goTo(`/dashboard`);
     formReset();

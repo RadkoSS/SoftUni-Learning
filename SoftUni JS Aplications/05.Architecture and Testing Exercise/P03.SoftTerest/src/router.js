@@ -1,5 +1,8 @@
 import { checkLoggedStatus } from "./api/user.js";
 
+const loggedUserNav = document.querySelectorAll('.user');
+const guestNav = document.querySelectorAll('.guest');
+
 export function initialize(links) {
     const mainSection = document.getElementById('main-view');
 
@@ -26,13 +29,13 @@ export function initialize(links) {
         goTo(path);
     }
 
-    function goTo(path) {
+    function goTo(path, htmlToInject) {
         const handler = links[path];
 
         if (typeof handler !== 'function') {
             return;
         }
-        handler(context);
+        handler(context, htmlToInject);
     }
 
     const context = {
@@ -46,11 +49,12 @@ export function initialize(links) {
 
 function updateNavigation(){
     if(checkLoggedStatus()){
-        //TODO
-        document.querySelectorAll('.user').forEach(e => e.style.display = 'block');
-        document.querySelectorAll('.guest').forEach(e => e.style.display = 'none');
+        loggedUserNav.forEach(e => e.style.display = 'block');
+
+        guestNav.forEach(e => e.style.display = 'none');
     } else {
-        document.querySelectorAll('.user').forEach(e => e.style.display = 'none');
-        document.querySelectorAll('.guest').forEach(e => e.style.display = 'block');
+        loggedUserNav.forEach(e => e.style.display = 'none');
+
+        guestNav.forEach(e => e.style.display = 'block');
     }
 }
