@@ -21,17 +21,16 @@ function loadAllTowns(townsNames, match) {
 }
 
 function loadTown(town, match) {
+   //case-sensitive searching applied!
    return html`
-      <li class="${match && town.toLowerCase().includes(match) ? "active" : ""}">${town}</li>
+      <li class="${match && town.includes(match) ? "active" : ""}">${town}</li>
    `
 }
 
 function search() {
    const searchedText = document.getElementById('searchText');
 
-   const textToLower = searchedText.value.toLowerCase().trim();
-
-   renderTowns(textToLower);
+   renderTowns(searchedText.value);
    countMatches();
 
    searchedText.value = "";
