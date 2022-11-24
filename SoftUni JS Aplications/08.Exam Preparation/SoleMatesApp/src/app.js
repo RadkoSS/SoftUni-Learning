@@ -32,7 +32,7 @@ function updateNav() {
 
 updateNav();
 page(middleware);
-page('index.html', '/');
+page('/index.html', '/');
 page('/', showHome);
 page('/dashboard', showDashboard);
 page('/search', showSearch);
