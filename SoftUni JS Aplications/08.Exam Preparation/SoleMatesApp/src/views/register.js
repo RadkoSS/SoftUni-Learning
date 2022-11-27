@@ -15,8 +15,8 @@ export function showRegister(ctx) {
         await userRegister(email, password);
         
         ctx.updateNav();
-        ctx.page.redirect('/');
         form.reset();
+        ctx.page.redirect('/');
     }
 }
 

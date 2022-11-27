@@ -1,4 +1,4 @@
-import { html, render } from './utils/lib.js';
+import { render } from './utils/lib.js';
 import { page } from './utils/lib.js';
 import { showCreate } from './views/create.js';
 import { showDashboard } from './views/dashboard.js';
@@ -35,13 +35,12 @@ page(middleware);
 page('/index.html', '/');
 page('/', showHome);
 page('/dashboard', showDashboard);
-page('/search', showSearch);
-page('/add', showCreate);
-page('/login', showLogin);
-page('/logout', logoutAndRedirect);
 page('/register', showRegister);
-page('/edit', showEdit);
-page('/search', showSearch);
 page('/details', showDetails);
+page('/search', showSearch);
+page('/logout', logoutAndRedirect);
+page('/login', showLogin);
+page('/add', showCreate);
+page('/edit', showEdit);
 
 page.start();

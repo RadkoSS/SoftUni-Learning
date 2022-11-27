@@ -1,4 +1,4 @@
-import { checkLoggedStatus, userLogout } from "../data/user.js";
+import { checkLoggedStatus } from "../data/user.js";
 import { html, nothing } from "../utils/lib.js";
 
 
@@ -8,7 +8,7 @@ export function updateNavigation() {
     return navigationTemplate(status);
 }
 
-function navigationTemplate(loggedStatus, handler) {
+function navigationTemplate(loggedStatus) {
     return html`
     <div>
         <a href="/dashboard">Dashboard</a>

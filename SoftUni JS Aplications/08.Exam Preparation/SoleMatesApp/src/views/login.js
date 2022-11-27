@@ -7,12 +7,19 @@ export function showLogin(ctx) {
 
     async function onSubmit(data, form) {
         const { email, password } = data;
+        if(!email || !password) {
+            return;
+        }
+        try {
+            await userLogin(email, password);
 
-        await userLogin(email, password);
-        
-        ctx.updateNav();
-        ctx.page.redirect('/');
-        form.reset();
+            ctx.updateNav();
+            form.reset();
+            ctx.page.redirect('/');
+        } catch (e) {
+            console.log(e.message);
+        }
+
     }
 }
 
