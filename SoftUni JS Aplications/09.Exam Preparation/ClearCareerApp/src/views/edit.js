@@ -1,5 +1,5 @@
 import { editOfferById, getDetailsById } from '../data/data.js';
-import { html, nothing } from '../utils/lib.js';
+import { html } from '../utils/lib.js';
 import { getFormData } from '../utils/util.js';
 
 export async function showEdit(ctx) {
