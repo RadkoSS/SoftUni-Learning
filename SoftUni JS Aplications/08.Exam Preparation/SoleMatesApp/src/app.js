@@ -15,32 +15,48 @@ const mainRoot = document.getElementsByTagName('main')[0];
 const navRoot = document.querySelector('.navigation');
 
 function middleware(ctx, next) {
-    ctx.page = page;
-
     ctx.render = (content) => {
         render(content, mainRoot);
     };
 
-    ctx.updateNav = updateNav;
+    next();
+}
+
+function navigate(ctx, next) {
+    ctx.updateNav = () => render(updateNavigation(), navRoot);;
+
+    ctx.updateNav();
 
     next();
 }
 
-function updateNav() {
-    render(updateNavigation(), navRoot);
-}
+// function parseQuery(ctx, next) {
+//     ctx.query = {};
 
-updateNav();
+//     if (ctx.querystring) {
+//         const query = Object.fromEntries(ctx.querystring
+//             .split('&')
+//             .map(e => e.split('=')));
+
+//         Object.assign(ctx.query, query);
+//     }
+
+//     next();
+// }
+
 page(middleware);
+page(navigate);
+// page(parseQuery);
 page('/index.html', '/');
 page('/', showHome);
 page('/dashboard', showDashboard);
 page('/register', showRegister);
-page('/details', showDetails);
+page('/dashboard/edit/:id', showEdit);
+page('/dashboard/:id', showDetails);
 page('/search', showSearch);
+page('/search/:brand', showSearch);
 page('/logout', logoutAndRedirect);
 page('/login', showLogin);
 page('/add', showCreate);
-page('/edit', showEdit);
 
 page.start();

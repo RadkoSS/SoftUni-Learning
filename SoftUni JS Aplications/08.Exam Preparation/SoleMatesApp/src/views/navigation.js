@@ -1,7 +1,6 @@
 import { checkLoggedStatus } from "../data/user.js";
 import { html, nothing } from "../utils/lib.js";
 
-
 export function updateNavigation() {
     const status = checkLoggedStatus();
 

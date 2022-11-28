@@ -12,7 +12,6 @@ export function showCreate(ctx) {
             return;
         }
     
-        // const dataSubmit = await addShoes(data);
         await addShoes(data);
         
         form.reset();

@@ -1,38 +1,53 @@
 import { getUserData } from '../utils/util.js';
-import { html } from '../utils/lib.js';
+import { html, nothing } from '../utils/lib.js';
+import { deleteShoesById, getDetailsById } from '../data/data.js'
 
-export function showDetails(ctx) {
-    //To-Do
-    
-    // const userData = getUserData();
-    // let isCreator = false;]
-    
-    ctx.render(detailsTemplate());
+export async function showDetails(ctx) {
+    const userData = getUserData();
+    const shoesId = ctx.params.id;
+
+    const data = await getDetailsById(shoesId);
+
+    const isCreator = userData && data._ownerId === userData._id;
+
+    async function onDelete() {
+        if (confirm('Are you sure you want to delete this card?')) {
+            await deleteShoesById(shoesId);
+
+            ctx.page.redirect('/dashboard');
+        }
+    }
+
+    ctx.render(detailsTemplate(isCreator, data, onDelete));
 }
 
-function detailsTemplate(status) {
+function detailsTemplate(isCreator, data, handler) {
+    const altText = data.imageUrl.split('/').pop().split('.')[0];
     return html`
     <section id="details">
         <div id="details-wrapper">
             <p id="details-title">Shoe Details</p>
             <div id="img-wrapper">
-                <img src="./images/travis.jpg" alt="example1" />
+                <img src="${data.imageUrl}" alt=${altText} />
             </div>
             <div id="info-wrapper">
-                <p>Brand: <span id="details-brand">Air Jordan</span></p>
+                <p>Brand: <span id="details-brand">${data.brand}</span></p>
                 <p>
-                    Model: <span id="details-model">1 Retro High TRAVIS SCOTT</span>
+                    Model: <span id="details-model">${data.model}</span>
                 </p>
-                <p>Release date: <span id="details-release">2019</span></p>
-                <p>Designer: <span id="details-designer">Travis Scott</span></p>
-                <p>Value: <span id="details-value">2000</span></p>
+                <p>Release date: <span id="details-release">${data.release}</span></p>
+                <p>Designer: <span id="details-designer">${data.designer}</span></p>
+                <p>Value: <span id="details-value">${data.value}</span></p>
             </div>
     
-            <!--Edit and Delete are only for creator-->
-            <div id="action-buttons">
-                <a href="/edit" id="edit-btn">Edit</a>
-                <a href="" id="delete-btn">Delete</a>
-            </div>
+            ${ isCreator ? 
+                html`<div id="action-buttons">
+                <a href="/dashboard/edit/${data._id}" id="edit-btn">Edit</a>
+                <a @click=${handler} href="javascript:void(0)" id="delete-btn">Delete</a>
+                </div>` 
+                : nothing 
+            }
+    
         </div>
     </section>
     `

@@ -25,7 +25,7 @@ function createShoeCard(data) {
   const altText = data.imageUrl.split('/').pop().split('.')[0];
   return html`
         <li class="card">
-          <img src=".${data.imageUrl}" alt=${altText} />
+          <img src="${data.imageUrl}" alt=${altText} />
           <p>
             <strong>Brand: </strong><span class="brand">${data.brand}</span>
           </p>
@@ -33,7 +33,7 @@ function createShoeCard(data) {
             <strong>Model: </strong><span class="model">${data.model}</span>
           </p>
           <p><strong>Value:</strong><span class="value">${data.value}</span>$</p>
-          <a class="details-btn" href="/details">Details</a>
+          <a class="details-btn" href="/dashboard/${data._id}">Details</a>
         </li>
     `;
 }
