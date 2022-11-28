@@ -4,13 +4,14 @@ import { getFormData } from '../utils/util.js';
 
 export function showCreate(ctx) {
     async function onSubmit(data, form) {
-        const { title, imageUrl, category, description, requirements, salary } = data;
+        const formData = Object.fromEntries(data);
+        const { title, imageUrl, category, description, requirements, salary } = formData;
 
         if (!title || !imageUrl || !category || !description || !requirements || !salary) {
             return;
         }
 
-        await addOffer(data);
+        await addOffer(formData);
 
         ctx.page.redirect('/dashboard');
         form.reset();

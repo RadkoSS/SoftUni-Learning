@@ -4,7 +4,7 @@ import { getFormData } from '../utils/util.js';
 
 export function showLogin(ctx) {
     async function onSubmit(data, form) {
-        const { email, password } = data;
+        const { email, password } = Object.fromEntries(data);
     
         if(!email || !password) {
             return;

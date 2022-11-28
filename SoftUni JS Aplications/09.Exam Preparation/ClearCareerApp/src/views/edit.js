@@ -8,13 +8,15 @@ export async function showEdit(ctx) {
     const dataToEdit = await getDetailsById(id);
 
     async function onSubmit(data, form) {
-        const { title, imageUrl, category, description, requirements, salary } = data;
+        const formData = Object.fromEntries(data);
+
+        const { title, imageUrl, category, description, requirements, salary } = formData;
 
         if (!title || !imageUrl || !category || !description || !requirements || !salary) {
             return;
         }
 
-        await editOfferById(id, data);
+        await editOfferById(id, formData);
 
         ctx.page.redirect('/dashboard/' + id);
         form.reset();

@@ -2,7 +2,6 @@ import { applicationsCount, checkIfUserIsOwner, deleteOfferById, getDetailsById,
 import { html, nothing } from '../utils/lib.js';
 
 export async function showDetails(ctx) {
-    debugger
     const id = ctx.params.id;
     const details = await getDetailsById(id);
     const count = await applicationsCount(id);
@@ -24,7 +23,6 @@ export async function showDetails(ctx) {
 }
 
 function detailsTemplate(data, loggedStatus, ownerStatus, isLiked, onDelete, onApply, count) {
-    debugger
     return html`
         <section id="details">
           <div id="details-wrapper">
