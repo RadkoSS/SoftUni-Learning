@@ -6,7 +6,7 @@ export function showLogin(ctx) {
     ctx.render(loginTemplate(getFormData(onSubmit)));
 
     async function onSubmit(data, form) {
-        const { email, password } = data;
+        const { email, password } = Object.fromEntries(data);
         if(!email || !password) {
             return;
         }

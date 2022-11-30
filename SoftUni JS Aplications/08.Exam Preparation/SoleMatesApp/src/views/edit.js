@@ -7,13 +7,14 @@ export async function showEdit(ctx) {
     const data = await getDetailsById(shoesId);
 
     async function onSubmit(data, form) {
-        const { brand, designer, imageUrl, model, release, value } = data;
+        const formData = Object.fromEntries(data);
+        const { brand, designer, imageUrl, model, release, value } = formData;
 
         if(!brand || !designer || !imageUrl || !model || !release || !value) {
             return;
         }
 
-        await editShoesById(shoesId, data);
+        await editShoesById(shoesId, formData);
 
         ctx.page.redirect(`/dashboard/${shoesId}`);
         form.reset();

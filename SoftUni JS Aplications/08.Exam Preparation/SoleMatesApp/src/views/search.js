@@ -6,14 +6,12 @@ import { getFormData } from '../utils/util.js';
 export async function showSearch(ctx) {
     const search = ctx.params.brand;
 
-    let data = null;
-    if(search) {
-        data = await searchByBrand(search);
-    }
+    const data = search && await searchByBrand(search);
 
-    async function onSubmit(data, form) {
-        if(data.search !== ''){
-            ctx.page.redirect('/search/' + encodeURI(data.search));
+    async function onSubmit(data) {
+        const formData = Object.fromEntries(data);
+        if(formData.search !== ''){
+            ctx.page.redirect('/search/' + encodeURI(formData.search));
         }
     }
     

@@ -1,8 +1,8 @@
 export function getFormData(callback) {
     return (event) => {
         event.preventDefault();
-        const form = event.target;
-        callback(Object.fromEntries(new FormData(form)), form);
+        const formReference = event.target;
+        callback(new FormData(formReference), formReference);
     }
 }
 
