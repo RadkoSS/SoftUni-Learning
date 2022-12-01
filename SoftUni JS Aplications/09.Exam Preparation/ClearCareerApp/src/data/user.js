@@ -19,8 +19,8 @@ async function userRegister(email, password) {
     setUserData(userData);
 }
 
-async function userLogout() {
-    await api.get(endPoints.logout);
+function userLogout() {
+    api.get(endPoints.logout);
 
     clearUserData();
 }

@@ -1,6 +1,6 @@
 import { userLogout } from "../data/user.js";
 
-export async function logoutAndRedirect(ctx) {
-    await userLogout();
+export function logoutAndRedirect(ctx) {
+    userLogout();
     ctx.page.redirect('/');
 }
