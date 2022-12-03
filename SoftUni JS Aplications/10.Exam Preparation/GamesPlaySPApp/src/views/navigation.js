@@ -1,11 +1,11 @@
-import { userLogout } from '../data/user.js';
-import { html, page } from '../utils/lib.js';
+import { html } from '../utils/lib.js';
+import { logoutAndRedirect } from './logout..js';
 
 export function updateNav(status) {
-    return navigationTemplate(status);
+    return navigationTemplate(status, logoutAndRedirect);
 }
 
-function navigationTemplate(status) {
+function navigationTemplate(status, handler) {
     return html`
           <a href="/dashboard">All games</a>
           
@@ -16,13 +16,8 @@ function navigationTemplate(status) {
                 </div>` 
             : html`<div id="user">
                     <a href="/create">Create Game</a>
-                    <a @click=${onLogout} href="javascript:void(0)">Logout</a>
+                    <a @click=${handler} href="javascript:void(0)">Logout</a>
                 </div>` 
           }
     `;
-}
-
-function onLogout() {
-    userLogout();
-    page.redirect('/');
 }
