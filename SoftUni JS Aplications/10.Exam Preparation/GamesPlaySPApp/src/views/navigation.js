@@ -1,5 +1,5 @@
 import { html } from '../utils/lib.js';
-import { logoutAndRedirect } from './logout..js';
+import { logoutAndRedirect } from './logout.js';
 
 export function updateNav(status) {
     return navigationTemplate(status, logoutAndRedirect);
