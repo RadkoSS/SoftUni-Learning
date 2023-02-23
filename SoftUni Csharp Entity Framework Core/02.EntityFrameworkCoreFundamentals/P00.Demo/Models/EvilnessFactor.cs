@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace P00.Demo
+namespace P00.Demo.Models
 {
-    public partial class Country
+    public partial class EvilnessFactor
     {
-        public Country()
+        public EvilnessFactor()
         {
-            Towns = new HashSet<Town>();
+            Villains = new HashSet<Villain>();
         }
 
         [Key]
@@ -19,7 +19,7 @@ namespace P00.Demo
         [Unicode(false)]
         public string? Name { get; set; }
 
-        [InverseProperty(nameof(Town.CountryCodeNavigation))]
-        public virtual ICollection<Town> Towns { get; set; }
+        [InverseProperty(nameof(Villain.EvilnessFactor))]
+        public virtual ICollection<Villain> Villains { get; set; }
     }
 }
