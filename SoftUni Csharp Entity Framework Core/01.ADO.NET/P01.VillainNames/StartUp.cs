@@ -29,7 +29,6 @@ static async Task<string> PrintAllVillainNames(SqlConnection connection)
     return sb.ToString().TrimEnd();
 }
 
-//To-Do
 static async Task<string> PrintAllMinionsNames(SqlConnection connection, int villainId)
 {
     StringBuilder sb = new StringBuilder();
