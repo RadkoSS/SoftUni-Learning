@@ -2,5 +2,5 @@
 
 internal static class Config
 {
-    public const string ConnectionString = "server=RADECKIPC;database=MinionsDB;Integrated Security=true;Encrypt=False";
+    public const string ConnectionString = "server=.;database=MinionsDB;Integrated Security=true;Encrypt=False";
 }
