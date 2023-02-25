@@ -14,11 +14,17 @@ internal static class SqlQueries
 
     public const string SelectNameById = @"SELECT Name FROM Villains WHERE Id = @Id";
 
-    public const string SelectMinionsById = @"SELECT ROW_NUMBER() OVER                              (ORDER BY m.Name) AS RowNum,
+    public const string SelectMinionsById = @"SELECT ROW_NUMBER() OVER (ORDER BY m.Name) AS RowNum,
                                          m.Name, 
                                          m.Age
                                     FROM MinionsVillains AS mv
                                     JOIN Minions As m ON mv.MinionId = m.Id
                                    WHERE mv.VillainId = @Id
                                 ORDER BY m.Name";
+
+    public const string DeleteFromMappingTableById = @"DELETE FROM MinionsVillains 
+      WHERE VillainId = @villainId";
+
+    public const string DeleteFromVillainsById = @"DELETE FROM Villains
+      WHERE Id = @villainId";
 }

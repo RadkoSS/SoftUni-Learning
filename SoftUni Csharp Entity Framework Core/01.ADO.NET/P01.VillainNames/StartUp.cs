@@ -6,7 +6,7 @@ await using SqlConnection sqlConnection = new SqlConnection(Config.ConnectionStr
 
 await sqlConnection.OpenAsync();
 
-string result = await PrintAllMinionsNames(sqlConnection, 4);
+string result = await RemoveVillainById(sqlConnection, 1);
 
 Console.WriteLine(result);
 
@@ -49,12 +49,13 @@ static async Task<string> PrintAllMinionsNames(SqlConnection connection, int vil
 
         cmd2.Parameters.AddWithValue("@Id", villainId);
 
-        SqlDataReader reader = await cmd.ExecuteReaderAsync();
+        SqlDataReader reader = await cmd2.ExecuteReaderAsync();
 
         sb.AppendLine($"Villain: {name}");
         if (!reader.HasRows)
         {
             sb.AppendLine("(no minions)");
+            return sb.ToString();
         }
 
         while (reader.Read())
@@ -63,8 +64,53 @@ static async Task<string> PrintAllMinionsNames(SqlConnection connection, int vil
             string minionName = (string)reader["Name"];
             int age = (int)reader["Age"];
 
-            sb.AppendLine($"{rowNumber} {minionName} {age}");
+            sb.AppendLine($"{rowNumber}. {minionName} {age}");
         }
     }
+    return sb.ToString().TrimEnd();
+}
+
+static async Task<string> RemoveVillainById(SqlConnection connection, int villainId)
+{
+    SqlCommand command = new SqlCommand(SqlQueries.SelectNameById, connection);
+
+    command.Parameters.AddWithValue("@Id", villainId);
+
+    string? name = await command.ExecuteScalarAsync() as string;
+
+    if (name == null)
+    {
+        return "No such villain was found.";
+    }
+    StringBuilder sb = new StringBuilder();
+
+    SqlTransaction transaction = connection.BeginTransaction();
+
+    try
+    {
+        SqlCommand command2 = new SqlCommand(SqlQueries.DeleteFromMappingTableById, connection, transaction);
+
+        command2.Parameters.AddWithValue("@villainId", villainId);
+
+        int rowsAffected = await command2.ExecuteNonQueryAsync();
+
+        SqlCommand command3 = new SqlCommand(SqlQueries.DeleteFromVillainsById, connection, transaction);
+
+        command3.Parameters.AddWithValue("@villainId", villainId);
+        
+        await command3.ExecuteNonQueryAsync();
+
+        sb.AppendLine($"{name} was deleted.");
+        sb.AppendLine($"{rowsAffected} minions were released.");
+
+        await transaction.CommitAsync();
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e.Message);
+
+        await transaction.RollbackAsync();
+    }
+
     return sb.ToString().TrimEnd();
 }
