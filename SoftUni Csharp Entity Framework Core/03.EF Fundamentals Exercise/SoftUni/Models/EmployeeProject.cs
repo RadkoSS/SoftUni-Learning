@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 public class EmployeeProject
 {
-    [ForeignKey("Employee")]
+    [ForeignKey("EmployeeId")]
     public int EmployeeId { get; set; }
 
-    public Employee Employee { get; set; }
+    public virtual Employee Employee { get; set; }
 
-    [ForeignKey("Project")]
+    [ForeignKey("ProjectId")]
     public int ProjectId { get; set; }
 
-    public Project Project { get; set; }
+    public virtual Project Project { get; set; }
 }
