@@ -8,12 +8,15 @@ public class Project
 {
     public Project()
     {
-        EmployeesProjects = new HashSet<EmployeeProject>();
+        this.EmployeesProjects = new HashSet<EmployeeProject>();
     }
 
     [Key]
     [Column("ProjectID")]
     public int ProjectId { get; set; }
+
+    [ForeignKey(nameof(ProjectId))]
+    public virtual ICollection<EmployeeProject> EmployeesProjects { get; set; }
 
     [StringLength(50)]
     [Unicode(false)]
@@ -27,7 +30,4 @@ public class Project
 
     [Column(TypeName = "smalldatetime")]
     public DateTime? EndDate { get; set; }
-
-    [ForeignKey("ProjectId")]
-    public virtual ICollection<EmployeeProject> EmployeesProjects { get; set; }
 }

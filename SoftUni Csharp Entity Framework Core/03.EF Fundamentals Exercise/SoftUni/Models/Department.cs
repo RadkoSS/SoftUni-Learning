@@ -8,16 +8,15 @@ public class Department
 {
     public Department()
     {
-        Employees = new HashSet<Employee>();
+        this.Employees = new HashSet<Employee>();
     }
 
     [Key]
     [Column("DepartmentID")]
     public int DepartmentId { get; set; }
 
-    [StringLength(50)]
-    [Unicode(false)]
-    public string Name { get; set; } = null!;
+    [InverseProperty(nameof(Employee.Department))]
+    public virtual ICollection<Employee> Employees { get; set; }
 
     [Column("ManagerID")]
     public int ManagerId { get; set; }
@@ -26,6 +25,7 @@ public class Department
     [InverseProperty(nameof(Employee.Departments))]
     public virtual Employee Manager { get; set; } = null!;
 
-    [InverseProperty(nameof(Employee.Department))]
-    public virtual ICollection<Employee> Employees { get; set; }
+    [StringLength(50)]
+    [Unicode(false)]
+    public string Name { get; set; } = null!;
 }

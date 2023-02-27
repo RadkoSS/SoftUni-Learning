@@ -8,8 +8,15 @@ public class Address
 {
     public Address()
     {
-        Employees = new HashSet<Employee>();
+        this.Employees = new HashSet<Employee>();
     }
+
+    [Column("TownID")]
+    public int? TownId { get; set; }
+
+    [ForeignKey(nameof(TownId))]
+    [InverseProperty("Addresses")]
+    public virtual Town? Town { get; set; }
 
     [Key]
     [Column("AddressID")]
@@ -18,13 +25,6 @@ public class Address
     [StringLength(100)]
     [Unicode(false)]
     public string AddressText { get; set; } = null!;
-
-    [Column("TownID")]
-    public int? TownId { get; set; }
-
-    [ForeignKey(nameof(TownId))]
-    [InverseProperty("Addresses")]
-    public virtual Town? Town { get; set; }
 
     [InverseProperty(nameof(Employee.Address))]
     public virtual ICollection<Employee> Employees { get; set; }
