@@ -2,6 +2,8 @@
 
 using System;
 using System.Text;
+using System.Globalization;
+using Microsoft.EntityFrameworkCore;
 
 using Data;
 
@@ -12,7 +14,7 @@ public class StartUp
         MusicHubDbContext context =
             new MusicHubDbContext();
 
-        var result = ExportAlbumsInfo(context, 9);
+        var result = ExportSongsAboveDuration(context, 4);
 
         Console.WriteLine(result);
     }
@@ -21,10 +23,11 @@ public class StartUp
     {
         var albums = context.Albums
             .Where(a => a.ProducerId == producerId)
+            .Include(a => a.Songs)
             .Select(a => new
         {
             a.Name,
-            ReleaseDate = a.ReleaseDate.ToString("MM/dd/yyyy"),
+            ReleaseDate = a.ReleaseDate.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture),
             ProducerName = a.Producer!.Name,
             a.Price,
             Songs = a.Songs
@@ -43,19 +46,19 @@ public class StartUp
 
         albums.ForEach(album =>
         {
-            sb.AppendLine($"-AlbumName: {album.Name}");
-            sb.AppendLine($"-ReleaseDate: {album.ReleaseDate}");
-            sb.AppendLine($"-ProducerName: {album.ProducerName}");
-            sb.AppendLine("-Songs:");
+            sb.AppendLine($"-AlbumName: {album.Name}")
+                .AppendLine($"-ReleaseDate: {album.ReleaseDate}")
+                 .AppendLine($"-ProducerName: {album.ProducerName}")
+                  .AppendLine("-Songs:");
 
             int count = 1;
 
             album.Songs.ForEach(song =>
             {
-                sb.AppendLine($"---#{count}");
-                sb.AppendLine($"---SongName: {song.Name}");
-                sb.AppendLine($"---Price: {song.Price:f2}");
-                sb.AppendLine($"---Writer: {song.Name}");
+                sb.AppendLine($"---#{count}")
+                    .AppendLine($"---SongName: {song.Name}")
+                     .AppendLine($"---Price: {song.Price:f2}")
+                      .AppendLine($"---Writer: {song.WriterName}");
 
                 count++;
             });
@@ -68,6 +71,39 @@ public class StartUp
 
     public static string ExportSongsAboveDuration(MusicHubDbContext context, int duration)
     {
-        throw new NotImplementedException();
+        var songs = context.Songs
+            .ToList()
+            .Where(s => s.Duration.TotalSeconds > duration)
+            .Select(s => new
+            {
+                s.Name,
+                Performers = s.SongPerformers.Select(sp => $"{sp.Performer.FirstName} {sp.Performer.LastName}").OrderBy(p => p).ToList(),
+                WriterName = s.Writer.Name,
+                AlbumProducer = s.Album!.Producer!.Name,
+                Duration = s.Duration.ToString("c")
+            }).OrderBy(s => s.Name).ThenBy(s => s.WriterName).ToList();
+
+        var sb = new StringBuilder();
+
+        int count = 1;
+
+        songs.ForEach(song =>
+        {
+            sb.AppendLine($"-Song #{count}")
+                .AppendLine($"---SongName: {song.Name}")
+                  .AppendLine($"---Writer: {song.WriterName}");
+
+            song.Performers.ForEach(name =>
+            { 
+                sb.AppendLine($"---Performer: {name}");
+            });
+
+            sb.AppendLine($"---AlbumProducer: {song.AlbumProducer}")
+               .AppendLine($"---Duration: {song.Duration}");
+
+            count++;
+        });
+
+        return sb.ToString().TrimEnd();
     }
 }
