@@ -13,7 +13,7 @@ public class StartUp
         using var dbContext = new BookShopContext();
         //DbInitializer.ResetDatabase(db);
 
-        string result = GetBooksByAgeRestriction(dbContext, Console.ReadLine()!);
+        string result = GetBooksByPrice(dbContext);
 
         Console.WriteLine(result);
     }
@@ -28,7 +28,7 @@ public class StartUp
                 .Where(b => b.AgeRestriction == ageRestriction)
                 .Select(b => b.Title)
                 .OrderBy(title => title)
-                .ToList();
+                .ToArray();
 
             return string.Join(Environment.NewLine, result);
         }
@@ -36,5 +36,21 @@ public class StartUp
         {
             return exception.Message;
         }
+    }
+
+    public static string GetBooksByPrice(BookShopContext dbContext)
+    {
+        var result = dbContext.Books
+            .Where(b => b.Price > 40)
+            .Select(b => new
+                        {
+                            b.Title,
+                            b.Price
+                        })
+            .OrderByDescending(b => b.Price)
+            .ToArray()
+            .Select(b => $"{b.Title} - ${b.Price:f2}");
+
+        return string.Join(Environment.NewLine, result);
     }
 }
