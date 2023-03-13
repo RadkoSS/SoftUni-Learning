@@ -9,7 +9,10 @@ public class CarDealerProfile : Profile
 {
     public CarDealerProfile()
     {
-        CreateMap<Supplier, SupplierDto>();
-        CreateMap<SupplierDto, Supplier>();
+        CreateMap<Supplier, ImportSuppliersDto>();
+        CreateMap<ImportSuppliersDto, Supplier>();
+
+        CreateMap<Part, ImportPartsDto>();
+        CreateMap<ImportPartsDto, Part>();
     }
 }

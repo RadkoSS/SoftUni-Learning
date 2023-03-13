@@ -2,6 +2,11 @@
 
 public class Part
 {
+    public Part()
+    {
+        this.PartsCars = new List<PartCar>();
+    }
+
     public int Id { get; set; }
 
     public string Name { get; set; } = null!; 
@@ -14,5 +19,5 @@ public class Part
 
     public Supplier Supplier { get; set; } = null!;
 
-    public ICollection<PartCar> PartsCars { get; set; } = new List<PartCar>();
+    public ICollection<PartCar> PartsCars { get; set; }
 }

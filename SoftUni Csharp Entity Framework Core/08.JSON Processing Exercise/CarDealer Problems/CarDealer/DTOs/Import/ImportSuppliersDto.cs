@@ -1,6 +1,6 @@
 ﻿namespace CarDealer.DTOs.Import;
 
-public class SupplierDto
+public class ImportSuppliersDto
 {
     public string Name { get; set; } = null!;
     
