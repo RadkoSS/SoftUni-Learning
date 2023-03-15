@@ -5,8 +5,8 @@ public class Car
 {
     public Car()
     {
-        this.Sales = new List<Sale>();
-        this.PartsCars = new List<PartCar>();
+        this.Sales = new HashSet<Sale>();
+        this.PartsCars = new HashSet<PartCar>();
     }
 
     public int Id { get; set; }

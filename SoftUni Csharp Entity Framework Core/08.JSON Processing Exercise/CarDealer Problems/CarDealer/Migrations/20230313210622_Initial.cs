@@ -81,7 +81,7 @@ namespace CarDealer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Parts",
+                name: "PartsCollection",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -121,14 +121,14 @@ namespace CarDealer.Migrations
                     table.ForeignKey(
                         name: "FK_PartsCars_Parts_PartId",
                         column: x => x.PartId,
-                        principalTable: "Parts",
+                        principalTable: "PartsCollection",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Parts_SupplierId",
-                table: "Parts",
+                table: "PartsCollection",
                 column: "SupplierId");
 
             migrationBuilder.CreateIndex(
@@ -156,7 +156,7 @@ namespace CarDealer.Migrations
                 name: "Sales");
 
             migrationBuilder.DropTable(
-                name: "Parts");
+                name: "PartsCollection");
 
             migrationBuilder.DropTable(
                 name: "Cars");

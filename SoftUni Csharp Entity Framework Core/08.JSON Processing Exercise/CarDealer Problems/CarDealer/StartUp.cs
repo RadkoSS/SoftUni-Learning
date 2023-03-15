@@ -24,9 +24,9 @@ public class StartUp
     {
         var mapper = CreateMapper();
 
-        ImportSuppliersDto[] newSuppliers = JsonConvert.DeserializeObject<ImportSuppliersDto[]>(inputJson)!;
+        ImportSupplierDto[] newSuppliers = JsonConvert.DeserializeObject<ImportSupplierDto[]>(inputJson)!;
 
-        ICollection<Supplier> validSuppliers = new List<Supplier>();
+        ICollection<Supplier> validSuppliers = new HashSet<Supplier>();
 
         foreach (var newSupplier in newSuppliers)
         {
@@ -46,9 +46,9 @@ public class StartUp
     {
         var mapper = CreateMapper();
 
-        ImportPartsDto[] newParts = JsonConvert.DeserializeObject<ImportPartsDto[]>(inputJson)!;
+        ImportPartDto[] newParts = JsonConvert.DeserializeObject<ImportPartDto[]>(inputJson)!;
 
-        ICollection<Part> validParts = new List<Part>();
+        ICollection<Part> validParts = new HashSet<Part>();
 
         foreach (var newPart in newParts)
         {
@@ -69,29 +69,47 @@ public class StartUp
         return $"Successfully imported {validParts.Count}.";
     }
 
+    //TODO
     public static string ImportCars(CarDealerContext context, string inputJson)
     {
-        var mappper = CreateMapper();
+        var mapper = CreateMapper();
 
-        ImportCarsDto[] newCars = JsonConvert.DeserializeObject<ImportCarsDto[]>(inputJson)!;
+        ImportCarDto[] newCars = JsonConvert.DeserializeObject<ImportCarDto[]>(inputJson)!;
 
-        ICollection<Car> validCars = new List<Car>();
+        ICollection<PartCar> partsCars = new HashSet<PartCar>();
+        int importedCars = 0;
 
         foreach (var newCar in newCars)
         {
-            var mapped = mappper.Map<Car>(newCar);
+            var mappedCar = mapper.Map<Car>(newCar);
+            context.Cars.Add(mappedCar);
+            context.SaveChanges();
+            importedCars++;
 
-            validCars.Add(mapped);
+            foreach (var partId in newCar.PartsCollection)
+            {
+                if (!context.Parts.Any(p => p.Id == partId))
+                {
+                    continue;
+                }
+
+                var partCar = new PartCar
+                {
+                    CarId = mappedCar.Id,
+                    PartId = partId
+                };
+
+                partsCars.Add(partCar);
+            }
         }
 
-        context.Cars.AddRange(validCars);
-
+        context.PartsCars.AddRange(partsCars);
         context.SaveChanges();
 
-        return $"Successfully imported {validCars.Count}.";
+        return $"Successfully imported {importedCars}.";
     }
 
-    public static IMapper CreateMapper()
+    private static IMapper CreateMapper()
     {
         return new Mapper(new MapperConfiguration(cfg =>
         {

@@ -4,7 +4,7 @@ public class Customer
 {
     public Customer()
     {
-        this.Sales = new List<Sale>();
+        this.Sales = new HashSet<Sale>();
     }
 
     public int Id { get; set; }

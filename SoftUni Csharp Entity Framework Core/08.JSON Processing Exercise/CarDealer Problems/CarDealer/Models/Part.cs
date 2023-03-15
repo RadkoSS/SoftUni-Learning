@@ -4,7 +4,7 @@ public class Part
 {
     public Part()
     {
-        this.PartsCars = new List<PartCar>();
+        this.PartsCars = new HashSet<PartCar>();
     }
 
     public int Id { get; set; }

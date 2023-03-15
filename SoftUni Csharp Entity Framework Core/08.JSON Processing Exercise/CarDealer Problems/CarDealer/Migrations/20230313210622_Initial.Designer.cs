@@ -96,7 +96,7 @@ namespace CarDealer.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("Parts");
+                    b.ToTable("PartsCollection");
                 });
 
             modelBuilder.Entity("CarDealer.Models.PartCar", b =>
@@ -163,7 +163,7 @@ namespace CarDealer.Migrations
             modelBuilder.Entity("CarDealer.Models.Part", b =>
                 {
                     b.HasOne("CarDealer.Models.Supplier", "Supplier")
-                        .WithMany("Parts")
+                        .WithMany("PartsCollection")
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -228,7 +228,7 @@ namespace CarDealer.Migrations
 
             modelBuilder.Entity("CarDealer.Models.Supplier", b =>
                 {
-                    b.Navigation("Parts");
+                    b.Navigation("PartsCollection");
                 });
 #pragma warning restore 612, 618
         }

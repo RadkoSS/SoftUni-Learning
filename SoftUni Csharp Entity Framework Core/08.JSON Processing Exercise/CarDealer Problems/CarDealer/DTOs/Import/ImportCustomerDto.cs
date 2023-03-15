@@ -1,5 +1,5 @@
 ﻿namespace CarDealer.DTOs.Import;
 
-public class ImportCarsDto
+public class ImportCustomerDto
 {
 }
