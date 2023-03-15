@@ -2,10 +2,13 @@
 
 using AutoMapper;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
+using AutoMapper.QueryableExtensions;
 
 using Data;
 using Models;
 using DTOs.Import;
+using DTOs.Export;
 
 public class StartUp
 {
@@ -13,11 +16,13 @@ public class StartUp
     {
         using var dbContext = new CarDealerContext();
 
-        var jsonString = File.ReadAllText("../../../Datasets/cars.json");
+        //var jsonString = File.ReadAllText("../../../Datasets/sales.json");
 
-        var result = ImportCars(dbContext, jsonString);
+        var result = GetOrderedCustomers(dbContext);
 
         Console.WriteLine(result);
+
+
     }
 
     public static string ImportSuppliers(CarDealerContext context, string inputJson)
@@ -68,8 +73,7 @@ public class StartUp
 
         return $"Successfully imported {validParts.Count}.";
     }
-
-    //TODO
+    
     public static string ImportCars(CarDealerContext context, string inputJson)
     {
         var mapper = CreateMapper();
@@ -107,6 +111,60 @@ public class StartUp
         context.SaveChanges();
 
         return $"Successfully imported {importedCars}.";
+    }
+
+    public static string ImportCustomers(CarDealerContext context, string inputJson)
+    {
+        var mapper = CreateMapper();
+
+        ImportCustomerDto[] newCustomers = JsonConvert.DeserializeObject<ImportCustomerDto[]>(inputJson)!;
+
+        Customer[] validCustomers = mapper.Map<Customer[]>(newCustomers);
+
+        context.Customers.AddRange(validCustomers);
+
+        context.SaveChanges();
+
+        return $"Successfully imported {validCustomers.Length}.";
+    }
+
+    public static string ImportSales(CarDealerContext context, string inputJson)
+    {
+        var mapper = CreateMapper();
+
+        ImportSaleDto[] newSales = JsonConvert.DeserializeObject<ImportSaleDto[]>(inputJson)!;
+
+        ICollection<Sale> validSales = new HashSet<Sale>();
+
+        foreach (var sale in newSales)
+        {
+            if (!context.Customers.Any(c => c.Id == sale.CustomerId) || !context.Cars.Any(c => c.Id == sale.CarId))
+            {
+                continue;
+            }
+
+            var mappedSale = mapper.Map<Sale>(sale);
+
+            validSales.Add(mappedSale);
+        }
+
+        context.Sales.AddRange(validSales);
+        context.SaveChanges();
+
+        return $"Successfully imported {validSales.Count}.";
+    }
+
+    public static string GetOrderedCustomers(CarDealerContext context)
+    {
+        var mapper = CreateMapper();
+
+        var customers = context.Customers
+            .OrderBy(c => c.BirthDate)
+            .ThenBy(c => c.IsYoungDriver)
+            .AsNoTracking()
+            .ProjectTo<ExportCustomerDto>(mapper.ConfigurationProvider).ToArray();
+
+        return JsonConvert.SerializeObject(customers, Formatting.Indented);
     }
 
     private static IMapper CreateMapper()

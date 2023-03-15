@@ -1,21 +1,26 @@
 ﻿namespace CarDealer;
 
-using AutoMapper;
+using System.Globalization;
 
 using Models;
+using AutoMapper;
 using DTOs.Import;
+using DTOs.Export;
 
 public class CarDealerProfile : Profile
 {
     public CarDealerProfile()
     {
-        CreateMap<Supplier, ImportSupplierDto>();
         CreateMap<ImportSupplierDto, Supplier>();
 
-        CreateMap<Part, ImportPartDto>();
         CreateMap<ImportPartDto, Part>();
 
-        CreateMap<Car, ImportCarDto>();
         CreateMap<ImportCarDto, Car>();
+
+        CreateMap<ImportCustomerDto, Customer>();
+
+        CreateMap<ImportSaleDto, Sale>();
+
+        CreateMap<Customer, ExportCustomerDto>().ForMember(d => d.BirthDate, opt => opt.MapFrom(s => s.BirthDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)));
     }
 }
