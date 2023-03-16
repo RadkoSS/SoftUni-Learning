@@ -1,6 +1,8 @@
 ﻿// ReSharper disable IdentifierTypo
 namespace CarDealer.Models;
 
+using Newtonsoft.Json;
+
 public class Car
 {
     public Car()
@@ -15,6 +17,7 @@ public class Car
 
     public string Model { get; set; } = null!;
 
+    [JsonProperty("traveledDistance")] //For Judge...
     public long TravelledDistance { get; set; }
 
     public ICollection<Sale> Sales { get; set; }  

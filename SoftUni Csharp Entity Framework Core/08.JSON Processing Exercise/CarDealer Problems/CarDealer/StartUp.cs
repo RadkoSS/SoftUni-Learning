@@ -18,11 +18,9 @@ public class StartUp
 
         //var jsonString = File.ReadAllText("../../../Datasets/sales.json");
 
-        var result = GetOrderedCustomers(dbContext);
+        var result = GetCarsWithTheirListOfParts(dbContext);
 
         Console.WriteLine(result);
-
-
     }
 
     public static string ImportSuppliers(CarDealerContext context, string inputJson)
@@ -165,6 +163,54 @@ public class StartUp
             .ProjectTo<ExportCustomerDto>(mapper.ConfigurationProvider).ToArray();
 
         return JsonConvert.SerializeObject(customers, Formatting.Indented);
+    }
+
+    public static string GetCarsFromMakeToyota(CarDealerContext context)
+    {
+        var mapper = CreateMapper();
+
+        var cars = context.Cars
+            .Where(c => c.Make == "Toyota")
+            .OrderBy(c => c.Model)
+            .ThenByDescending(c => c.TravelledDistance)
+            .ProjectTo<ExportToyotaCarDto>(mapper.ConfigurationProvider)
+            .AsNoTracking().ToArray();
+
+        return JsonConvert.SerializeObject(cars, Formatting.Indented);
+    }
+
+    public static string GetLocalSuppliers(CarDealerContext context)
+    {
+        var mapper = CreateMapper();
+
+        var suppliers = context.Suppliers
+            .Where(s => !s.IsImporter)
+            .ProjectTo<ExportLocalSupplierDto>(mapper.ConfigurationProvider)
+            .AsNoTracking().ToArray();
+
+        return JsonConvert.SerializeObject(suppliers, Formatting.Indented);
+    }
+
+    public static string GetCarsWithTheirListOfParts(CarDealerContext context)
+    {
+        var cars = context.Cars
+            .Select(c => new
+            {
+                car = new
+                {
+                    c.Make,
+                    c.Model,
+                    TraveledDistance = c.TravelledDistance
+                },
+                parts = c.PartsCars.Select(pc => new
+                {
+                    pc.Part.Name,
+                    Price = pc.Part.Price.ToString("f2")
+                }).ToArray()
+            })
+            .AsNoTracking().ToArray();
+
+        return JsonConvert.SerializeObject(cars, Formatting.Indented);
     }
 
     private static IMapper CreateMapper()
