@@ -200,7 +200,7 @@ public class StartUp
                 {
                     c.Make,
                     c.Model,
-                    TraveledDistance = c.TravelledDistance
+                    TraveledDistance= c.TravelledDistance
                 },
                 parts = c.PartsCars.Select(pc => new
                 {
@@ -208,7 +208,7 @@ public class StartUp
                     Price = pc.Part.Price.ToString("f2")
                 }).ToArray()
             })
-            .AsNoTracking().ToArray();
+            .ToArray();
 
         return JsonConvert.SerializeObject(cars, Formatting.Indented);
     }

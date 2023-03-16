@@ -17,7 +17,7 @@ public class Car
 
     public string Model { get; set; } = null!;
 
-    [JsonProperty("traveledDistance")] //For Judge...
+    //[JsonProperty("traveledDistance")] //For Judge...
     public long TravelledDistance { get; set; }
 
     public ICollection<Sale> Sales { get; set; }  
