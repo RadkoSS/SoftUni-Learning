@@ -18,7 +18,7 @@ public class StartUp
 
         //var jsonString = File.ReadAllText("../../../Datasets/sales.json");
 
-        var result = GetCarsWithTheirListOfParts(dbContext);
+        var result = GetTotalSalesByCustomer(dbContext);
 
         Console.WriteLine(result);
     }
@@ -200,7 +200,7 @@ public class StartUp
                 {
                     c.Make,
                     c.Model,
-                    TraveledDistance= c.TravelledDistance
+                    TraveledDistance = c.TravelledDistance
                 },
                 parts = c.PartsCars.Select(pc => new
                 {
@@ -208,9 +208,32 @@ public class StartUp
                     Price = pc.Part.Price.ToString("f2")
                 }).ToArray()
             })
+            .AsNoTracking()
             .ToArray();
 
         return JsonConvert.SerializeObject(cars, Formatting.Indented);
+    }
+
+    public static string GetTotalSalesByCustomer(CarDealerContext context)
+    {
+        var salesByCustomers = context.Customers
+            .Include(c => c.Sales)
+            .ThenInclude(c => c.Car)
+            .ThenInclude(c => c.PartsCars)
+            .ThenInclude(c => c.Part)
+            .Where(c => c.Sales.Count >= 1)
+            .ToArray()
+            .Select(c => new
+            {
+                fullName = c.Name,
+                boughtCars = c.Sales.Count,
+                spentMoney = c.Sales.Sum(s => s.Car.PartsCars.Sum(pc => pc.Part.Price))
+            })
+            .OrderByDescending(c => c.spentMoney)
+            .ThenByDescending(c => c.boughtCars)
+            .ToArray();
+
+        return JsonConvert.SerializeObject(salesByCustomers, Formatting.Indented);
     }
 
     private static IMapper CreateMapper()
