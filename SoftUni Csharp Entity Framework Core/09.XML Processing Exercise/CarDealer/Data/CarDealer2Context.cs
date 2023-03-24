@@ -1,0 +1,48 @@
+﻿namespace CarDealer2.Data;
+
+using Microsoft.EntityFrameworkCore;
+
+using Models;
+
+public class CarDealer2Context : DbContext
+{
+    public CarDealer2Context()
+    {
+    }
+
+    public CarDealer2Context(DbContextOptions options)
+        : base(options)
+    {
+    }
+
+    public DbSet<Car> Cars { get; set; } = null!;
+
+    public DbSet<Customer> Customers { get; set; } = null!;
+
+    public DbSet<Part> Parts { get; set; } = null!;
+
+    public DbSet<PartCar> PartsCars { get; set; } = null!;
+
+    public DbSet<Sale> Sales { get; set; } = null!;
+
+    public DbSet<Supplier> Suppliers { get; set; } = null!;
+
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder
+                .UseSqlServer(Configuration.ConnectionString)
+                .UseLazyLoadingProxies();
+        }
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<PartCar>(e =>
+        {
+            e.HasKey(k => new { k.CarId, k.PartId });
+        });
+    }
+}
