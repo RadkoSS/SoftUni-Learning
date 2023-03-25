@@ -1,11 +1,8 @@
-﻿namespace CarDealer2.Models;
+﻿namespace CarDealer.Models;
 
 public class Customer
 {
-    public Customer()
-    {
-        this.Sales = new HashSet<Sale>();
-    }
+    public Customer() => this.Sales = new HashSet<Sale>();
 
     public int Id { get; set; }
 

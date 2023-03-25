@@ -1,11 +1,8 @@
-﻿namespace CarDealer2.Models;
+﻿namespace CarDealer.Models;
 
 public class Part
 {
-    public Part()
-    {
-        this.PartsCars = new HashSet<PartCar>();
-    }
+    public Part() => this.PartsCars = new HashSet<PartCar>();
 
     public int Id { get; set; }
 

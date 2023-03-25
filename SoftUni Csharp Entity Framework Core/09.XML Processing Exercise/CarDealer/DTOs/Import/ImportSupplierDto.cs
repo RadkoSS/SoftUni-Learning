@@ -1,4 +1,4 @@
-﻿namespace CarDealer2.DTOs.Import;
+﻿namespace CarDealer.DTOs.Import;
 
 using System.Xml.Serialization;
 

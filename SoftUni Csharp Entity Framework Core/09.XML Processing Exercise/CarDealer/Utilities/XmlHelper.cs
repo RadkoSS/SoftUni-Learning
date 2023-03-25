@@ -1,4 +1,4 @@
-﻿namespace CarDealer2.Utilities;
+﻿namespace CarDealer.Utilities;
 
 using System.Text;
 using System.Xml.Serialization;

@@ -1,4 +1,4 @@
-﻿namespace CarDealer2.Data;
+﻿namespace CarDealer.Data;
 
 public static class Configuration
 {

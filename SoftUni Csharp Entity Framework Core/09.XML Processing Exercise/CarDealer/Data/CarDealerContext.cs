@@ -1,16 +1,15 @@
-﻿namespace CarDealer2.Data;
+﻿namespace CarDealer.Data;
 
 using Microsoft.EntityFrameworkCore;
-
 using Models;
 
-public class CarDealer2Context : DbContext
+public class CarDealerContext : DbContext
 {
-    public CarDealer2Context()
+    public CarDealerContext()
     {
     }
 
-    public CarDealer2Context(DbContextOptions options)
+    public CarDealerContext(DbContextOptions options)
         : base(options)
     {
     }
