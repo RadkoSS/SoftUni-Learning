@@ -1,11 +1,13 @@
 ﻿namespace CarDealer;
 
-using System.IO;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using AutoMapper.QueryableExtensions;
 
 using Data;
 using Models;
 using Utilities;
+using DTOs.Export;
 using DTOs.Import;
 
 public class StartUp
@@ -14,9 +16,9 @@ public class StartUp
     {
         using CarDealerContext dbContext = new CarDealerContext();
 
-        var xmlInput = File.ReadAllText("../../../Datasets/sales.xml");
+        //var xmlInput = File.ReadAllText("../../../Datasets/sales.xml");
 
-        var result = ImportSales(dbContext, xmlInput);
+        var result = GetCarsFromMakeBmw(dbContext);
 
         Console.WriteLine(result);
     }
@@ -27,7 +29,8 @@ public class StartUp
 
         XmlHelper xmlHelper = new XmlHelper();
 
-        ImportSupplierDto[] supplierDtos = xmlHelper.DeserializeCollection<ImportSupplierDto>(inputXml, "Suppliers").ToArray();
+        ImportSupplierDto[] supplierDtos =
+            xmlHelper.DeserializeCollection<ImportSupplierDto>(inputXml, "Suppliers").ToArray();
 
         var validSuppliers = new HashSet<Supplier>();
 
@@ -125,7 +128,8 @@ public class StartUp
 
         XmlHelper xmlHelper = new XmlHelper();
 
-        ImportCustomerDto[] customerDtos = xmlHelper.DeserializeCollection<ImportCustomerDto>(inputXml, "Customers").ToArray();
+        ImportCustomerDto[] customerDtos =
+            xmlHelper.DeserializeCollection<ImportCustomerDto>(inputXml, "Customers").ToArray();
 
         var validCustomers = new HashSet<Customer>();
 
@@ -177,6 +181,30 @@ public class StartUp
         context.SaveChanges();
 
         return $"Successfully imported {validSales.Count}";
+    }
+
+    public static string GetCarsWithDistance(CarDealerContext context)
+    {
+        IMapper mapper = InitializeAutoMapper();
+
+        XmlHelper xmlHelper = new XmlHelper();
+
+        ExportCarDto[] exportedDtos = context.Cars.AsNoTracking().Where(c => c.TraveledDistance > 2000000).OrderBy(c => c.Make)
+        .ThenBy(c => c.Model).Take(10).ProjectTo<ExportCarDto>(mapper.ConfigurationProvider)
+            .ToArray();
+
+        return xmlHelper.Serialize(exportedDtos, "cars");
+    }
+
+    public static string GetCarsFromMakeBmw(CarDealerContext context)
+    {
+        IMapper mapper = InitializeAutoMapper();
+
+        XmlHelper xmlHelper = new XmlHelper();
+
+        ExportBmwCarDto[] exportedBmwDtos = context.Cars.Where(c => c.Make == "BMW").OrderBy(c => c.Model).ThenByDescending(c => c.TraveledDistance).ProjectTo<ExportBmwCarDto>(mapper.ConfigurationProvider).ToArray();
+
+        return xmlHelper.Serialize(exportedBmwDtos, "cars");
     }
 
     private static IMapper InitializeAutoMapper()

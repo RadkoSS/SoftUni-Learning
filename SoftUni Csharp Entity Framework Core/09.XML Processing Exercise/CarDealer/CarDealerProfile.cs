@@ -1,9 +1,11 @@
 ﻿namespace CarDealer;
 
-using System.Globalization;
 using AutoMapper;
-using DTOs.Import;
+using System.Globalization;
+
 using Models;
+using DTOs.Export;
+using DTOs.Import;
 
 public class CarDealerProfile : Profile
 {
@@ -18,6 +20,9 @@ public class CarDealerProfile : Profile
         //Car
         this.CreateMap<ImportCarDto, Car>()
             .ForSourceMember(s => s.Parts, opt => opt.DoNotValidate());
+
+        this.CreateMap<Car, ExportCarDto>();
+        this.CreateMap<Car, ExportBmwCarDto>();
 
         //Customer
         this.CreateMap<ImportCustomerDto, Customer>()
