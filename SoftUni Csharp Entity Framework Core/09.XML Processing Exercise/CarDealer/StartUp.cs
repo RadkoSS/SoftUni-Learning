@@ -20,7 +20,7 @@ public class StartUp
 
         var result = GetCarsFromMakeBmw(dbContext);
 
-        Console.WriteLine(result);
+        File.WriteAllText("../../../Results/bmwCars.xml", result);
     }
 
     public static string ImportSuppliers(CarDealerContext context, string inputXml)
