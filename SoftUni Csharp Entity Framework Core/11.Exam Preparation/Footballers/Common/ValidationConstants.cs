@@ -1,4 +1,4 @@
-﻿namespace Footballers.GlobalConstants;
+﻿namespace Footballers.Common;
 
 public static class ValidationConstants
 {

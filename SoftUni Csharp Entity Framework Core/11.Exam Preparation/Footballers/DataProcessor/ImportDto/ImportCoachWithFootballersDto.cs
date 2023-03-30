@@ -3,7 +3,7 @@
 using System.Xml.Serialization;
 using System.ComponentModel.DataAnnotations;
 
-using GlobalConstants;
+using Common;
 
 [XmlType("Coach")]
 public class ImportCoachWithFootballersDto

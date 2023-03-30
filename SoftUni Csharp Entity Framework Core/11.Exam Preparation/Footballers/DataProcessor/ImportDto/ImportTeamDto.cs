@@ -2,7 +2,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-using GlobalConstants;
+using Common;
 
 public class ImportTeamDto
 {
