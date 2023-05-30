@@ -14,8 +14,20 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult About()
+    {
+        ViewData["Message"] = "This is an ASP.NET Core MVC app.";
+        return View();
+    }
+
     public IActionResult Privacy()
     {
+        return View();
+    }
+
+    public IActionResult Contacts()
+    {
+        ViewData["Location"] = "Dragichevo, Bulgaria";
         return View();
     }
 

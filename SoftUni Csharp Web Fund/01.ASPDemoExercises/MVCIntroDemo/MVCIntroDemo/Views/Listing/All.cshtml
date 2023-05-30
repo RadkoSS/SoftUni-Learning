@@ -1,0 +1,21 @@
+﻿@using MVCIntroDemo.ViewModels;
+@model IEnumerable<ListingViewModel>
+
+@{
+    ViewData["Tittle"] = "About Page";
+}
+
+<h1 class="text-center text-uppercase text-decoration-underline">Welcome to Balkan Cars!</h1>
+<div class="flex-fill">
+    <ul class="card-group" style="background-color: rgb(20, 50, 80); color: rgb(255, 255, 255)">
+        @foreach (ListingViewModel listing in Model)
+        {
+            <li class="card-body list-unstyled text-center">
+                <h2 class="card-header" style="background-color: black; margin-bottom: 20px">@listing.Make @listing.Model</h2>
+                <img class="card-img img-fluid" src="~/images/audi.jpg" style="width: 500px" alt="picture-of-car" />
+                <p class="card-text">@listing.Price лв.</p>
+                <p class="card-footer">Качена на @listing.UploadDate</p>
+            </li>
+        }
+    </ul>
+</div>
