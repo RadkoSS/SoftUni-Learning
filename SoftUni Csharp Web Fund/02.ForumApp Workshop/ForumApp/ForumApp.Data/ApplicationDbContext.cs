@@ -1,7 +1,9 @@
 ﻿namespace ForumApp.Data;
 
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+using Models;
 
 public class ApplicationDbContext : IdentityDbContext
 {
@@ -9,4 +11,6 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
+
+    public DbSet<Post> Posts { get; set; } = null!;
 }

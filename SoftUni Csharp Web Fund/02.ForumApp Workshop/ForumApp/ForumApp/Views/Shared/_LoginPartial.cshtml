@@ -2,11 +2,29 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+@{
+    int hour = DateTime.Now.ToLocalTime().Date.Hour;
+    string greeting = string.Empty;
+
+    if (hour is < 12 and >= 5)
+    {
+        greeting = "Good morning";
+    }
+    else if (hour is >= 12 and < 18)
+    {
+        greeting = "Good afternoon";
+    }
+    else
+    {
+        greeting = "Good evening";
+    }
+}
+
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@greeting @User.Identity?.Name!</a>
     </li>
     <li class="nav-item">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
