@@ -12,6 +12,7 @@ public class Post
     public Post()
     {
         this.Id = Guid.NewGuid();
+        this.CreationDate = DateTime.Now.ToLocalTime();
     }
 
     [Key]
@@ -31,4 +32,7 @@ public class Post
 
     [Required]
     public virtual IdentityUser Creator { get; set; } = null!;
+
+    [Required]
+    public DateTime CreationDate { get; set; }
 }

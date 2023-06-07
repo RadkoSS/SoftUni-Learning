@@ -4,9 +4,13 @@ using ViewModels.Post;
 
 public interface IPostsService
 {
-    Task<PostViewModel[]> GetAllPostsAsync();
+    Task<AllPostsViewModel> GetAllPostsAsync(string? userId);
 
-    Task<PostViewModel> GetPostByIdAsync(string postId);
+    Task<PostViewModel?> GetPostByIdAsync(string postId);
 
     Task CreatePostAsync(PostInputModel model);
+
+    Task UpdatePostAsync(PostInputModel model);
+
+    Task DeletePostAsync(string postId);
 }

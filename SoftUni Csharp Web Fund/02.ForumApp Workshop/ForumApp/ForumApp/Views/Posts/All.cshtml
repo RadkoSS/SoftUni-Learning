@@ -1,35 +1,41 @@
-﻿@using Microsoft.AspNetCore.Identity
-@model IEnumerable<ForumApp.ViewModels.Post.PostViewModel>
-@inject UserManager<IdentityUser> UserManager
+﻿@model ForumApp.ViewModels.Post.AllPostsViewModel
 
 @{
     ViewData["Title"] = "All Posts";
 }
+
 <h2 class="text-center">@ViewData["Title"]</h2>
 <hr />
-<div class="d-grid gap-2 mb-2">
-    <a asp-controller="Posts" asp-action="Add" class="btn btn-primary">Add Post</a>
-</div>
 
-@if (Model.Any())
+@if (Model.CurrentUserId != null)
+{
+    <div class="d-grid gap-2 mb-2">
+        <a asp-controller="Posts" asp-action="Add" class="btn btn-primary">Add Post</a>
+    </div>
+}
+
+@if (Model.Posts.Any())
 {
     <div class="row">
-        @foreach (var post in Model)
+        @foreach (var post in Model.Posts)
         {
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title text-center">@post.Title</h4>
+                        <p class="card-header">Created by @post.CreatorName on @post.CreationDate</p>
                         <p class="card-text">@post.Content</p>
-                        <div class="d-grid gap-2">
-                            <a asp-controller="Posts" asp-action="Edit" asp-routeid="@post.PostId" class="btn btn-warning">Edit</a>
-                            <form class="mt-2" asp-controller="Posts" aspaction="Delete" asp-route-id="@post.PostId">
-                                <div class="d-grid gap-2">
-                                    <input type="submit" value="Delete" class="btn btn-danger mb-2" />
-                                </div>
-                            </form>
-                        </div>
-
+                        @if (Model.CurrentUserId != null && Model.CurrentUserId == post.CreatorId)
+                        {
+                            <div class="d-grid gap-2">
+                                <a asp-controller="Posts" asp-action="Edit" asp-route-id="@post.PostId" class="btn btn-warning">Edit</a>
+                                <form class="mt-2" asp-controller="Posts" asp-action="Delete" asp-route-id="@post.PostId">
+                                    <div class="d-grid gap-2">
+                                        <input type="submit" value="Delete" class="btn btn-danger mb-2"/>
+                                    </div>
+                                </form>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

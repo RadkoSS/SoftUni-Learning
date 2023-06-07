@@ -1,13 +1,14 @@
 ﻿// ReSharper disable InconsistentNaming
 namespace ForumApp.Controllers;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 
 using ViewModels.Post;
 using Services.Contracts;
-using ViewModels;
 
+[Authorize]
 public class PostsController : Controller
 {
     private readonly IPostsService postsService;
@@ -20,9 +21,13 @@ public class PostsController : Controller
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> All()
     {
-        var posts = await postsService.GetAllPostsAsync();
+        var user = await GetUserAsync();
+
+        var posts = await postsService.GetAllPostsAsync(user?.Id);
+
         return View(posts);
     }
 
@@ -35,33 +40,61 @@ public class PostsController : Controller
     [HttpPost]
     public async Task<IActionResult> Add(PostInputModel input)
     {
-        var user = await userManager.GetUserAsync(HttpContext.User);
-
-        input.CreatorId = user.Id;
-
         //if (!ModelState.IsValid)
         //{
         //    return View(input);
         //}
 
-        await postsService.CreatePostAsync(input);
+        await this.postsService.CreatePostAsync(input);
 
         return RedirectToAction("All", "Posts");
     }
 
     [HttpGet]
-    public async Task<IActionResult> Edit(string postId)
+    public async Task<IActionResult> Edit(string id)
     {
-        var postToEdit = await postsService.GetPostByIdAsync(postId);
+        var postToEdit = await postsService.GetPostByIdAsync(id);
 
-        return View(postToEdit);
-        //try
-        //{
+        if (postToEdit != null)
+        {
+            return View(postToEdit);
+        }
 
-        //}
-        //catch (Exception e)
-        //{
-        //    return RedirectToAction("All", "Posts");
-        //}
+        return RedirectToAction("All", "Posts");
     }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(PostInputModel input)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(new PostViewModel
+            {
+                Content = input.Content,
+                Title = input.Title
+            });
+        }
+
+        await postsService.UpdatePostAsync(input);
+
+        return RedirectToAction("All", "Posts");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(string id)
+    {
+        try
+        {
+            await this.postsService.DeletePostAsync(id);
+        }
+        catch (Exception)
+        {
+            return View("Error");
+        }
+
+        return RedirectToAction("All", "Posts");
+    }
+
+    private async Task<IdentityUser> GetUserAsync()
+    => await userManager.GetUserAsync(HttpContext.User);
 }

@@ -1,10 +1,10 @@
 ﻿namespace ForumApp.Services;
 
 // ReSharper disable once InconsistentNaming
-using Contracts;
 using Microsoft.EntityFrameworkCore;
 
 using Data;
+using Contracts;
 using Data.Models;
 using ViewModels.Post;
 
@@ -17,38 +17,73 @@ public class PostsService : IPostsService
         this.context = context;
     }
 
-    public async Task<PostViewModel[]> GetAllPostsAsync()
-    => await context.Posts.AsNoTracking().Select(p => new PostViewModel
+    public async Task<AllPostsViewModel> GetAllPostsAsync(string? userId)
     {
-        PostId = p.Id.ToString(),
-        Title = p.Title,
-        Content = p.Content,
-        CreatorId = p.CreatorId,
-        CreatorName = p.Creator.UserName
-    }).ToArrayAsync();
+        var posts = await this.context.Posts.AsNoTracking().Select(p => new PostViewModel
+        {
+            PostId = p.Id.ToString(),
+            Title = p.Title,
+            Content = p.Content,
+            CreatorId = p.CreatorId,
+            CreatorName = p.Creator.UserName,
+            CreationDate = p.CreationDate.ToString("d")
+        }).ToArrayAsync();
 
-    public async Task<PostViewModel> GetPostByIdAsync(string postId)
+        var allPostsViewModel = new AllPostsViewModel
+        {
+            CurrentUserId = userId,
+            Posts = posts
+        };
+
+        return allPostsViewModel;
+    }
+    
+    public async Task<PostViewModel?> GetPostByIdAsync(string id)
     {
-        var result = await context.Posts.Where(p => p.Id.ToString() == postId).Select(p => new PostViewModel
+        var resultAsEntities = await this.context.Posts.Where(p => p.Id.ToString() == id).ToListAsync();
+
+        var result = resultAsEntities.Select(p => new PostViewModel
         {
             PostId = p.Id.ToString(),
             Title = p.Title,
             Content = p.Content,
             CreatorId = p.CreatorId,
             CreatorName = p.Creator.UserName
-        }).FirstAsync();
-        
+        }).FirstOrDefault();
+
         return result;
     }
+
     public async Task CreatePostAsync(PostInputModel model)
     {
-        await context.Posts.AddAsync(new Post
+        await this.context.Posts.AddAsync(new Post
         {
             CreatorId = model.CreatorId,
             Title = model.Title,
             Content = model.Content
         });
 
-        await context.SaveChangesAsync();
+        await this.context.SaveChangesAsync();
+    }
+
+    public async Task UpdatePostAsync(PostInputModel model)
+    {
+        await this.context.Posts.AddAsync(new Post
+        {
+            CreatorId = model.CreatorId,
+            Title = model.Title,
+            Content = model.Content
+        });
+
+        await this.context.SaveChangesAsync();
+    }
+
+    public async Task DeletePostAsync(string postId)
+    {
+        var postToDelete = await this.context.Posts.FirstAsync(p => p.Id.ToString() == postId);
+
+        this.context.Posts.Remove(postToDelete);
+
+        await this.context.SaveChangesAsync();
     }
 }
