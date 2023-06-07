@@ -1,9 +1,9 @@
 ﻿// ReSharper disable InconsistentNaming
 namespace ForumApp.Controllers;
 
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 using ViewModels.Post;
 using Services.Contracts;
@@ -37,13 +37,15 @@ public class PostsController : Controller
         return View();
     }
 
+    //ToDo: Fix the inputModel so its modelState becomes valid.
     [HttpPost]
     public async Task<IActionResult> Add(PostInputModel input)
     {
-        //if (!ModelState.IsValid)
-        //{
-        //    return View(input);
-        //}
+        //ToDo: Find out why modelState is invalid.
+        if (!ModelState.IsValid)
+        {
+            return View(input);
+        }
 
         await this.postsService.CreatePostAsync(input);
 

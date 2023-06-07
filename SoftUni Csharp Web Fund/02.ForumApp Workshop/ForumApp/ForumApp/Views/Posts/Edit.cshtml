@@ -16,6 +16,7 @@
             </div>
             <div class="mb-3">
                 <label asp-for="Content"></label>
+                <!-- Find out how to add a hidden input tag containing the CreatorId -->
                 <input type="hidden" asp-for="CreatorId" value="@Model.CreatorId" />
                 <input asp-for="Content" class="form-control" placeholder="Write your post here...">
                 <span asp-validation-for="@Model.Content" class="small text-danger"></span>
