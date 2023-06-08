@@ -67,15 +67,6 @@ public class PostsController : Controller
             return View(postToEdit);
         }
 
-        var postInputModel = new PostInputModel
-        {
-            Content = postToEdit!.Content,
-            CreatorId = postToEdit!.CreatorId,
-            Title = postToEdit!.Title
-        };
-
-        await this.postsService.UpdatePostAsync(postInputModel);
-
         return RedirectToAction("All", "Posts");
     }
 
@@ -86,14 +77,27 @@ public class PostsController : Controller
         {
             return View(new PostViewModel
             {
+                PostId = input.PostId,
                 Content = input.Content,
                 Title = input.Title
             });
         }
 
-        await this.postsService.UpdatePostAsync(input);
+        try
+        {
+            await this.postsService.UpdatePostAsync(input);
 
-        return RedirectToAction("All", "Posts");
+            return RedirectToAction("All", "Posts");
+        }
+        catch (Exception)
+        {
+            return View(new PostViewModel
+            {
+                PostId = input.PostId,
+                Content = input.Content,
+                Title = input.Title
+            });
+        }
     }
 
     [HttpPost]

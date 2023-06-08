@@ -25,7 +25,7 @@ public class PostsService : IPostsService
             Title = p.Title,
             Content = p.Content,
             CreatorId = p.CreatorId,
-            CreatorName = p.Creator.UserName,
+            CreatorName = GetUsername(p.Creator.UserName),
             CreationDate = p.CreationDate.ToString("d")
         }).ToArrayAsync();
 
@@ -38,9 +38,9 @@ public class PostsService : IPostsService
         return allPostsViewModel;
     }
     
-    public async Task<PostViewModel?> GetPostByIdAsync(string id)
+    public async Task<PostViewModel?> GetPostByIdAsync(string postId)
     {
-        var resultAsEntity = await this.context.Posts.Where(p => p.Id.ToString() == id).FirstOrDefaultAsync();
+        var resultAsEntity = await this.context.Posts.Where(p => p.Id.ToString() == postId).FirstOrDefaultAsync();
 
         if (resultAsEntity == null)
         {
@@ -93,4 +93,7 @@ public class PostsService : IPostsService
 
         await this.context.SaveChangesAsync();
     }
+
+    private static string GetUsername(string email)
+        => email.Substring(0, email.IndexOf("@", StringComparison.Ordinal));
 }
