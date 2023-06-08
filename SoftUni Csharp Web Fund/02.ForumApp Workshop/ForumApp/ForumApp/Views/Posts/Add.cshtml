@@ -16,6 +16,7 @@
             <div class="mb-3">
                 <label asp-for="Content"></label>
                 <input asp-for="Content" class="form-control" placeholder="Write your post here...">
+                <input type="hidden" asp-for="CreatorId" value="@Model.CreatorId" />
                 <span asp-validation-for="@Model.Content" class="small text-danger"></span>
             </div>
         </div>

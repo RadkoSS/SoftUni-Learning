@@ -8,6 +8,8 @@ public class PostInputModel
 {
     [Required]
     public string CreatorId { get; set; } = null!;
+    
+    public string? PostId { get; set; }
 
     [Required]
     [StringLength(TitleMaxLength, MinimumLength = TitleMinLength)]

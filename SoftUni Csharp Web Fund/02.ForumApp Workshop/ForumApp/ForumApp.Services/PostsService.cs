@@ -40,16 +40,21 @@ public class PostsService : IPostsService
     
     public async Task<PostViewModel?> GetPostByIdAsync(string id)
     {
-        var resultAsEntities = await this.context.Posts.Where(p => p.Id.ToString() == id).ToListAsync();
+        var resultAsEntity = await this.context.Posts.Where(p => p.Id.ToString() == id).FirstOrDefaultAsync();
 
-        var result = resultAsEntities.Select(p => new PostViewModel
+        if (resultAsEntity == null)
         {
-            PostId = p.Id.ToString(),
-            Title = p.Title,
-            Content = p.Content,
-            CreatorId = p.CreatorId,
-            CreatorName = p.Creator.UserName
-        }).FirstOrDefault();
+            return null;
+        }
+
+        var result = new PostViewModel
+        {
+            PostId = resultAsEntity.Id.ToString(),
+            Title = resultAsEntity.Title,
+            Content = resultAsEntity.Content,
+            CreatorId = resultAsEntity.CreatorId,
+            CreatorName = resultAsEntity.Creator.UserName
+        };
 
         return result;
     }
@@ -68,12 +73,14 @@ public class PostsService : IPostsService
 
     public async Task UpdatePostAsync(PostInputModel model)
     {
-        await this.context.Posts.AddAsync(new Post
-        {
-            CreatorId = model.CreatorId,
-            Title = model.Title,
-            Content = model.Content
-        });
+        var postToUpdate = await this.context.Posts.FirstAsync(p => p.Id.ToString() == model.PostId);
+
+        //ToDo: Implement updated on logic!
+
+        postToUpdate.Title = model.Title;
+        postToUpdate.Content = model.Content;
+
+        this.context.Posts.Update(postToUpdate);
 
         await this.context.SaveChangesAsync();
     }

@@ -26,23 +26,29 @@ public class PostsController : Controller
     {
         var user = await GetUserAsync();
 
-        var posts = await postsService.GetAllPostsAsync(user?.Id);
+        var posts = await this.postsService.GetAllPostsAsync(user?.Id);
 
         return View(posts);
     }
 
     [HttpGet]
-    public IActionResult Add()
+    public async Task<IActionResult> Add()
     {
-        return View();
+        var user = await GetUserAsync();
+
+        var model = new PostInputModel
+        {
+            CreatorId = user.Id
+        };
+
+        return View(model);
     }
 
     //ToDo: Fix the inputModel so its modelState becomes valid.
     [HttpPost]
     public async Task<IActionResult> Add(PostInputModel input)
     {
-        //ToDo: Find out why modelState is invalid.
-        if (!ModelState.IsValid)
+        if (!this.ModelState.IsValid)
         {
             return View(input);
         }
@@ -55,12 +61,21 @@ public class PostsController : Controller
     [HttpGet]
     public async Task<IActionResult> Edit(string id)
     {
-        var postToEdit = await postsService.GetPostByIdAsync(id);
+        var postToEdit = await this.postsService.GetPostByIdAsync(id);
 
         if (postToEdit != null)
         {
             return View(postToEdit);
         }
+
+        var postInputModel = new PostInputModel
+        {
+            Content = postToEdit!.Content,
+            CreatorId = postToEdit.CreatorId,
+            Title = postToEdit.Title
+        };
+
+        await this.postsService.UpdatePostAsync(postInputModel);
 
         return RedirectToAction("All", "Posts");
     }
@@ -68,7 +83,7 @@ public class PostsController : Controller
     [HttpPost]
     public async Task<IActionResult> Edit(PostInputModel input)
     {
-        if (!ModelState.IsValid)
+        if (!this.ModelState.IsValid)
         {
             return View(new PostViewModel
             {
@@ -77,7 +92,7 @@ public class PostsController : Controller
             });
         }
 
-        await postsService.UpdatePostAsync(input);
+        await this.postsService.UpdatePostAsync(input);
 
         return RedirectToAction("All", "Posts");
     }
@@ -98,5 +113,5 @@ public class PostsController : Controller
     }
 
     private async Task<IdentityUser> GetUserAsync()
-    => await userManager.GetUserAsync(HttpContext.User);
+    => await this.userManager.GetUserAsync(this.HttpContext.User);
 }
