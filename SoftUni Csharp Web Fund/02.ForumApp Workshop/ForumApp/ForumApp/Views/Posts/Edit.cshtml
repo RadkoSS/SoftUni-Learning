@@ -16,7 +16,6 @@
             </div>
             <div class="mb-3">
                 <label asp-for="Content"></label>
-                <!-- Find out how to add a hidden input tag containing the CreatorCreatorId -->
                 <input type="hidden" asp-for="CreatorId" value="@Model.CreatorId" />
                 <input type="hidden" asp-for="PostId" value="@Model.PostId" />
                 <input asp-for="Content" class="form-control" placeholder="Write your post here...">

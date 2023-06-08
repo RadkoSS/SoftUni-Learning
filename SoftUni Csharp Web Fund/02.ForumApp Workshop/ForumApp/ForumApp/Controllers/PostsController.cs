@@ -43,8 +43,7 @@ public class PostsController : Controller
 
         return View(model);
     }
-
-    //ToDo: Fix the inputModel so its modelState becomes valid.
+    
     [HttpPost]
     public async Task<IActionResult> Add(PostInputModel input)
     {
@@ -71,8 +70,8 @@ public class PostsController : Controller
         var postInputModel = new PostInputModel
         {
             Content = postToEdit!.Content,
-            CreatorId = postToEdit.CreatorId,
-            Title = postToEdit.Title
+            CreatorId = postToEdit!.CreatorId,
+            Title = postToEdit!.Title
         };
 
         await this.postsService.UpdatePostAsync(postInputModel);

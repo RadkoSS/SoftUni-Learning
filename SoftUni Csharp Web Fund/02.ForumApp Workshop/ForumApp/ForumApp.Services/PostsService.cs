@@ -75,7 +75,7 @@ public class PostsService : IPostsService
     {
         var postToUpdate = await this.context.Posts.FirstAsync(p => p.Id.ToString() == model.PostId);
 
-        //ToDo: Implement updated on logic!
+        //ToDo: Implement "Updated on" logic!
 
         postToUpdate.Title = model.Title;
         postToUpdate.Content = model.Content;
