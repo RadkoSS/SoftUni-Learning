@@ -26,7 +26,8 @@ public class PostsService : IPostsService
             Content = p.Content,
             CreatorId = p.CreatorId,
             CreatorName = GetUsername(p.Creator.UserName),
-            CreationDate = p.CreationDate.ToString("d")
+            CreationDate = p.CreationDate.ToLocalTime().ToString("d"),
+            UpdatedOn = p.UpdatedOn != null ? p.UpdatedOn.Value.ToLocalTime().ToString("g") : null
         }).ToArrayAsync();
 
         var allPostsViewModel = new AllPostsViewModel
@@ -56,6 +57,11 @@ public class PostsService : IPostsService
             CreatorName = resultAsEntity.Creator.UserName
         };
 
+        if (resultAsEntity.UpdatedOn.HasValue)
+        {
+            result.UpdatedOn = resultAsEntity.UpdatedOn.Value.ToLocalTime().ToString("g");
+        }
+
         return result;
     }
 
@@ -75,10 +81,9 @@ public class PostsService : IPostsService
     {
         var postToUpdate = await this.context.Posts.FirstAsync(p => p.Id.ToString() == model.PostId);
 
-        //ToDo: Implement "Updated on" logic!
-
         postToUpdate.Title = model.Title;
         postToUpdate.Content = model.Content;
+        postToUpdate.UpdatedOn = DateTime.UtcNow;
 
         this.context.Posts.Update(postToUpdate);
 

@@ -23,7 +23,16 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title text-center">@post.Title</h4>
-                        <p class="card-header">Created by @post.CreatorName on @post.CreationDate</p>
+                        <p class="card-header">Created by @post.CreatorName</p>
+                        <p class="card-text text-sm-end">@post.CreationDate</p>
+
+                        @if (!string.IsNullOrWhiteSpace(post.UpdatedOn))
+                        {
+                            <div class="container-lg">
+                                <p class="text-sm-end">Last modified on @post.UpdatedOn</p>
+                            </div>
+                        }
+
                         <p class="card-text">@post.Content</p>
                         @if (Model.CurrentUserId != null && Model.CurrentUserId == post.CreatorId)
                         {
@@ -44,5 +53,7 @@
 }
 else
 {
-    <p class="text-center">No posts yet!</p>
+    <div class="container-lg">
+        <p class="text-center text-black-50">No posts yet!</p>
+    </div>
 }

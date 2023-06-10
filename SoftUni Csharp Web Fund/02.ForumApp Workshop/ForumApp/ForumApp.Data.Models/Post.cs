@@ -12,7 +12,7 @@ public class Post
     public Post()
     {
         this.Id = Guid.NewGuid();
-        this.CreationDate = DateTime.Now.ToLocalTime();
+        this.CreationDate = DateTime.UtcNow;
     }
 
     [Key]
@@ -35,4 +35,6 @@ public class Post
 
     [Required]
     public DateTime CreationDate { get; set; }
+    
+    public DateTime? UpdatedOn { get; set; }
 }

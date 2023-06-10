@@ -7,6 +7,12 @@
 <h2 class="text-center">@ViewData["Title"]</h2>
 <hr />
 <div class="row">
+
+    @if (!string.IsNullOrWhiteSpace(Model.UpdatedOn))
+    {
+        <p class="text-sm-end">Post was lastly modified on @Model.UpdatedOn</p>
+    }
+
     <form method="post">
         <div class="form-group">
             <div class="mb-3">
@@ -16,13 +22,13 @@
             </div>
             <div class="mb-3">
                 <label asp-for="Content"></label>
-                <input type="hidden" asp-for="CreatorId" value="@Model.CreatorId" />
-                <input type="hidden" asp-for="PostId" value="@Model.PostId" />
+                <input type="hidden" asp-for="CreatorId" value="@Model.CreatorId"/>
+                <input type="hidden" asp-for="PostId" value="@Model.PostId"/>
                 <input asp-for="Content" class="form-control" placeholder="Write your post here...">
                 <span asp-validation-for="@Model.Content" class="small text-danger"></span>
             </div>
         </div>
-        <input class="btn btn-primary mt-3" type="submit" value="Edit" />
+        <input class="btn btn-primary mt-3" type="submit" value="Edit"/>
     </form>
 </div>
 
