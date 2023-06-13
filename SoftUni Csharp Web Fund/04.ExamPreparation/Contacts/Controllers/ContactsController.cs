@@ -50,7 +50,7 @@ public class ContactsController : Controller
         }
         catch
         {
-            ModelState.AddModelError(string.Empty, "Unsuccessful create.");
+            ModelState.AddModelError(nameof(input.Website), "Unsuccessful create.");
             return View(input);
         }
 
@@ -88,7 +88,7 @@ public class ContactsController : Controller
         }
         catch
         {
-            ModelState.AddModelError(string.Empty, "Unsuccessful edit.");
+            ModelState.AddModelError(nameof(input.Website), "Unsuccessful edit.");
             return View(input);
         }
     }
