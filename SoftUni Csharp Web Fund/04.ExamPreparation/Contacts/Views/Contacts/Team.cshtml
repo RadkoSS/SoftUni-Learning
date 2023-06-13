@@ -1,8 +1,11 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Contacts.ViewModels.Contact.AllContactsViewModel
+
+@{
     ViewBag.Title = "My Team";
 }
 
-@*
+
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
@@ -38,7 +41,7 @@
                             </form>
                         </span>
                         <span style="float:right">
-                            <a asp-controller="Contacts" asp-action="Edit" asp-route-contactId="@contact.ContactId" class="btn btn-primary">Edit</a>
+                            <a asp-controller="Contacts" asp-action="Edit" asp-route-contactContactId="@contact.ContactId" class="btn btn-primary">Edit</a>
                         </span>
                     </td>
                 </tr>
@@ -50,4 +53,3 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-*@

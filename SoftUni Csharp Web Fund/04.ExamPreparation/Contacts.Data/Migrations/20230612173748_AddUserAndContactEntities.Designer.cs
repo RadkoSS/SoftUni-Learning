@@ -4,6 +4,7 @@ using Contacts.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Contacts.Data.Migrations
 {
     [DbContext(typeof(ContactsDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230612173748_AddUserAndContactEntities")]
+    partial class AddUserAndContactEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +36,7 @@ namespace Contacts.Data.Migrations
 
                     b.HasIndex("ContactId");
 
-                    b.ToTable("ApplicationUserContacts");
+                    b.ToTable("ApplicationUserContact");
                 });
 
             modelBuilder.Entity("Contacts.Data.Models.Entities.Contact", b =>

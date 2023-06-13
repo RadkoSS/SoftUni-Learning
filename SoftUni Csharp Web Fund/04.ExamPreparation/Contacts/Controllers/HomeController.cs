@@ -1,14 +1,16 @@
-﻿using Contacts.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+﻿namespace Contacts.Controllers;
 
-namespace Contacts.Controllers
+using Microsoft.AspNetCore.Mvc;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    public IActionResult Index()
     {
-        public IActionResult Index()
+        if (User?.Identity?.IsAuthenticated ?? false)
         {
-            return View();
+            return RedirectToAction("All", "Contacts");
         }
+
+        return View();
     }
 }

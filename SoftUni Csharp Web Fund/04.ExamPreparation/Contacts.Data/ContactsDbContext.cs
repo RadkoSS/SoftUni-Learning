@@ -1,26 +1,33 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+﻿namespace Contacts.Data;
 
-namespace Contacts.Data
+using System.Reflection;
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+using Models.Entities;
+
+public class ContactsDbContext : IdentityDbContext
 {
-    public class ContactsDbContext : IdentityDbContext
+    public ContactsDbContext(DbContextOptions<ContactsDbContext> options)
+        : base(options)
+    {}
+
+    public DbSet<Contact> Contacts { get; set; } = null!;
+
+    public DbSet<ApplicationUserContact> ApplicationUserContacts { get; set; } = null!;
+
+    protected override void OnModelCreating(ModelBuilder builder)
     {
-        public ContactsDbContext(DbContextOptions<ContactsDbContext> options)
-            : base(options)
+        builder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(ContactsDbContext)) ??
+                                                Assembly.GetExecutingAssembly());
+
+        builder.Entity<ApplicationUserContact>().HasKey(pk => new
         {
-            /* builder
-                .Entity<Contact>()
-                .HasData(new Contact()
-                {
-                    Id = 1,
-                    FirstName = "Bruce",
-                    LastName = "Wayne",
-                    PhoneNumber = "+359881223344",
-                    Address = "Gotham City",
-                    Email = "imbatman@batman.com",
-                    Website = "www.batman.com"
-                });
-            */
-        }
+            pk.ApplicationUserId,
+            pk.ContactId
+        });
+
+        base.OnModelCreating(builder);
     }
 }

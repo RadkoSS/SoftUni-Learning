@@ -1,9 +1,11 @@
-﻿@{
-    ViewBag.Title = "All Contacts";
+﻿@model Contacts.ViewModels.Contact.AllContactsViewModel
+
+@{
+    ViewData["Title"] = "All Contacts";
 }
 
-@*
-<h2 class="text-center">@ViewBag.Title</h2>
+
+<h2 class="text-center">@ViewData["Title"]</h2>
 <hr />
 
 <div class="text-center row">
@@ -34,9 +36,10 @@
                     <td>
                         <span style="float:left">
                             <form class="input-group-sm" asp-controller="Contacts" asp-action="AddToTeam" asp-route-contactId="@contact.ContactId">
-                                <input type="submit" value="Add to Team" class="fs-6 btn btn-success mb-3 p-2" />
+                                <input type="submit" value="Add to Team" class="fs-6 btn btn-success mb-3 p-2"/>
                             </form>
                         </span>
+
                         <span style="float:right">
                             <a asp-controller="Contacts" asp-action="Edit" asp-route-contactId="@contact.ContactId" class="btn btn-primary">Edit</a>
                         </span>
@@ -50,4 +53,3 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-*@
