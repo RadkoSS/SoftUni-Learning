@@ -98,7 +98,7 @@ public class ContactsService : IContactsService
 
     public async Task AddContactToUserTeamAsync(string contactId, string userId)
     {
-        if (this.dbContext.ApplicationUserContacts.Any(ac => ac.ApplicationUserId == userId && ac.ContactId == int.Parse(contactId)))
+        if (await this.dbContext.ApplicationUserContacts.AnyAsync(ac => ac.ApplicationUserId == userId && ac.ContactId == int.Parse(contactId)))
         {
             throw new DataException("Contact is already in team.");
         }
