@@ -1,12 +1,11 @@
 ﻿namespace Library.Data;
 
+using System.Reflection;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 using Models.Entities;
-
-using static Seeding.BookSeeder;
-using static Seeding.CategorySeeder;
 
 public class LibraryDbContext : IdentityDbContext
 {
@@ -15,11 +14,15 @@ public class LibraryDbContext : IdentityDbContext
     {
     }
 
+    public DbSet<Book> Books { get; set; } = null!;
+
+    public DbSet<Category> Categories { get; set; } = null!;
+
+    public DbSet<IdentityUserBook> IdentityUserBooks { get; set; } = null!;
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<Category>().HasData(SeedCategories());
-
-        builder.Entity<Book>().HasData(SeedBooks());
+        builder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(LibraryDbContext)) ?? Assembly.GetExecutingAssembly());
 
         builder.Entity<IdentityUserBook>().HasKey(pk => new
         {
@@ -31,10 +34,4 @@ public class LibraryDbContext : IdentityDbContext
 
         base.OnModelCreating(builder);
     }
-
-    public DbSet<Book> Books { get; set; } = null!;
-
-    public DbSet<Category> Categories { get; set; } = null!;
-
-    public DbSet<IdentityUserBook> IdentityUserBooks { get; set; } = null!;
 }

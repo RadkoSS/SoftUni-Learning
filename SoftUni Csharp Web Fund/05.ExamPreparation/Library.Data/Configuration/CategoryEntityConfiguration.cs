@@ -1,12 +1,15 @@
 ﻿namespace Library.Data.Configuration;
 
-using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-//public class CategoryEntityConfiguration : IEntityTypeConfiguration<Category>
-//{
-//    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Category> builder)
-//    {
-//        throw new NotImplementedException();
-//    }
-//}
+using Models.Entities;
+using static Seeding.CategorySeeder;
+
+public class CategoryEntityConfiguration : IEntityTypeConfiguration<Category>
+{
+    public void Configure(EntityTypeBuilder<Category> builder)
+    {
+        builder.HasData(SeedCategories());
+    }
+}
