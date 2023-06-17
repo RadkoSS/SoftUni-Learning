@@ -73,9 +73,9 @@ public class BooksController : BaseController
     {
         if (!ModelState.IsValid || !decimal.TryParse(input.Rating, out decimal rating) || rating < RatingMinValue || rating > RatingMaxValue)
         {
-            ModelState.AddModelError(input.Rating, "Invalid data provided.");
-
             input.Categories = await this.booksService.GetCategoriesAsync();
+
+            ModelState.AddModelError(input.Rating, "Invalid data provided.");
             return View(input);
         }
 
