@@ -104,7 +104,7 @@ public class RegisterModel : PageModel
     {
         if (User?.Identity?.IsAuthenticated ?? false)
         {
-            return RedirectToAction("All", "Book");
+            return RedirectToAction("All", "Event");
         }
 
         ReturnUrl = returnUrl;

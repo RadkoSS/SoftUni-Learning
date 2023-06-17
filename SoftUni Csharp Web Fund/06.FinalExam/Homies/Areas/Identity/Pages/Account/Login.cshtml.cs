@@ -88,7 +88,7 @@ public class LoginModel : PageModel
     {
         if (User?.Identity?.IsAuthenticated ?? false)
         {
-            return RedirectToAction("All", "Book");
+            return RedirectToAction("All", "Event");
         }
 
         if (!string.IsNullOrEmpty(ErrorMessage))
