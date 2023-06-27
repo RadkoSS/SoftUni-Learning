@@ -11,15 +11,15 @@ public interface IEventService
 
     Task<EventCreateViewAndInputModel> GetCreateAsync();
 
-    Task AddEventAsync(EventCreateViewAndInputModel input, string organiserId);
+    Task AddEventAsync(EventCreateViewAndInputModel input, string userId);
 
-    Task<AllEventsViewModel[]> GetJoinedEventsAsync(string organiserId);
+    Task<AllEventsViewModel[]> GetJoinedEventsAsync(string userId);
 
     Task JoinEventAsync(int eventId, string userId);
 
     Task LeaveEventAsync(int eventId, string userId);
 
-    Task<EventCreateViewAndInputModel> GetEditAsync(int eventId);
+    Task<EventCreateViewAndInputModel> GetEditAsync(int eventId, string userId);
 
     Task UpdateEventAsync(EventCreateViewAndInputModel input);
 

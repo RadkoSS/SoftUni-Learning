@@ -54,7 +54,7 @@ public class EventService : IEventService
         return model;
     }
 
-    public async Task AddEventAsync(EventCreateViewAndInputModel input, string organiserId)
+    public async Task AddEventAsync(EventCreateViewAndInputModel input, string userId)
     {
         var startIsDate = DateTime.TryParse(input.Start, out var startDate);
 
@@ -71,7 +71,7 @@ public class EventService : IEventService
         {
             Name = input.Name!,
             Description = input.Description!,
-            OrganiserId = organiserId,
+            OrganiserId = userId,
             Start = startDate,
             End = endDate,
             TypeId = input.TypeId
@@ -81,9 +81,9 @@ public class EventService : IEventService
         await this.dbContext.SaveChangesAsync();
     }
 
-    public async Task<AllEventsViewModel[]> GetJoinedEventsAsync(string organiserId)
+    public async Task<AllEventsViewModel[]> GetJoinedEventsAsync(string userId)
     {
-        var events = await this.dbContext.EventParticipants.AsNoTracking().Where(ep => ep.HelperId == organiserId).Select(ep => new AllEventsViewModel
+        var events = await this.dbContext.EventParticipants.AsNoTracking().Where(ep => ep.HelperId == userId).Select(ep => new AllEventsViewModel
         {
             Name = ep.Event.Name,
             Start = ep.Event.Start.ToString("u"),
@@ -127,8 +127,15 @@ public class EventService : IEventService
         }
     }
 
-    public async Task<EventCreateViewAndInputModel> GetEditAsync(int eventId)
+    public async Task<EventCreateViewAndInputModel> GetEditAsync(int eventId, string userId)
     {
+        var userIsOwner = await this.dbContext.Events.AsNoTracking().AnyAsync(e => e.Id == eventId && e.OrganiserId == userId);
+
+        if (!userIsOwner)
+        {
+            throw new InvalidOperationException("You are not an organiser to this event!");
+        }
+
         var eventViewModel = await this.dbContext.Events.AsNoTracking().Where(e => e.Id == eventId).Select(e =>
             new EventCreateViewAndInputModel
             {

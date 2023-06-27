@@ -102,14 +102,21 @@ public class EventController : BaseController
 
     public async Task<IActionResult> Edit(string id)
     {
-        if (int.TryParse(id, out int idAsInt))
+        try
         {
-            var model = await this.eventService.GetEditAsync(idAsInt);
+            var userId = GetUserId();
+            var idAsInt = int.Parse(id);
+
+            var model = await this.eventService.GetEditAsync(idAsInt, userId);
+            
             model.EventId = idAsInt;
+
             return View(model);
         }
-
-        return RedirectToAction("All", "Event");
+        catch
+        {
+            return RedirectToAction("All", "Event");
+        }
     }
 
     [HttpPost]

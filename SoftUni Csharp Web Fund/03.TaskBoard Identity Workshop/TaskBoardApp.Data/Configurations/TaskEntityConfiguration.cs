@@ -3,7 +3,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-using Task = TaskBoardApp.Data.Models.Task;
+using Task = Models.Task;
 
 internal class TaskEntityConfiguration : IEntityTypeConfiguration<Task>
 {
