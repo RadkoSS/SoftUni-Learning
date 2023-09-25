@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01.ReverseArray", "P01.ReverseArray\P01.ReverseArray.csproj", "{59A92308-40F3-420A-94D1-EFEB420CE9CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02.ToRecur", "P02.ToRecur\P02.ToRecur.csproj", "{C8AB0A80-8037-41EE-982D-75B0C17DD5CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59A92308-40F3-420A-94D1-EFEB420CE9CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59A92308-40F3-420A-94D1-EFEB420CE9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59A92308-40F3-420A-94D1-EFEB420CE9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59A92308-40F3-420A-94D1-EFEB420CE9CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8AB0A80-8037-41EE-982D-75B0C17DD5CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8AB0A80-8037-41EE-982D-75B0C17DD5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8AB0A80-8037-41EE-982D-75B0C17DD5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8AB0A80-8037-41EE-982D-75B0C17DD5CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D76B304B-A700-4984-82DE-87F459A2BE99}
+	EndGlobalSection
+EndGlobal
