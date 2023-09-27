@@ -2,12 +2,12 @@
 
 internal class Program
 {
-    private static string[] numbersArray;
-    private static string[] reversedNumbersArray;
+    private static string[] numbersArray = null!;
+    private static string[] reversedNumbersArray = null!;
 
     private static void Main()
     { 
-        numbersArray = Console.ReadLine().Split(' ');
+        numbersArray = Console.ReadLine()!.Split(' ');
             
         reversedNumbersArray = new string[numbersArray.Length];
 
