@@ -24,7 +24,7 @@ internal class Program
 
         reversedNumbersArray[numbersArray.Length - 1 - currentIndex] = numbersArray[currentIndex];
 
-        ReverseArray(++currentIndex);
+        ReverseArray(currentIndex + 1);
     }
 
     private static void PrintResult()

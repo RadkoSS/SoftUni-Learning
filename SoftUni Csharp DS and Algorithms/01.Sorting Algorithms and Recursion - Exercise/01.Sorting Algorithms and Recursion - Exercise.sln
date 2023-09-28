@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01.ReverseArray", "P01.ReverseArray\P01.ReverseArray.csproj", "{59A92308-40F3-420A-94D1-EFEB420CE9CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P01.ReverseArray", "P01.ReverseArray\P01.ReverseArray.csproj", "{59A92308-40F3-420A-94D1-EFEB420CE9CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02.ToRecur", "P02.ToRecur\P02.ToRecur.csproj", "{C8AB0A80-8037-41EE-982D-75B0C17DD5CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P02.ToRecur", "P02.ToRecur\P02.ToRecur.csproj", "{C8AB0A80-8037-41EE-982D-75B0C17DD5CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03.8Queens", "P03.8Queens\P03.8Queens.csproj", "{1350AB6B-8C63-433B-B021-9944448E0578}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C8AB0A80-8037-41EE-982D-75B0C17DD5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8AB0A80-8037-41EE-982D-75B0C17DD5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8AB0A80-8037-41EE-982D-75B0C17DD5CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1350AB6B-8C63-433B-B021-9944448E0578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1350AB6B-8C63-433B-B021-9944448E0578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1350AB6B-8C63-433B-B021-9944448E0578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1350AB6B-8C63-433B-B021-9944448E0578}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
